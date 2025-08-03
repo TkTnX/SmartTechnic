@@ -1,0 +1,16 @@
+@use '@/shared/styles/vars' as *;
+
+.search {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	color: $color-gray;
+	max-width: 107px;
+	padding: 0 12px 12px;
+	border-bottom: 1px solid $color-gray;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}

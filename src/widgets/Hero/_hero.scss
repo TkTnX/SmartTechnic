@@ -1,0 +1,35 @@
+.hero {
+	margin-top: 20px;
+	margin-left: calc(310px + 20px);
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		border-radius: 6px;
+	}
+}
+
+.swiper {
+	border-radius: 8px !important;
+}
+
+.swiper-pagination {
+	width: 100% !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+.swiper-pagination-bullet {
+	background-color: #fff !important;
+	flex: 1 !important;
+	border-radius: 2px !important;
+	background-color: #c8cacb !important;
+	opacity: 0.5 !important;
+	height: 3px !important;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: #edf2f6 !important;
+	opacity: 1 !important;
+}
