@@ -1,5 +1,5 @@
 @use '@/shared/styles/vars' as *;
-
+@use '@/shared/styles/mixins' as *;
 
 .header {
 	display: flex;
@@ -21,6 +21,10 @@
 		&-time {
 			color: $color-gray;
 		}
+
+		@include xl {
+			display: none;
+		}
 	}
 
 	&__controls {
@@ -37,6 +41,10 @@
 			&:hover {
 				opacity: 0.8;
 			}
+
+			@include md {
+				display: none;
+			}
 		}
 
 		&-button {
@@ -47,6 +55,12 @@
 
 			&:hover {
 				opacity: 0.8;
+			}
+		}
+
+		@include md {
+			.search {
+				display: none;
 			}
 		}
 	}

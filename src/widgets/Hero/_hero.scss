@@ -1,16 +1,35 @@
+@use '@/shared/styles/mixins' as *;
+@use '@/shared/styles/vars' as *;
+
 .hero {
 	margin-top: 20px;
 	margin-left: calc(310px + 20px);
+	position: relative;
+	z-index: 0;
 
 	img {
 		height: 100%;
 		object-fit: cover;
 		border-radius: 6px;
+
+		@include xl {
+			width: 100%;
+			border-radius: 0;
+		}
+	}
+
+	@include xl {
+		margin-left: calc($container-padding * -1);
+		width: calc(100% + $container-padding * 2);
 	}
 }
 
 .swiper {
 	border-radius: 8px !important;
+
+	@include xl {
+		border-radius: 0 !important;
+	}
 }
 
 .swiper-pagination {

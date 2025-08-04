@@ -1,5 +1,5 @@
 @use '@/shared/styles/vars' as *;
-
+@use '@/shared/styles/mixins' as *;
 .search {
 	display: flex;
 	align-items: center;
@@ -10,7 +10,43 @@
 	padding: 0 12px 12px;
 	border-bottom: 1px solid $color-gray;
 
+	svg {
+		path {
+			stroke: $color-gray;
+		}
+	}
+
 	&:hover {
 		opacity: 0.8;
+	}
+
+	@include xl {
+		display: none;
+	}
+
+	@include md {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		border-bottom: 0;
+		color: #bfcbd6;
+		padding: 0;
+		font-size: 13px;
+
+		svg {
+			path {
+				stroke: #bfcbd6;
+			}
+		}
+
+		&:hover {
+			color: #fff;
+
+			svg {
+				path {
+					stroke: #fff;
+				}
+			}
+		}
 	}
 }

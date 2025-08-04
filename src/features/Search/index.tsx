@@ -1,10 +1,21 @@
+'use client'
+
+import { useState } from 'react'
+
+import { SearchMenu } from '@/shared/components'
+
 import './_search.scss'
+import SearchIcon from './images/search.svg?react'
 
 export const Search = () => {
+	const [open, setOpen] = useState(false)
 	return (
-		<button className='search'>
-			<img src='/images/icons/search.svg' alt='Поиск' />
-			<p className='search__placeholder'>Поиск</p>
-		</button>
+		<>
+			<button onClick={() => setOpen(true)} className='search'>
+				<SearchIcon />
+				<p className='search__placeholder'>Поиск</p>
+			</button>
+			{open && <SearchMenu setOpen={setOpen} />}
+		</>
 	)
 }

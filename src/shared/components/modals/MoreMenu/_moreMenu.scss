@@ -1,0 +1,53 @@
+@use '@/shared/styles/mixins' as *;
+
+.moreMenu {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	padding: 50px;
+	z-index: 1;
+	width: calc(100% - 40px);
+	border-radius: 8px;
+
+	&__top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__title {
+		font-size: 28px;
+		font-weight: 700;
+		line-height: 130%;
+	}
+
+	&__links {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		margin-top: 50px;
+	}
+
+	&__link {
+		padding-bottom: 15px;
+		border-bottom: 1px solid #c8cacb;
+		border-radius: 8px 8px 0 0;
+	}
+
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		background: #2a5275;
+		opacity: 0.5;
+	}
+
+	@include xs {
+		width: 100%;
+		border-radius: 0;
+		height: 100%;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}

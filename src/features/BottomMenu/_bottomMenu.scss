@@ -1,0 +1,58 @@
+@use '@/shared/styles/mixins' as *;
+
+.bottomMenu {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #2a5275;
+	padding: 10px 0;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+
+	&__link {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: #bfcbd6;
+		font-size: 13px;
+		font-weight: 400;
+		gap: 5px;
+
+		svg {
+			width: 24px;
+			height: 24px;
+			path {
+				fill: #bfcbd6;
+			}
+		}
+
+		&:hover {
+			color: #fff;
+
+			svg {
+				path {
+					fill: #fff;
+				}
+			}
+		}
+
+		@include md {
+			width: 64px;
+			height: 64px;
+			justify-content: center;
+		}
+	}
+
+	@include md {
+		display: flex;
+		gap: 20px;
+	}
+
+	@include xs {
+		gap: 0;
+		justify-content: center;
+	}
+}
