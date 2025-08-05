@@ -1,0 +1,148 @@
+@use '@/shared/styles/vars' as *;
+@use '@/shared/styles/mixins' as *;
+.catalogList__wrapper {
+	width: 310px;
+	position: relative;
+
+	&-button {
+		display: flex;
+		align-items: center;
+		padding: 14px 20px;
+		gap: 10px;
+		width: 100%;
+		background: #243c53;
+		color: $color-white;
+		cursor: default;
+		pointer-events: none;
+
+		@include md {
+			font-size: 13px;
+			color: #bfcbd6;
+
+			flex-direction: column;
+			background: transparent;
+			width: unset;
+			gap: 5px;
+			padding: 0;
+			cursor: pointer;
+			pointer-events: all;
+			span {
+				display: none;
+			}
+
+			svg {
+				width: 24px;
+				height: 24px;
+				path {
+					fill: #bfcbd6;
+				}
+			}
+
+			&:hover {
+				color: #fff;
+
+				svg {
+					path {
+						fill: #fff;
+					}
+				}
+			}
+		}
+
+		@include md {
+			width: 64px;
+			height: 64px;
+			justify-content: center;
+		}
+	}
+
+	@include md {
+		width: unset;
+		position: static;
+	}
+}
+
+.catalogList {
+	padding: 8px 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background: #edf2f6;
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 12px 18px;
+		height: 48px;
+
+		&:hover {
+			background: #dae4ed;
+		}
+
+		@include md {
+			border-radius: 15px;
+		}
+	}
+
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		background: #2a5275;
+		opacity: 0.5;
+		display: none;
+		@include md {
+			display: block;
+		}
+	}
+
+	&__top {
+		display: none;
+		align-items: center;
+		justify-content: space-between;
+
+		button {
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+
+		@include md {
+			display: flex;
+		}
+	}
+
+	&__title {
+		display: none;
+		font-weight: 700;
+		font-size: 28px;
+
+		line-height: 130%;
+
+		@include md {
+			display: block;
+		}
+	}
+
+	@include md {
+		bottom: 50px;
+		z-index: 10;
+		position: fixed;
+		padding: 50px;
+
+		margin: 20px;
+		margin-top: 40px;
+		margin-bottom: 0;
+
+		border-radius: 8px;
+	}
+
+	@include xs {
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+		height: 100%;
+		bottom: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
