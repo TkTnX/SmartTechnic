@@ -1,0 +1,33 @@
+@use '@/shared/styles/vars' as *;
+@use '@/shared/styles/mixins' as *;
+.navbar {
+	background: #0e1821;
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	&__links {
+		display: flex;
+		align-items: center;
+		gap: 40px;
+		color: $color-white;
+
+		a {
+			&:hover {
+				opacity: 80%;
+			}
+		}
+
+		@include dbl-xl {
+			gap: 20px;
+			justify-content: space-between;
+		}
+	}
+
+	@include xl {
+		display: none;
+	}
+}
