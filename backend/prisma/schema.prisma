@@ -7,8 +7,126 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Test {
-  id        Int      @id @default(autoincrement())
-  name      String
+model User {
+  id String @id @default(uuid())
+
+  name     String
+  password String
+  email    String
+
+  phone        String?
+  city         String?
+  index        String?
+  avatar       String?
+  deliveryType DeliveryType? @map("delivery_type")
+  paymentType  PaymentType?  @map("payment_type")
+  address      String?
+
+  orders  Order[]
+  reviews Review[]
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id String @id @default(uuid())
+
+  name           String
+  price          Int
+  oldPrice       Int?            @map("old_price")
+  brand          String
+  description    String
+  sales          Int @default(0)
+  status         ProductStatus
+  quantity       Int             @default(0)
+  images         String[]
+  specifications Specification[]
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String   @map("category_id")
+
+  reviews Review[]
+
+  product CartProduct[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Review {
+  id String @id @default(uuid())
+
+  rating  Int
+  title   String
+  comment String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String  @map("product_id")
+
+  createdAt DateTime @default(now())
+}
+
+model Specification {
+  id String @id @default(uuid())
+
+  title String
+  value String?
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String  @map("product_id")
+}
+
+model Category {
+  id String @id @default(uuid())
+
+  name     String
+  products Product[]
+}
+
+model CartProduct {
+  id String @id @default(uuid())
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String  @map("product_id")
+  quantity  Int
+  order     Order?  @relation(fields: [orderId], references: [id])
+  orderId   String? @map("order_id")
+}
+
+model Order {
+  id String @id @default(uuid())
+
+  status  OrderStatus
+  address String
+
+  products CartProduct[]
+  user     User          @relation(fields: [userId], references: [id])
+  userId   String        @map("user_id")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum ProductStatus {
+  AVAILABLE
+  UNAVAILABLE
+}
+
+enum PaymentType {
+  CASH
+  CARD
+}
+
+enum DeliveryType {
+  PICKUP
+  DELIVERY
+}
+
+enum OrderStatus {
+  PENDING
+  DELIVERED
 }
