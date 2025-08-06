@@ -28,6 +28,12 @@
 	}
 }
 
+@mixin vsm {
+	@media (max-width: 480px) {
+		@content;
+	}
+}
+
 @mixin xs {
 	@media (max-width: 360px) {
 		@content;

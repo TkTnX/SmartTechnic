@@ -10,11 +10,12 @@ import MenuIcon from './images/menu.svg?react'
 
 export const CatalogList = () => {
 	const [open, setOpen] = useState(() => window.innerWidth >= 768)
+	document.body.style.overflow = open ? 'hidden' : 'unset'
 
 	useEffect(() => {
 		const handleResize = () => {
 			if (window.innerWidth >= 768) {
-				setOpen(true) 
+				setOpen(true)
 			} else {
 				setOpen(false)
 			}

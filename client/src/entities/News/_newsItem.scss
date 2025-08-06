@@ -1,3 +1,5 @@
+@use '@/shared/styles/mixins' as *;
+
 .newsItem {
 	border-radius: 8px;
 	background: #edf2f6;
@@ -6,6 +8,10 @@
 	&__title {
 		font-weight: 700;
 		font-size: 28px;
+
+		@include vsm {
+			font-size: 18px;
+		}
 	}
 
 	&__text {
@@ -30,6 +36,10 @@
 
 	&__date {
 		color: #838688;
+
+		@include sm {
+			display: none;
+		}
 	}
 
 	&:hover {

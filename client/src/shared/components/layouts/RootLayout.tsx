@@ -1,7 +1,7 @@
 import { BottomMenu } from '@/features'
 import { Outlet } from 'react-router-dom'
 
-import { Header, Navbar } from '@/shared/components'
+import { Header, Navbar, Footer } from '@/shared/components'
 
 export const RootLayout = () => {
 	return (
@@ -12,6 +12,7 @@ export const RootLayout = () => {
 				<Outlet />
 			</main>
 			<BottomMenu />
+			<Footer />
 		</>
 	)
 }

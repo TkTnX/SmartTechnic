@@ -10,6 +10,9 @@ import MoreIcon from './images/more.svg?react'
 
 export const MoreMenu = () => {
 	const [open, setOpen] = useState(false)
+
+	document.body.style.overflow = open ? 'hidden' : 'unset'
+
 	return (
 		<>
 			<button onClick={() => setOpen(true)} className='bottomMenu__link'>

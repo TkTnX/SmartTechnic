@@ -9,6 +9,8 @@ import SearchIcon from './images/search.svg?react'
 
 export const Search = () => {
 	const [open, setOpen] = useState(false)
+	document.body.style.overflow = open ? 'hidden' : 'unset'
+
 	return (
 		<>
 			<button onClick={() => setOpen(true)} className='search'>
