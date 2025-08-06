@@ -10,17 +10,18 @@ import './_productsSection.scss'
 type Props = {
 	title: string
 	link: string
+	query: Record<string, string>
 }
 
-export const ProductsSection = ({ title, link }: Props) => {
+export const ProductsSection = ({ title, link, query }: Props) => {
+	// TODO: Перенести в хук
 	const {
 		data: products,
 		error,
 		isLoading
 	} = useQuery({
 		queryKey: [title],
-		queryFn: async () =>
-			await productsService.getProducts({ take: '4', sortBy: 'sales' })
+		queryFn: async () => await productsService.getProducts(query)
 	})
 
 	return (

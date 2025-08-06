@@ -111,6 +111,17 @@ model Order {
   updatedAt DateTime @updatedAt
 }
 
+model News {
+  id String @id @default(uuid())
+
+  image String
+  title String
+  text String
+  
+
+   createdAt DateTime @default(now())
+}
+
 enum ProductStatus {
   AVAILABLE
   UNAVAILABLE

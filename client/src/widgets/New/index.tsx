@@ -1,11 +1,11 @@
 import { ProductsSection } from '@/shared/components'
 
-export const Hits = () => {
+export const New = () => {
 	return (
 		<ProductsSection
-			title='Хиты продаж'
+			title='Новинки'
 			link='/catalog'
-			query={{ take: '4', sortBy: 'sales' }}
+			query={{ take: '4', sortBy: 'createdAt' }}
 		/>
 	)
 }

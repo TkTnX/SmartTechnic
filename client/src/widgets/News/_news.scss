@@ -1,8 +1,5 @@
-@use '@/shared/styles/mixins' as *;
-
-.section {
+.news {
 	margin-top: 80px;
-
 	&__top {
 		display: flex;
 		align-items: flex-end;
@@ -30,14 +27,12 @@
 		display: flex;
 		align-items: stretch;
 		margin-top: 40px;
+		gap: 20px;
+	}
 
-		@include lg {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-		}
-
-		@include sm {
-			grid-template-columns: repeat(1, 1fr);
+	&:hover {
+		&__title {
+			color: #2a5275;
 		}
 	}
 }

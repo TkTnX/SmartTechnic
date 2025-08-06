@@ -1,0 +1,42 @@
+.addToCart {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 20px;
+
+	&__buy {
+		border: 1px solid #4878a6;
+		border-radius: 4px;
+		padding: 10px;
+		font-weight: 700;
+		color: #4878a6;
+		flex: 1;
+		height: 48px;
+
+		&:hover {
+			background: #4878a6;
+			color: #fff;
+		}
+	}
+
+	&__add {
+		border-radius: 4px;
+		background: #4878a6;
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			path {
+				fill: #fff;
+			}
+		}
+
+		&:hover {
+			background: #2a5275;
+		}
+	}
+}

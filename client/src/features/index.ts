@@ -1,3 +1,6 @@
 export * from "./BottomMenu"
 export * from "./CatalogList"
 export * from "./Search"
+export * from "./AddToFavorites"
+export * from "./AddToCompare"
+export * from "./AddToCart"

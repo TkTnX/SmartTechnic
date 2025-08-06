@@ -1,2 +1,5 @@
 export * from "./Hero"
 export * from "./Hits"
+export * from "./New"
+export * from "./Category"
+export * from "./News"

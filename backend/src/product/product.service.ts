@@ -7,13 +7,10 @@ export class ProductService {
   constructor(private readonly prismaService: PrismaService) {}
 
   public async getProducts(query: Record<string, string>) {
-    const { take, sortBy, ...restQuery } = query;
-
+    const { take, sortBy, category, ...restQuery } = query;
     return await this.prismaService.product.findMany({
-      where: restQuery,
-      orderBy: {
-        [sortBy]: "desc",
-      },
+      where: { category: { name: category }, ...restQuery },
+      orderBy: sortBy ? { [sortBy]: "desc" } : undefined,
       take: +take || undefined,
       include: {
         category: true,

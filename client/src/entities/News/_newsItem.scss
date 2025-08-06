@@ -1,0 +1,38 @@
+.newsItem {
+	border-radius: 8px;
+	background: #edf2f6;
+	padding: 30px 50px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 28px;
+	}
+
+	&__text {
+		margin-top: 20px;
+		font-weight: 400;
+		color: #070c11;
+	}
+
+	&__bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 20px;
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		color: #2a5275;
+	}
+
+	&__date {
+		color: #838688;
+	}
+
+	&:hover {
+		color: #4878a6;
+	}
+}

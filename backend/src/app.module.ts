@@ -4,6 +4,7 @@ import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { PrismaModule } from "./prisma/prisma.module";
 import { ProductModule } from './product/product.module';
+import { NewsModule } from './news/news.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ProductModule } from './product/product.module';
     }),
     ProductModule,
     PrismaModule,
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

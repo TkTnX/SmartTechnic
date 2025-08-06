@@ -4,7 +4,7 @@ export interface IProduct {
 	id: string
 	name: string
 	price: number
-	oldPrice: number
+	oldPrice?: number
 	brand: string
 	description: string
 	status: string

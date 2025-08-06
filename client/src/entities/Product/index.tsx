@@ -1,43 +1,43 @@
+import { AddToCart } from '@/features'
+
 import type { IProduct } from '@/shared/types'
 
 import './_product.scss'
+import { ProductControls } from './components/ProductControls'
+import { ProductRating } from './components/ProductRating'
+import { Link } from 'react-router-dom'
 
 type Props = {
 	product: IProduct
 }
 
 export const Product = ({ product }: Props) => {
-	console.log(product.reviews)
-	const rating =
-		product.reviews &&
-		Math.round(
-			product.reviews?.reduce((acc, review) => acc + review.rating, 0) /
-				product.reviews.length || 0
-		)
-
 	return (
 		<div className='product'>
-			<img src={product.images[0]} alt={product.name} />
-			<p className='product__category'>{product.category.name}</p>
-			<h6 className='product__title'>{product.name}</h6>
-			{product.reviews && (
-				<div className='product__rating'>
-					{[...new Array(rating)].map((_, index) => (
-						<img
-							src='/images/icons/star-yellow.svg'
-							alt='Звезда'
-							key={index}
-						/>
-					))}
-					{[...new Array(5 - rating)].map((_, index) => (
-						<img
-							src='/images/icons/star-gray.svg'
-							alt='Звезда'
-							key={index}
-						/>
-					))}
+			<div className='product__top'>
+				<img src={product.images[0]} alt={product.name} />
+				<p className='product__category'>{product.category.name}</p>
+				<Link to={`/product/${product.id}`} className='product__title'>{product.name}</Link>
+				<ProductRating reviews={product.reviews} />
+
+				<div className='product__info'>
+					<div className='product__info-price'>
+						{product.oldPrice && (
+							<p className='product__oldPrice'>
+								{product.oldPrice}₽
+							</p>
+						)}
+						<p className='product__price'>{product.price}₽</p>
+						{product.oldPrice && (
+							<p className='product__difference'>
+								-{product.oldPrice - product.price}₽
+							</p>
+						)}
+					</div>
+					<ProductControls productId={product.id} />
 				</div>
-			)}
+			</div>
+			<AddToCart productId={product.id} />
 		</div>
 	)
 }

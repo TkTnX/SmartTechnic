@@ -1,0 +1,22 @@
+*.addToFavorites {
+	border-radius: 4px;
+	border: 1px solid #c8cacb;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	svg {
+		stroke: #838688;
+		fill: white;
+		transition: all 0.2s ease-in;
+	}
+
+	&:hover {
+		svg {
+			fill: #f15152;
+			stroke: #f15152;
+		}
+	}
+}
