@@ -1,0 +1,32 @@
+.section {
+	margin-top: 80px;
+
+	&__top {
+		display: flex;
+		align-items: flex-end;
+		gap: 30px;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+		line-height: 1;
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		color: #2a5275;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&__items {
+		display: flex;
+		align-items: center;
+		margin-top: 40px;
+	}
+}

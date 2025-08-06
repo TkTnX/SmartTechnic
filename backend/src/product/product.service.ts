@@ -15,6 +15,10 @@ export class ProductService {
         [sortBy]: "desc",
       },
       take: +take || undefined,
+      include: {
+        category: true,
+        reviews: true,
+      },
     });
   }
 
