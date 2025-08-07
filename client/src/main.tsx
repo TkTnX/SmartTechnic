@@ -20,13 +20,6 @@ const router = createBrowserRouter([
 	}
 ])
 
-type Props = {}
-export const Main = ({}: Props) => {
-  return (
-	<div className=''>Main</div>
-  )
-}
-
 const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(

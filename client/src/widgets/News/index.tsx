@@ -2,10 +2,10 @@ import { News as NewsItem } from '@/entities'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 
-import { Skeleton } from '@/shared/components'
 import { newsService } from '@/shared/services'
 
 import './_news.scss'
+import { Skeleton } from '@/shared/components/ui'
 
 export const News = () => {
 	const {

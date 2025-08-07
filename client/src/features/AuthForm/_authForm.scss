@@ -1,0 +1,41 @@
+@use '@/shared/styles/mixins' as *;
+
+.authForm {
+	max-width: 370px;
+	padding: 20px 30px 30px;
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		margin-top: 20px;
+	}
+
+	&__link {
+		font-weight: 400;
+		color: #4878a6;
+	}
+
+	&__submit {
+		border-radius: 4px;
+		padding: 10px;
+		height: 48px;
+		background: #2a5275;
+		color: #fff;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&__change {
+		color: #4878a6;
+		text-align: center;
+		font-weight: 400;
+	}
+
+	@include sm {
+		width: 100%;
+		height: 100%;
+		padding: 20px;
+	}
+}

@@ -2,10 +2,10 @@ import { Product } from '@/entities'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 
-import { Skeleton } from '@/shared/components'
 import { productsService } from '@/shared/services'
 
 import './_productsSection.scss'
+import { Skeleton } from '@/shared/components/ui'
 
 type Props = {
 	title: string

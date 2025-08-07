@@ -1,6 +1,5 @@
+import { AuthForm } from '@/features'
 import { Link } from 'react-router-dom'
-
-import { LoginMenu } from '@/shared/components'
 
 export const HeaderControls = () => {
 	return (
@@ -14,7 +13,7 @@ export const HeaderControls = () => {
 			<Link className='header__controls-link' to={'/cart'}>
 				<img src='/images/icons/cart.svg' alt='Корзина' />
 			</Link>
-			<LoginMenu />
+			<AuthForm />
 		</div>
 	)
 }

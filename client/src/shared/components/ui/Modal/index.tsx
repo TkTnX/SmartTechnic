@@ -10,7 +10,6 @@ type Props = {
 	className?: string
 }
 export const Modal = ({ children, title, open, setOpen, className }: Props) => {
-	console.log(open)
 	useEffect(() => {
 		document.body.style.overflow = open ? 'hidden' : 'unset'
 	}, [open])
