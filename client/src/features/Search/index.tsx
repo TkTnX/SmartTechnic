@@ -17,7 +17,7 @@ export const Search = () => {
 				<SearchIcon />
 				<p className='search__placeholder'>Поиск</p>
 			</button>
-			{open && <SearchMenu setOpen={setOpen} />}
+			{open && <SearchMenu open={open} setOpen={setOpen} />}
 		</>
 	)
 }

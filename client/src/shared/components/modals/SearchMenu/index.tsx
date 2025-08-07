@@ -1,34 +1,22 @@
-import './_searchMenu.scss';
+import { Modal } from '@/shared/components/ui'
 
+import './_searchMenu.scss'
 
-
-
-
-
-// TODO: В будущем создать уникальный компонент modal Для всех окон
 type Props = {
-
 	setOpen: (value: boolean) => void
+	open: boolean
 }
 
-export const SearchMenu = ({  setOpen }: Props) => {
-
+export const SearchMenu = ({ setOpen, open }: Props) => {
 	return (
-		<>
-			<div className='searchMenu'>
-				<div className='searchMenu__top'>
-					<h4 className='searchMenu__title'>Поиск</h4>
-					<button onClick={() => setOpen(false)}>
-						<img src='/images/icons/x.svg' alt='Закрыть' />
-					</button>
-				</div>
-				<input
-					className='searchMenu__input'
-					type='text'
-					placeholder='Введите запрос, например «Smart balance»'
-				/>
-			</div>
-			<div className='searchMenu__overlay' />
-		</>
+		<Modal title='Поиск' open={open} setOpen={setOpen} className='searchMenu'>
+			<input
+				className='searchMenu__input'
+				type='text'
+				placeholder='Введите запрос, например «Smart balance»'
+			/>
+		</Modal>
 	)
+
+
 }

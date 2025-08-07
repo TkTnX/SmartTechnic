@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { LoginMenu } from '@/shared/components'
+
 export const HeaderControls = () => {
 	return (
 		<div className='header__controls'>
@@ -12,7 +14,7 @@ export const HeaderControls = () => {
 			<Link className='header__controls-link' to={'/cart'}>
 				<img src='/images/icons/cart.svg' alt='Корзина' />
 			</Link>
-			<Link className='header__controls-button' to={'/login'}>Войти</Link>
+			<LoginMenu />
 		</div>
 	)
 }
