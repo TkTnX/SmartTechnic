@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { Modal } from '@/shared/components/ui'
 import { FormInput } from '@/shared/components/ui/FormInput'
+import { useAuth } from '@/shared/hooks'
 import {
 	type LoginSchema,
 	type RegisterSchema,
@@ -17,6 +18,7 @@ import './_authForm.scss'
 export const AuthForm = () => {
 	const [open, setOpen] = useState(false)
 	const [isLogin, setIsLogin] = useState(true)
+	const { registerMutation, loginMutation, isLoading } = useAuth()
 
 	const schema = useMemo(
 		() => (isLogin ? loginSchema : registerSchema),
@@ -33,9 +35,21 @@ export const AuthForm = () => {
 	})
 
 	const onSubmit = async (data: RegisterSchema | LoginSchema) => {
-		console.log(data)
-		reset()
+		try {
+			if (isLogin) {
+				await loginMutation(data as LoginSchema)
+			} else {
+				await registerMutation(data as RegisterSchema)
+			}
+
+			setOpen(false)
+		} catch (error) {
+			console.log(error)
+		} finally {
+			reset()
+		}
 	}
+
 	return (
 		<>
 			<button
@@ -61,18 +75,21 @@ export const AuthForm = () => {
 					{!isLogin ? (
 						<>
 							<FormInput
+								disabled={isLoading}
 								label='Имя'
 								name='name'
 								register={register}
 								errors={errors}
 							/>
 							<FormInput
+								disabled={isLoading}
 								label='Эл. почта'
 								name='email'
 								register={register}
 								errors={errors}
 							/>
 							<FormInput
+								disabled={isLoading}
 								label='Номер телефона'
 								name='phone'
 								register={register}
@@ -81,6 +98,7 @@ export const AuthForm = () => {
 						</>
 					) : (
 						<FormInput
+							disabled={isLoading}
 							label='Эл. почта или телефон'
 							name='emailOrPhone'
 							register={register}
@@ -88,6 +106,7 @@ export const AuthForm = () => {
 						/>
 					)}
 					<FormInput
+						disabled={isLoading}
 						label='Пароль'
 						type='password'
 						name='password'
@@ -102,7 +121,11 @@ export const AuthForm = () => {
 							Забыли пароль?
 						</Link>
 					)}
-					<button className='authForm__submit' type='submit'>
+					<button
+						disabled={isLoading}
+						className='authForm__submit'
+						type='submit'
+					>
 						{isLogin ? 'Войти' : 'Зарегистрироваться'}
 					</button>
 					<button

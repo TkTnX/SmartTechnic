@@ -11,6 +11,7 @@ import { AppModule } from "./app.module";
 import { ms } from "src/utils/ms.util";
 import { isBoolean } from "src/utils/isBoolean.util";
 import { createClient } from "redis";
+import { ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -50,6 +51,12 @@ async function bootstrap() {
       },
     })
   );
+
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true
+  }))
 
   app.enableCors({
     origin: process.env.CLIENT_URL,

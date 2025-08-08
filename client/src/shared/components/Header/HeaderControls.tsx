@@ -1,7 +1,9 @@
 import { AuthForm } from '@/features'
+import { useUserStore } from '@/shared/stores'
 import { Link } from 'react-router-dom'
 
 export const HeaderControls = () => {
+	const user = useUserStore(state => state.user)
 	return (
 		<div className='header__controls'>
 			<Link className='header__controls-link' to={'/favorites'}>
@@ -13,7 +15,9 @@ export const HeaderControls = () => {
 			<Link className='header__controls-link' to={'/cart'}>
 				<img src='/images/icons/cart.svg' alt='Корзина' />
 			</Link>
-			<AuthForm />
+			{/* TODO: TEMP */}
+			{!user ? <AuthForm /> : <p>{user.name}</p>}
+			
 		</div>
 	)
 }

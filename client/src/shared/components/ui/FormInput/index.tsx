@@ -13,6 +13,7 @@ type Props = {
 	name: keyof LoginSchema | keyof RegisterSchema
 	type?: string
 	inputClassName?: string
+	disabled?: boolean
 }
 export const FormInput = ({
 	register,
@@ -20,7 +21,8 @@ export const FormInput = ({
 	label,
 	name,
 	type = 'text',
-	inputClassName
+	inputClassName,
+	disabled
 }: Props) => {
 	const [showPass, setShowPass] = useState(false)
 	return (
@@ -28,6 +30,7 @@ export const FormInput = ({
 			<p className='formInput__label'>{label}</p>
 			<div className='formInput__inputWrapper'>
 				<input
+					disabled={disabled}
 					className={`${inputClassName} formInput__input`}
 					type={type === 'password' && showPass ? 'text' : type}
 					{...register(name)}

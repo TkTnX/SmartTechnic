@@ -1,9 +1,17 @@
 import { BottomMenu } from '@/features'
+import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { Header, Navbar, Footer } from '@/shared/components'
+import { Footer, Header, Navbar } from '@/shared/components'
+import { useUserStore } from '@/shared/stores'
 
 export const RootLayout = () => {
+	const fetchUser = useUserStore(state => state.fetchUser)
+
+	useEffect(() => {
+		fetchUser()
+	}, [])
+
 	return (
 		<>
 			<Header />

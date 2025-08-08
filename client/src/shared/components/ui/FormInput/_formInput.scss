@@ -19,6 +19,11 @@
 	&__input {
 		padding: 10px;
 		width: 100%;
+
+		&:disabled {
+			pointer-events: none;
+			opacity: 0.5;
+		}
 	}
 
 	&__showPass {

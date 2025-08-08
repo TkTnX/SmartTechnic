@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { RootLayout } from '@/shared/components/layouts'
 import { Homepage } from '@/shared/pages'
 import '@/shared/styles/index.scss'
+import { ToastContainer } from 'react-toastify'
 
 const router = createBrowserRouter([
 	{
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />
+			<ToastContainer position='bottom-right'  />
 		</QueryClientProvider>
 	</StrictMode>
 )

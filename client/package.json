@@ -18,9 +18,11 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
     "react-router-dom": "^7.7.1",
+    "react-toastify": "^11.0.5",
     "swiper": "^11.2.10",
     "vite-plugin-svgr": "^4.3.0",
-    "zod": "^4.0.15"
+    "zod": "^4.0.15",
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

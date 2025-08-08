@@ -14,13 +14,14 @@ model User {
   password String
   email    String
 
-  phone        String?
+  phone        String
   city         String?
   index        String?
   avatar       String?
   deliveryType DeliveryType? @map("delivery_type")
   paymentType  PaymentType?  @map("payment_type")
   address      String?
+  role         Role          @default(USER)
 
   orders  Order[]
   reviews Review[]
@@ -37,7 +38,7 @@ model Product {
   oldPrice       Int?            @map("old_price")
   brand          String
   description    String
-  sales          Int @default(0)
+  sales          Int             @default(0)
   status         ProductStatus
   quantity       Int             @default(0)
   images         String[]
@@ -116,10 +117,14 @@ model News {
 
   image String
   title String
-  text String
-  
+  text  String
 
-   createdAt DateTime @default(now())
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  USER
 }
 
 enum ProductStatus {
