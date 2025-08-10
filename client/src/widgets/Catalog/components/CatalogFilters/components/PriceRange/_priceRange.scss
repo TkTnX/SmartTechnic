@@ -1,0 +1,37 @@
+.priceRange {
+	max-width: max-content;
+
+	&__top {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-weight: 400;
+		color: #838688;
+	}
+
+	&__input {
+		max-width: 117px;
+		border: 1px solid #eaeaf0;
+		border-radius: 4px;
+		padding: 10px 10px 10px 20px;
+	}
+
+	&__submit {
+		border-radius: 4px;
+		padding: 10px;
+		background: #4878a6;
+		color: #fff;
+		margin-top: 20px;
+		width: 100%;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}

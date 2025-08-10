@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { CATALOG_LINKS } from '@/shared/constants'
@@ -9,26 +9,10 @@ import './_catalogCategoriesList.scss'
 import MenuIcon from './images/menu.svg?react'
 
 export const CatalogCategoriesList = () => {
-	const [open, setOpen] = useState(() => window.innerWidth >= 768)
-	document.body.style.overflow = open ? 'hidden' : 'unset'
-
-	useEffect(() => {
-		const handleResize = () => {
-			if (window.innerWidth >= 768) {
-				setOpen(true)
-			} else {
-				setOpen(false)
-			}
-		}
-
-		window.addEventListener('resize', handleResize)
-
-		return () => window.removeEventListener('resize', handleResize)
-	})
+	const [open, setOpen] = useState(false)
 
 	return (
 		<>
-			{/* TODO: На главной кнопка должна быть ссылкой, на других страницах меню закрыто */}
 			<div className='catalogCategoriesList__wrapper'>
 				<button
 					onClick={() => setOpen(!open)}
@@ -41,7 +25,9 @@ export const CatalogCategoriesList = () => {
 				{open && (
 					<div className='catalogCategoriesList'>
 						<div className='catalogCategoriesList__top'>
-							<h4 className='catalogCategoriesList__title'>Каталог</h4>
+							<h4 className='catalogCategoriesList__title'>
+								Каталог
+							</h4>
 							<button onClick={() => setOpen(false)}>
 								<img src='/images/icons/x.svg' alt='Close' />
 							</button>
@@ -51,6 +37,7 @@ export const CatalogCategoriesList = () => {
 								{CATALOG_LINKS.map(link => (
 									<li key={link.href}>
 										<Link
+											onClick={() => setOpen(false)}
 											className='catalogCategoriesList__link'
 											to={link.href}
 										>

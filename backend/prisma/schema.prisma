@@ -79,6 +79,9 @@ model Specification {
 
   product   Product @relation(fields: [productId], references: [id])
   productId String  @map("product_id")
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String   @map("category_id")
 }
 
 model Category {
@@ -86,6 +89,8 @@ model Category {
 
   name     String
   products Product[]
+  specifications Specification[]
+
 }
 
 model CartProduct {

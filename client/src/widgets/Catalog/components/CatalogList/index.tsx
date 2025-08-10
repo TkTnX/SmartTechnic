@@ -1,6 +1,5 @@
-import "./_catalogList.scss"
+import './_catalogList.scss'
+
 export const CatalogList = () => {
-  return (
-    <div className=''>catalogList</div>
-  )
+	return <div className='catalogList'>catalogList</div>
 }

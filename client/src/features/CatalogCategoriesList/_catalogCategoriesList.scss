@@ -12,8 +12,6 @@
 		width: 100%;
 		background: #243c53;
 		color: $color-white;
-		cursor: default;
-		pointer-events: none;
 
 		@include md {
 			font-size: 13px;
@@ -24,8 +22,6 @@
 			width: unset;
 			gap: 5px;
 			padding: 0;
-			cursor: pointer;
-			pointer-events: all;
 			span {
 				display: none;
 			}
@@ -68,6 +64,9 @@
 	left: 0;
 	right: 0;
 	background: #edf2f6;
+	border-radius: 0 0 8px 8px;
+	z-index: 7;
+
 	&__link {
 		display: flex;
 		align-items: center;

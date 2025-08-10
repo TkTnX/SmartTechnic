@@ -1,6 +1,19 @@
-import "./_catalogFilters.scss"
+import { FiltersItem } from '@/shared/components'
+
+import './_catalogFilters.scss'
+import { PriceRange } from './components/PriceRange'
+
 export const CatalogFilters = () => {
-  return (
-    <div className=''>CatalogFilters</div>
-  )
+  // TODO: Получать specifications из БД
+	return (
+		<div className='catalogFilters'>
+			<FiltersItem title='Цена, ₽'>
+				<PriceRange />
+			</FiltersItem>
+
+			<p className='catalogFilters__info'>
+				Выберите категорию, чтобы видеть больше фильтров
+			</p>
+		</div>
+	)
 }

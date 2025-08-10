@@ -4,8 +4,15 @@
 		font-weight: 700;
 		font-size: 36px;
 	}
-    
-    &__wrapper {
-        margin-top: 47px;
-    }
+
+	&__wrapper {
+		margin-top: 47px;
+		display: flex;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	&__right {
+		flex: 1;
+	}
 }

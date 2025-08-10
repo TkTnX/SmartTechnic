@@ -7,6 +7,7 @@ import { ProductModule } from './product/product.module';
 import { NewsModule } from './news/news.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { SpecificationModule } from './specification/specification.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UserModule } from './user/user.module';
     NewsModule,
     AuthModule,
     UserModule,
+    SpecificationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
