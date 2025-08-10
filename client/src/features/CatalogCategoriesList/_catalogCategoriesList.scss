@@ -1,6 +1,6 @@
 @use '@/shared/styles/vars' as *;
 @use '@/shared/styles/mixins' as *;
-.catalogList__wrapper {
+.catalogCategoriesList__wrapper {
 	width: 310px;
 	position: relative;
 
@@ -62,7 +62,7 @@
 	}
 }
 
-.catalogList {
+.catalogCategoriesList {
 	padding: 8px 0;
 	position: absolute;
 	left: 0;

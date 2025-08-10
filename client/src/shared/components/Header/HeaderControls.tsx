@@ -1,6 +1,8 @@
 import { AuthForm } from '@/features'
-import { useUserStore } from '@/shared/stores'
 import { Link } from 'react-router-dom'
+
+import { UserDropdown } from '@/shared/components'
+import { useUserStore } from '@/shared/stores'
 
 export const HeaderControls = () => {
 	const user = useUserStore(state => state.user)
@@ -16,8 +18,7 @@ export const HeaderControls = () => {
 				<img src='/images/icons/cart.svg' alt='Корзина' />
 			</Link>
 			{/* TODO: TEMP */}
-			{!user ? <AuthForm /> : <p>{user.name}</p>}
-			
+			{!user ? <AuthForm /> : <UserDropdown />}
 		</div>
 	)
 }

@@ -6,6 +6,7 @@
 	padding: 10px 0;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 
 	&__right {
 		display: flex;
@@ -63,5 +64,21 @@
 				display: none;
 			}
 		}
+	}
+}
+
+@include md {
+	.moreMenu {
+		.header__controls-link:not(:last-child) {
+			display: flex;
+		}
+
+		.header__controls-link:last-child {
+			display: none;
+		}
+	}
+
+	.userDropdown__button {
+		display: flex;
 	}
 }

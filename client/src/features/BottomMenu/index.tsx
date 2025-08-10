@@ -1,10 +1,19 @@
-import { CatalogList, Search } from '@/features'
-import { Link } from 'react-router-dom'
+import { Search, CatalogCategoriesList } from '@/features'
+import { Link } from 'react-router-dom';
 
-import './_bottomMenu.scss'
-import CartIcon from './images/cart.svg?react'
-import HomeIcon from './images/home.svg?react'
-import { MoreMenu } from '@/shared/components'
+
+
+import { MoreMenu } from '@/shared/components';
+
+
+
+import './_bottomMenu.scss';
+import CartIcon from './images/cart.svg?react';
+import HomeIcon from './images/home.svg?react';
+
+
+
+
 
 export const BottomMenu = () => {
 	return (
@@ -13,7 +22,7 @@ export const BottomMenu = () => {
 				<HomeIcon />
 				Главная
 			</Link>
-			<CatalogList />
+			<CatalogCategoriesList />
 			<Link className='bottomMenu__link' to={'/cart'}>
 				<CartIcon />
 				Корзина

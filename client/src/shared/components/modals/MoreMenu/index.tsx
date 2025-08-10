@@ -8,6 +8,7 @@ import { NAVBAR_LINKS } from '@/shared/constants/navbar.constants'
 
 import './_moreMenu.scss'
 import MoreIcon from './images/more.svg?react'
+import { HeaderControls } from '@/shared/components/Header/HeaderControls'
 
 export const MoreMenu = () => {
 	const [open, setOpen] = useState(false)
@@ -24,6 +25,7 @@ export const MoreMenu = () => {
 				setOpen={setOpen}
 				className='moreMenu'
 			>
+				<HeaderControls />
 				<nav className='moreMenu__links'>
 					{NAVBAR_LINKS.map(link => (
 						<Link

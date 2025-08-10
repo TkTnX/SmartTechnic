@@ -22,6 +22,16 @@ body {
 	}
 }
 
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1 1 auto;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -32,6 +42,7 @@ a {
 	padding-left: $container-padding;
 	padding-right: $container-padding;
 	margin: 0 auto;
+	width: 100%;
 }
 
 .error {

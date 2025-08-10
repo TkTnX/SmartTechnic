@@ -1,0 +1,39 @@
+@use '@/shared/styles/mixins' as *;
+
+.userDropdown {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	z-index: 8;
+	top: 80px;
+	right: 0;
+	border: 1px solid #eaeaf0;
+	border-radius: 0 0 8px 8px;
+	background: #fff;
+	width: 280px;
+
+	@include xl {
+		top: 100px;
+		z-index: 9;
+	}
+
+	&__link {
+		padding: 15px 20px;
+
+		&:hover {
+			background: #edf2f6;
+		}
+	}
+
+	&__logout {
+		color: #f15152;
+		border-top: 1px solid #eaeaf0;
+		padding: 15px 20px;
+		text-align: left;
+
+		&:hover {
+			background: #edf2f6;
+			border-radius: 0 0 8px 8px;
+		}
+	}
+}

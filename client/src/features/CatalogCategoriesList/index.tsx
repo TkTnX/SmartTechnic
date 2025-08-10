@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { CATALOG_LINKS } from '@/shared/constants/catalogList.constants'
+import { CATALOG_LINKS } from '@/shared/constants'
 
-import './_catalogList.scss'
+import './_catalogCategoriesList.scss'
 import MenuIcon from './images/menu.svg?react'
 
-export const CatalogList = () => {
+export const CatalogCategoriesList = () => {
 	const [open, setOpen] = useState(() => window.innerWidth >= 768)
 	document.body.style.overflow = open ? 'hidden' : 'unset'
 
@@ -28,29 +28,30 @@ export const CatalogList = () => {
 
 	return (
 		<>
-			<div className='catalogList__wrapper'>
+			{/* TODO: На главной кнопка должна быть ссылкой, на других страницах меню закрыто */}
+			<div className='catalogCategoriesList__wrapper'>
 				<button
 					onClick={() => setOpen(!open)}
-					className='catalogList__wrapper-button'
+					className='catalogCategoriesList__wrapper-button'
 				>
 					<MenuIcon />
 					Каталог <span>товаров</span>
 				</button>
 
 				{open && (
-					<div className='catalogList'>
-						<div className='catalogList__top'>
-							<h4 className='catalogList__title'>Каталог</h4>
+					<div className='catalogCategoriesList'>
+						<div className='catalogCategoriesList__top'>
+							<h4 className='catalogCategoriesList__title'>Каталог</h4>
 							<button onClick={() => setOpen(false)}>
 								<img src='/images/icons/x.svg' alt='Close' />
 							</button>
 						</div>
 						<nav>
-							<ul className='catalogList__list'>
+							<ul className='catalogCategoriesList__list'>
 								{CATALOG_LINKS.map(link => (
 									<li key={link.href}>
 										<Link
-											className='catalogList__link'
+											className='catalogCategoriesList__link'
 											to={link.href}
 										>
 											<img src={link.icon} />
@@ -63,7 +64,7 @@ export const CatalogList = () => {
 					</div>
 				)}
 			</div>
-			{open && <div className='catalogList__overlay' />}
+			{open && <div className='catalogCategoriesList__overlay' />}
 		</>
 	)
 }

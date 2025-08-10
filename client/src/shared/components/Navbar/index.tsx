@@ -1,4 +1,4 @@
-import { CatalogList } from '@/features/CatalogList'
+import { CatalogCategoriesList } from '@/features'
 import { Link } from 'react-router-dom'
 
 import { NAVBAR_LINKS } from '@/shared/constants/navbar.constants'
@@ -9,7 +9,7 @@ export const Navbar = () => {
 	return (
 		<div className='navbar'>
 			<div className='container navbar__wrapper'>
-				<CatalogList />
+				<CatalogCategoriesList />
 
 				<nav className='navbar__links'>
 					{NAVBAR_LINKS.map(link => (

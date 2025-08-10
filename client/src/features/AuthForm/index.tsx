@@ -12,6 +12,7 @@ import {
 	loginSchema,
 	registerSchema
 } from '@/shared/schemas'
+import { useUserStore } from '@/shared/stores'
 
 import './_authForm.scss'
 
@@ -19,6 +20,7 @@ export const AuthForm = () => {
 	const [open, setOpen] = useState(false)
 	const [isLogin, setIsLogin] = useState(true)
 	const { registerMutation, loginMutation, isLoading } = useAuth()
+	const fetchUser = useUserStore(state => state.fetchUser)
 
 	const schema = useMemo(
 		() => (isLogin ? loginSchema : registerSchema),
@@ -46,6 +48,7 @@ export const AuthForm = () => {
 		} catch (error) {
 			console.log(error)
 		} finally {
+			fetchUser()
 			reset()
 		}
 	}
@@ -113,13 +116,18 @@ export const AuthForm = () => {
 						register={register}
 						errors={errors}
 					/>
-					{isLogin && (
+					{isLogin ? (
 						<Link
 							className='authForm__link'
 							to={'/auth/new-password'}
 						>
 							Забыли пароль?
 						</Link>
+					) : (
+						<p className='authForm__agreement'>
+							Регистрируясь, вы соглашаетесь с{' '}
+							<Link to={'#'}>пользовательским соглашением</Link>
+						</p>
 					)}
 					<button
 						disabled={isLoading}
