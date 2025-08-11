@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Range } from 'react-range'
+import { useSearchParams } from 'react-router-dom'
 
 import './_priceRange.scss'
 
@@ -10,6 +11,15 @@ const clamp = (value: number) => Math.min(Math.max(value, MIN), MAX)
 
 export const PriceRange = () => {
 	const [values, setValues] = useState([0, 10000])
+	const [searchParams, setSearchParams] = useSearchParams()
+
+	const onSubmit = () => {
+		const params = new URLSearchParams(searchParams)
+		params.set('от', String(values[0]))
+		params.set('до', String(values[1]))
+		setSearchParams(params)
+	}
+
 	return (
 		<div className='priceRange'>
 			<div className='priceRange__top'>
@@ -94,7 +104,9 @@ export const PriceRange = () => {
 				)}
 			/>
 
-			<button className='priceRange__submit'>Применить</button>
+			<button onClick={onSubmit} className='priceRange__submit'>
+				Применить
+			</button>
 		</div>
 	)
 }

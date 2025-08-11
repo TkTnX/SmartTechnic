@@ -6,4 +6,4 @@ export * from './AddToCompare'
 export * from './AddToCart'
 export * from './AuthForm'
 export * from './LogoutButton'
-export * from "./CatalogSort"
+export * from "./CatalogSettings"

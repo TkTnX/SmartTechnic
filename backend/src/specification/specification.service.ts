@@ -6,6 +6,7 @@ export class SpecificationService {
   public constructor(private readonly prismaService: PrismaService) {}
 
   async getSpecificationsByCategory(categoryId: string) {
+    console.log(categoryId);
     const specifications = await this.prismaService.specification.findMany({
       where: { categoryId },
     });

@@ -1,5 +1,5 @@
-import { CatalogSort } from '@/features'
 
+import { CatalogSettings } from '@/features'
 import './_catalog.scss'
 import { CatalogFilters } from './components/CatalogFilters'
 import { CatalogList } from './components/CatalogList'
@@ -11,7 +11,7 @@ export const Catalog = () => {
 			<div className='catalog__wrapper'>
 				<CatalogFilters />
 				<div className='catalog__right'>
-					<CatalogSort />
+					<CatalogSettings />
 					<CatalogList />
 				</div>
 			</div>
