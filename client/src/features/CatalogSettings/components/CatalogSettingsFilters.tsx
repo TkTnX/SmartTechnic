@@ -1,11 +1,15 @@
 import { useSearchParams } from 'react-router-dom'
 
+import { useSpecifications } from '@/shared/hooks'
+
 type Props = {
 	filters: { [k: string]: string }
 }
 
 export const CatalogSettingsFilters = ({ filters }: Props) => {
 	const [searchParams, setSearchParams] = useSearchParams()
+	// TODO: Потом получать не через useSpecifications, а при получении продуктов
+	const { groupedSpecifications } = useSpecifications(filters.category)
 
 	const onDelete = (key: string, value: string) => {
 		const params = new URLSearchParams(searchParams)
@@ -20,7 +24,10 @@ export const CatalogSettingsFilters = ({ filters }: Props) => {
 			{Object.entries(filters).map(([key, value]) => (
 				<div className='catalogSort__item' key={key}>
 					<p className='catalogSort__value'>
-						{key === 'category' ? 'Категория' : key}: {value}
+						{key === 'category' ? 'Категория' : key}:{' '}
+						{key === 'category'
+							? groupedSpecifications[0]?.category?.name || value
+							: value}
 					</p>
 					<button
 						onClick={() => onDelete(key, value)}

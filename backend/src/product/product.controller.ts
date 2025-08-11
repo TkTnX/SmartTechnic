@@ -7,7 +7,6 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-    
   async getProducts(@Query() query: Record<string, string>) {
     return await this.productService.getProducts(query);
   }

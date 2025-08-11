@@ -7,10 +7,21 @@ export class ProductService {
   constructor(private readonly prismaService: PrismaService) {}
 
   public async getProducts(query: Record<string, string>) {
-    const { take, sortBy, category, ...restQuery } = query;
+    const { take, sortBy, category, от, до, ...restQuery } = query;
+    const splitedSortBy = sortBy ? sortBy.split("-") : [];
+    let price: { gte?: number; lte?: number } = {};
+
+    if (от !== undefined) {
+      price.gte = +от;
+    }
+
+    if (до !== undefined) {
+      price.lte = +до;
+    }
+
     return await this.prismaService.product.findMany({
-      where: { category: { name: category }, ...restQuery },
-      orderBy: sortBy ? { [sortBy]: "desc" } : undefined,
+      where: { category: { name: category }, price, ...restQuery },
+      orderBy: sortBy ? { [splitedSortBy[0]]: splitedSortBy[1] } : undefined,
       take: +take || undefined,
       include: {
         category: true,
@@ -18,7 +29,6 @@ export class ProductService {
       },
     });
   }
-
   public async createProduct(dto: ProductDto) {
     await this.prismaService.product.create({ data: dto });
     return { ok: true };

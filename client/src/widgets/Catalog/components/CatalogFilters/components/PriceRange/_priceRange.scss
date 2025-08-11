@@ -1,6 +1,11 @@
+@use '@/shared/styles/mixins' as *;
+
 .priceRange {
 	max-width: max-content;
 
+	@include lg {
+		max-width: unset;
+	}
 	&__top {
 		display: flex;
 		align-items: center;

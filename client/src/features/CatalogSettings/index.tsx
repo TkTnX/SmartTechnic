@@ -1,18 +1,23 @@
 import { useSearchParams } from 'react-router-dom'
 
+import { FiltersSheet } from '@/shared/components/sheets'
+
 import './_catalogSettings.scss'
 import { CatalogSettingsFilters } from './components/CatalogSettingsFilters'
+import { CatalogSettingsSort } from './components/CatalogSettingsSort'
 
 export const CatalogSettings = () => {
 	const [searchParams] = useSearchParams()
 
-	const filters = Object.fromEntries(searchParams)
-
+	const { sortBy, ...filters } = Object.fromEntries(searchParams)
+	console.log(sortBy)
 	return (
 		<div className='catalogSort'>
-			{!!Object.keys(filters).length  && (
+			<FiltersSheet />
+			{!!Object.keys(filters).length && (
 				<CatalogSettingsFilters filters={filters} />
 			)}
+			<CatalogSettingsSort />
 		</div>
 	)
 }

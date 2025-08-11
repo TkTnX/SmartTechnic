@@ -1,17 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Range } from 'react-range'
 import { useSearchParams } from 'react-router-dom'
 
+import { useProducts } from '@/shared/hooks'
+
 import './_priceRange.scss'
 
-const MIN = 0
-const MAX = 10000
-
-const clamp = (value: number) => Math.min(Math.max(value, MIN), MAX)
-
 export const PriceRange = () => {
-	const [values, setValues] = useState([0, 10000])
+	const { minMaxPrice } = useProducts()
+	const [values, setValues] = useState([minMaxPrice[0], minMaxPrice[1]])
 	const [searchParams, setSearchParams] = useSearchParams()
+
+	const clamp = (value: number) =>
+		Math.min(Math.max(value, minMaxPrice[0]), minMaxPrice[1])
+
+	useEffect(() => {
+		if (minMaxPrice[0] !== null && minMaxPrice[1] !== null) {
+			setValues(minMaxPrice)
+		}
+	}, [minMaxPrice])
 
 	const onSubmit = () => {
 		const params = new URLSearchParams(searchParams)
@@ -49,16 +56,16 @@ export const PriceRange = () => {
 				</label>
 			</div>
 
-			{/* TODO: Находить Min и Max price */}
 			<Range
-				step={0.1}
-				min={0}
-				max={10000}
+				step={1}
+				min={minMaxPrice[0]}
+				max={minMaxPrice[1]}
 				values={values}
 				onChange={values => setValues(values)}
 				renderTrack={({ props, children }) => (
 					<div
 						{...props}
+						ref={props.ref}
 						onMouseDown={props.onMouseDown}
 						onTouchStart={props.onTouchStart}
 						style={{
@@ -70,17 +77,16 @@ export const PriceRange = () => {
 						}}
 					>
 						<div
-							ref={props.ref}
 							style={{
 								height: '6px',
 								width: '100%',
 								borderRadius: '3px',
 								background: `linear-gradient(
               to right,
-              #eaeaea ${((values[0] - MIN) / (MAX - MIN)) * 100}%,
-              #4678a6 ${((values[0] - MIN) / (MAX - MIN)) * 100}%,
-              #4678a6 ${((values[1] - MIN) / (MAX - MIN)) * 100}%,
-              #eaeaea ${((values[1] - MIN) / (MAX - MIN)) * 100}%
+              #eaeaea ${((values[0] - minMaxPrice[0]) / (minMaxPrice[1] - minMaxPrice[0])) * 100}%,
+              #4678a6 ${((values[0] - minMaxPrice[0]) / (minMaxPrice[1] - minMaxPrice[0])) * 100}%,
+              #4678a6 ${((values[1] - minMaxPrice[0]) / (minMaxPrice[1] - minMaxPrice[0])) * 100}%,
+              #eaeaea ${((values[1] - minMaxPrice[0]) / (minMaxPrice[1] - minMaxPrice[0])) * 100}%
             )`
 							}}
 						></div>

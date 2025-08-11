@@ -1,24 +1,27 @@
 import { AddToCart } from '@/features'
+import { Link } from 'react-router-dom'
 
 import type { IProduct } from '@/shared/types'
 
 import './_product.scss'
 import { ProductControls } from './components/ProductControls'
 import { ProductRating } from './components/ProductRating'
-import { Link } from 'react-router-dom'
 
 type Props = {
 	product: IProduct
+	className?: string
 }
 
-export const Product = ({ product }: Props) => {
+export const Product = ({ product, className }: Props) => {
 	return (
-		<div className='product'>
+		<div className={`${className} product `}>
 			<div className='product__top'>
 				<img src={product.images[0]} alt={product.name} />
 				<p className='product__category'>{product.category.name}</p>
-				<Link to={`/product/${product.id}`} className='product__title'>{product.name}</Link>
-				<ProductRating reviews={product.reviews} />
+				<Link to={`/product/${product.id}`} className='product__title'>
+					{product.name}
+				</Link>
+				<ProductRating rating={product.rating} totalReviews={product.reviews.length} />
 
 				<div className='product__info'>
 					<div className='product__info-price'>

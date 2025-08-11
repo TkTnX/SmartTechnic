@@ -10,6 +10,7 @@ export interface IProduct {
 	status: string
 	quantity: number
 	images: string[]
+	rating: number 
 	categoryId: string
 	category: ICategory
     reviews: IReview[]

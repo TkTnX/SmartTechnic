@@ -22,6 +22,14 @@ body {
 	}
 }
 
+select {
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+}
+
 #root {
 	display: flex;
 	flex-direction: column;

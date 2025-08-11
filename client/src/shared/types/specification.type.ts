@@ -15,7 +15,8 @@ export interface ISpecification {
 
 export interface IGroupedSpecifications {
     title: string
-    categoryId: string
+	categoryId: string
+	category: ICategory
     values: SpecificationValue[]
 }
 

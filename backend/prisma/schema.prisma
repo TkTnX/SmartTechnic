@@ -43,6 +43,7 @@ model Product {
   quantity       Int             @default(0)
   images         String[]
   specifications Specification[]
+  rating         Float @default(0)
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String   @map("category_id")

@@ -24,6 +24,7 @@ export function groupSpecifications(arr: ISpecification[]) {
 			acc.push({
 				title: item.title,
 				categoryId: item.categoryId,
+				category: item.category!,
 				values: [
 					{
 						value: item.value!,

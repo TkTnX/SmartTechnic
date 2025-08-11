@@ -1,3 +1,5 @@
+@use '@/shared/styles/mixins' as *;
+
 .catalogFilters {
 	width: 310px;
 
@@ -9,5 +11,9 @@
 
 	&__skeleton {
 		margin-top: 20px;
+	}
+
+	@include lg {
+		display: none;
 	}
 }

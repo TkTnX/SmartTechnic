@@ -1,0 +1,44 @@
+@use '@/shared/styles/mixins' as *;
+
+.sheet {
+	position: fixed;
+	inset: 0;
+	z-index: 9;
+	background: #fff;
+	transform: translateX(-100%);
+	max-width: 400px;
+
+	@include sm {
+		max-width: unset;
+	}
+
+	&.open {
+		transform: translateX(0);
+	}
+
+	&__top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 4px;
+		padding: 10px 10px 10px 20px;
+		background: #edf2f6;
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		font-weight: 700;
+		font-size: 20px;
+
+		img {
+			filter: invert(1);
+		}
+	}
+
+	&__content {
+		padding: 20px;
+	}
+}
