@@ -9,7 +9,6 @@ export const CatalogList = () => {
 	const { products, error, isPending } = useProducts()
 
 	if (error) return <p className='error'>{error.message}</p>
-
 	return (
 		<div className='catalogList'>
 			{isPending
@@ -17,7 +16,11 @@ export const CatalogList = () => {
 						<Skeleton key={index} height={596} />
 					))
 				: products!.map(product => (
-						<Product className='catalogList__item' key={product.id} product={product} />
+						<Product
+							className='catalogList__item'
+							key={product.id}
+							product={product}
+						/>
 					))}
 		</div>
 	)

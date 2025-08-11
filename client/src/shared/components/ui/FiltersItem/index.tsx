@@ -12,6 +12,10 @@ type Props = {
 }
 export const FiltersItem = ({ title, items, children }: Props) => {
 	const [searchParams, setSearchParams] = useSearchParams()
+	const [checked, setChecked] = useState<string[]>(
+		searchParams.get(title)?.split(',') || []
+	)
+	console.log(checked)
 	const [open, setOpen] = useState(true)
 
 	const onChange = (value: string) => {
@@ -22,6 +26,7 @@ export const FiltersItem = ({ title, items, children }: Props) => {
 
 		// Если значение уже есть в массиве - удаляем, иначе добавляем
 		if (currentValues.includes(value)) {
+			setChecked(currentValues.filter(v => v !== value))
 			const newValues = currentValues.filter(v => v !== value)
 
 			// Если массив пустой - удаляем ключ
@@ -31,6 +36,7 @@ export const FiltersItem = ({ title, items, children }: Props) => {
 				params.delete(title)
 			}
 		} else {
+			setChecked([...currentValues, value])
 			params.set(title, [...currentValues, value].join(','))
 		}
 		setSearchParams(params)
@@ -55,6 +61,7 @@ export const FiltersItem = ({ title, items, children }: Props) => {
 					: items!.map((item, index) => (
 							<label className='filtersItem__label' key={index}>
 								<input
+									checked={checked.includes(item.value)}
 									value={item.value}
 									onChange={e => onChange(e.target.value)}
 									className='filtersItem__input'

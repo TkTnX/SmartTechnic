@@ -18,14 +18,28 @@ export class ProductService {
     if (до !== undefined) {
       price.lte = +до;
     }
-
     return await this.prismaService.product.findMany({
-      where: { category: { name: category }, price, ...restQuery },
+      where: {
+        categoryId: category,
+        price,
+        // Фильтрация по характеристикам с помощью title
+        AND: Object.entries(restQuery).map(([title, value]) => ({
+          specifications: {
+            some: {
+              title,
+              value: {
+                in: value.split(",").map((v) => v.trim()),
+              },
+            },
+          },
+        })),
+      },
       orderBy: sortBy ? { [splitedSortBy[0]]: splitedSortBy[1] } : undefined,
       take: +take || undefined,
       include: {
         category: true,
         reviews: true,
+        specifications: true,
       },
     });
   }

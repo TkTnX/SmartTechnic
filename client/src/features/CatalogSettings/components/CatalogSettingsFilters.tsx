@@ -8,7 +8,6 @@ type Props = {
 
 export const CatalogSettingsFilters = ({ filters }: Props) => {
 	const [searchParams, setSearchParams] = useSearchParams()
-	// TODO: Потом получать не через useSpecifications, а при получении продуктов
 	const { groupedSpecifications } = useSpecifications(filters.category)
 
 	const onDelete = (key: string, value: string) => {

@@ -14,6 +14,7 @@ export const CatalogSettingsSort = () => {
 	return (
 		<div className='catalogSort__sort'>
 			<select
+				value={searchParams.get('sortBy') || SORT_ITEMS[0].value}
 				onChange={e => onChange(e.target.value)}
 				className='catalogSort__select'
 			>
