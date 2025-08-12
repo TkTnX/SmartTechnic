@@ -32,7 +32,6 @@ export class ProductService {
             },
           },
         })),
-        ...restQuery,
       },
       orderBy: sortBy ? { [splitedSortBy[0]]: splitedSortBy[1] } : undefined,
       take: +take || undefined,
@@ -49,10 +48,14 @@ export class ProductService {
       where: { id: productId },
       include: {
         category: true,
-        reviews: true,
+        reviews: {
+          include: {
+            user: true,
+          },
+        },
         specifications: true,
-      }
-    })
+      },
+    });
   }
 
   public async createProduct(dto: ProductDto) {

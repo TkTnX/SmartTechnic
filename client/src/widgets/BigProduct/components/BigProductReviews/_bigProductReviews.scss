@@ -1,0 +1,36 @@
+@use '@/shared/styles/mixins' as *;
+
+.bigProductReviews {
+	margin-top: 30px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 130px;
+
+	@include dbl-xl {
+		gap: 20px;
+	}
+
+	@include md {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		flex: 1;
+		max-width: 640px;
+	}
+
+	&__empty {
+		text-align: center;
+		font-weight: 700;
+		font-size: 28px;
+		color: #383d42;
+
+		span {
+			font-size: 16px;
+			font-weight: 400;
+		}
+	}
+}

@@ -7,3 +7,4 @@ export * from './AddToCart'
 export * from './AuthForm'
 export * from './LogoutButton'
 export * from "./CatalogSettings"
+export * from "./WriteReview"

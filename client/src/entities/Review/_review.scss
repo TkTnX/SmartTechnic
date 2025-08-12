@@ -1,0 +1,80 @@
+@use '@/shared/styles/mixins' as *;
+
+.review {
+	border-radius: 10px;
+	background: #edf2f6;
+	padding: 40px;
+
+	@include lg {
+		padding: 20px;
+	}
+
+	&__top {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+
+		@include vsm {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+		}
+	}
+
+	&__avatar {
+		min-width: 50px;
+		min-height: 50px;
+		max-width: 50px;
+		max-height: 50px;
+		border-radius: 100%;
+		font-size: 20px;
+		font-weight: 700;
+		background: #c8cacb;
+		object-fit: cover;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__user-info {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+
+		b {
+			font-weight: 700;
+		}
+
+		@include xl {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__user-date {
+		font-weight: 700;
+		color: #838688;
+	}
+
+	&__stars {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+
+		p {
+			font-weight: 700;
+			color: #838688;
+		}
+	}
+
+	&__text {
+		h5 {
+			margin-top: 20px;
+			font-weight: 700;
+		}
+
+		p {
+			margin-top: 10px;
+			font-weight: 400;
+		}
+	}
+}

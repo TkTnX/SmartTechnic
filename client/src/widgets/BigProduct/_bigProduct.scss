@@ -1,3 +1,5 @@
+@use '@/shared/styles/mixins' as *;
+
 .bigProduct {
 	margin-top: 30px;
 
@@ -5,6 +7,11 @@
 		display: flex;
 		align-items: flex-start;
 		gap: 20px;
+
+		@include lg {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	&__skeleton {
@@ -16,6 +23,16 @@
 	&__imagesWrapper {
 		position: relative;
 		max-width: max-content;
+	}
+
+	&__mainImage {
+		@include xl {
+			min-width: 350px;
+		}
+
+		@include sm {
+			min-width: unset;
+		}
 	}
 
 	&__images {
@@ -35,67 +52,109 @@
 		border: 1px solid #eaeaf0;
 	}
 
-    &__info {
-        max-width: 750px;
-    }
+	&__info {
+		max-width: 750px;
+
+		@include xl {
+			max-width: unset;
+		}
+	}
 
 	&__name {
 		font-weight: 700;
 		font-size: 36px;
+
+		@include md {
+			font-size: 28px;
+		}
 	}
 
 	&__controls {
-        margin-top: 30px;
+		margin-top: 30px;
 		border: 1px solid #eaeaf0;
 		border-radius: 10px;
 		padding: 30px;
+
+		@include md {
+			padding: 24px;
+		}
 
 		&-top {
 			display: flex;
 			align-items: flex-start;
 			justify-content: space-between;
+
+			.product__rating {
+				margin-top: 0;
+			}
+
+			@include vsm {
+				flex-direction: column;
+				gap: 16px;
+			}
 		}
 
 		&-bottom {
-            margin-top: 35px;
+			margin-top: 35px;
 			display: flex;
 			align-items: flex-end;
 			justify-content: space-between;
+
+			@include vsm {
+				flex-direction: column;
+				align-items: flex-start;
+			}
 		}
 	}
 
-    &__additionals {
-        margin-top: 30px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
+	&__additionals {
+		margin-top: 30px;
+		display: flex;
+		align-items: center;
+		gap: 20px;
 
+		@include vsm {
+			flex-direction: column;
+		}
+	}
 
-    }
+	&__additional {
+		&-title {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			font-weight: 700;
+		}
 
-    &__additional {
-        &-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            
-        }
-
-        &-text {
-            margin-top: 10px;
-            font-weight: 400;
-        }
-    }
+		&-text {
+			margin-top: 10px;
+			font-weight: 400;
+		}
+	}
 }
 
 .bigProduct .addToCart__buy {
 	width: 228px;
+
+	@include lg {
+		width: unset;
+	}
+	@include vsm {
+		width: 100%;
+	}
 }
 
 .bigProduct .addToCart__add {
 	width: 228px;
 	padding: 14px;
+
+	@include lg {
+		width: unset;
+	}
+
+	@include vsm {
+		width: 100%;
+	}
 }
 
 .bigProduct .product__info-price {
@@ -105,4 +164,11 @@
 
 .bigProduct .product__difference {
 	order: -1;
+}
+
+.bigProduct .addToCart {
+	@include vsm {
+		flex-direction: column;
+		width: 100%;
+	}
 }

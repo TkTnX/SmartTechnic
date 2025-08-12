@@ -1,0 +1,33 @@
+@use '@/shared/styles/mixins' as *;
+
+.specification {
+	padding: 25px 20px;
+	width: 100%;
+	border-bottom: 1px solid #c8cacb;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	justify-content: space-between;
+
+	@include sm {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__title {
+		font-weight: 700;
+
+		@include vsm {
+			font-size: 14px;
+		}
+	}
+
+	&__value {
+		font-weight: 400;
+
+		@include vsm {
+			font-size: 14px;
+		}
+	}
+}

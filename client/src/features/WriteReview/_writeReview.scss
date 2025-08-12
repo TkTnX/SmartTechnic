@@ -1,0 +1,35 @@
+@use '@/shared/styles/mixins' as *;
+
+.writeReview {
+	&__title {
+		font-weight: 700;
+	}
+
+	&__subtitle {
+		margin-top: 12px;
+		font-weight: 400;
+	}
+
+	&__button {
+		margin-top: 20px;
+		border: 1px solid #4878a6;
+		border-radius: 4px;
+		padding: 14px;
+		background: #4878a6;
+		font-weight: 400;
+		color: #fff;
+		width: 310px;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		@include md {
+			width: 100%;
+		}
+	}
+
+	@include md {
+		order: -1;
+	}
+}
