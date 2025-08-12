@@ -1,13 +1,19 @@
-import { useQuery } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-import { productsService } from '@/shared/services'
+
+
+import { productsService } from '@/shared/services';
+
+
+
+
 
 const MIN = 0
 const MAX = 100000
 
-export function useProducts() {
+export function useProducts(query?: Record<string, string>) {
 	const [searchParams] = useSearchParams()
 	const [minMaxPrice, setMinMaxPrice] = useState<number[]>([MIN, MAX])
 
@@ -19,7 +25,7 @@ export function useProducts() {
 		error
 	} = useQuery({
 		queryKey: ['products', filters],
-		queryFn: () => productsService.getProducts(filters)
+		queryFn: () => productsService.getProducts(query ? query :filters)
 	})
 
 	useEffect(() => {

@@ -5,7 +5,7 @@ export const Hits = () => {
 		<ProductsSection
 			title='Хиты продаж'
 			link='/catalog'
-			query={{ take: '4', sortBy: 'sales' }}
+			query={{ take: '4', sortBy: 'sales-desc' }}
 		/>
 	)
 }

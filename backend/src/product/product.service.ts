@@ -10,7 +10,6 @@ export class ProductService {
     const { take, sortBy, category, от, до, ...restQuery } = query;
     const splitedSortBy = sortBy ? sortBy.split("-") : [];
     let price: { gte?: number; lte?: number } = {};
-
     if (от !== undefined) {
       price.gte = +от;
     }
@@ -33,6 +32,7 @@ export class ProductService {
             },
           },
         })),
+        ...restQuery,
       },
       orderBy: sortBy ? { [splitedSortBy[0]]: splitedSortBy[1] } : undefined,
       take: +take || undefined,
@@ -43,6 +43,18 @@ export class ProductService {
       },
     });
   }
+
+  public async getProduct(productId: string) {
+    return await this.prismaService.product.findUnique({
+      where: { id: productId },
+      include: {
+        category: true,
+        reviews: true,
+        specifications: true,
+      }
+    })
+  }
+
   public async createProduct(dto: ProductDto) {
     await this.prismaService.product.create({ data: dto });
     return { ok: true };

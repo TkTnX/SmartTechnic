@@ -5,7 +5,7 @@ export const New = () => {
 		<ProductsSection
 			title='Новинки'
 			link='/catalog'
-			query={{ take: '4', sortBy: 'createdAt' }}
+			query={{ take: '4', sortBy: 'createdAt-asc' }}
 		/>
 	)
 }

@@ -17,7 +17,6 @@ export const HeaderControls = () => {
 			<Link className='header__controls-link' to={'/cart'}>
 				<img src='/images/icons/cart.svg' alt='Корзина' />
 			</Link>
-			{/* TODO: TEMP */}
 			{!user ? <AuthForm /> : <UserDropdown />}
 		</div>
 	)

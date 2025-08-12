@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useSearchParams } from 'react-router-dom'
 
 import { FiltersSheet } from '@/shared/components/sheets'
@@ -10,7 +11,6 @@ export const CatalogSettings = () => {
 	const [searchParams] = useSearchParams()
 
 	const { sortBy, ...filters } = Object.fromEntries(searchParams)
-	console.log(sortBy)
 	return (
 		<div className='catalogSort'>
 			<FiltersSheet />

@@ -15,7 +15,6 @@ export const FiltersItem = ({ title, items, children }: Props) => {
 	const [checked, setChecked] = useState<string[]>(
 		searchParams.get(title)?.split(',') || []
 	)
-	console.log(checked)
 	const [open, setOpen] = useState(true)
 
 	const onChange = (value: string) => {

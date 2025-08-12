@@ -14,7 +14,6 @@ type Props = {
 }
 
 export const ProductsSection = ({ title, link, query }: Props) => {
-	// TODO: Перенести в хук
 	const {
 		data: products,
 		error,

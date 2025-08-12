@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
 import { RootLayout } from '@/shared/components/layouts'
-import { CatalogPage, Homepage } from '@/shared/pages'
+import { CatalogPage, Homepage, ProductPage } from '@/shared/pages'
 import '@/shared/styles/index.scss'
 
 const router = createBrowserRouter([
@@ -20,7 +20,11 @@ const router = createBrowserRouter([
 			{
 				path: '/catalog',
 				element: <CatalogPage />
-			}
+			},
+			{
+				path: '/product/:productId',
+				element: <ProductPage />
+			},
 		]
 	}
 ])

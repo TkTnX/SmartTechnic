@@ -1,4 +1,4 @@
-import type { ICategory, IReview } from '.'
+import type { ICategory, IReview, ISpecification } from '.'
 
 export interface IProduct {
 	id: string
@@ -14,6 +14,7 @@ export interface IProduct {
 	categoryId: string
 	category: ICategory
     reviews: IReview[]
-    
+	specifications: ISpecification[]
+
     createdAt: string
 }
