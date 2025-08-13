@@ -7,7 +7,12 @@ export class UserService {
   public constructor(private readonly prismaService: PrismaService) {}
 
   public async findById(id: string) {
-    const user = await this.prismaService.user.findUnique({ where: { id } });
+    const user = await this.prismaService.user.findUnique({
+      where: { id }, include: {
+        favoriteProducts: true,
+        reviews: true,
+        orders: true
+    } });
 
     if (!user) throw new NotFoundException("Пользователь не найден!");
 

@@ -7,10 +7,22 @@
 	align-items: center;
 	justify-content: center;
 
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
 	svg {
 		stroke: #838688;
 		fill: white;
 		transition: all 0.2s ease-in;
+	}
+
+	&.active {
+		svg {
+			fill: #f15152;
+			stroke: #f15152;
+		}
 	}
 
 	&:hover {

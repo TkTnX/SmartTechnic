@@ -8,6 +8,7 @@ import { NewsModule } from './news/news.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { SpecificationModule } from './specification/specification.module';
+import { FavoriteModule } from './favorite/favorite.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SpecificationModule } from './specification/specification.module';
     AuthModule,
     UserModule,
     SpecificationModule,
+    FavoriteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
