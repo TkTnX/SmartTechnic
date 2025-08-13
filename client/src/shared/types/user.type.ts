@@ -1,4 +1,4 @@
-import type { IFavoriteProduct, IOrder, IReview } from '.'
+import type { ICartProduct, IFavoriteProduct, IOrder, IReview } from '.'
 
 export interface IUser {
 	id: string
@@ -19,6 +19,7 @@ export interface IUser {
 	orders: IOrder[]
 	reviews: IReview[]
 	favoriteProducts: IFavoriteProduct[]
+	cartProducts: ICartProduct[]
 
 	createdAt: string
 	updatedAt: string

@@ -1,4 +1,4 @@
-import type { IUser, CartProduct } from '.'
+import type { IUser, ICartProduct } from '.'
 
 export interface IOrder {
 	id: string
@@ -6,7 +6,7 @@ export interface IOrder {
 	status: OrderStatus
 	address: string
 
-	  products: CartProduct[]
+	  products: ICartProduct[]
 
 	userId: string
 	user: IUser

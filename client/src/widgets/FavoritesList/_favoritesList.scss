@@ -1,0 +1,29 @@
+@use '@/shared/styles/mixins' as *;
+
+.favoritesList {
+
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        margin-top: 30px;
+    }
+
+	&__list {
+        margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px 5px;
+
+		@include lg {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include sm {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	&__item {
+		border-radius: 8px !important;
+	}
+}

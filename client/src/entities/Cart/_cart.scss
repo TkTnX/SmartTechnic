@@ -1,0 +1,19 @@
+.cart {
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+		margin-top: 60px;
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: flex-start;
+		gap: 20px;
+		margin-top: 50px;
+	}
+
+	&__steps {
+		max-width: 860px;
+		flex: 1;
+	}
+}

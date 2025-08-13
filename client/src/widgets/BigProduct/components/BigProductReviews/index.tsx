@@ -15,7 +15,7 @@ export const BigProductReviews = ({ reviews }: Props) => {
 			<div className='bigProductReviews__list'>
 				{reviews.length > 0 ? reviews.map(review => (
 					<Review review={review} />
-				)) : <p className='bigProductReviews__empty'>Отзывов пока нет. <br /> <span>Будьте первым</span></p>}
+				)) : <p className='empty'>Отзывов пока нет. <br /> <span>Будьте первым</span></p>}
 			</div>
 			<WriteReview />
 		</div>

@@ -1,3 +1,5 @@
 export * from "./Homepage"
 export * from "./CatalogPage"
 export * from "./ProductPage"
+export * from "./FavoritesPage"
+export * from "./CartPage"

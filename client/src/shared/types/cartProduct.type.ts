@@ -1,9 +1,13 @@
-import type { IOrder, IProduct } from '.'
+import type { IOrder, IProduct } from '.';
 
-export type CartProduct = {
+
+
+
+
+export interface ICartProduct {
 	id: string
 
-	proudct: IProduct
+	product: IProduct
 	productId: string
 	order?: IOrder
 	orderId?: string

@@ -1,11 +1,14 @@
 .addToCart {
 	display: flex;
-	align-items: center;
+	align-items: stretch;
 	justify-content: space-between;
 	gap: 10px;
 	margin-top: 20px;
 
 	&__buy {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		border: 1px solid #4878a6;
 		border-radius: 4px;
 		padding: 10px;
@@ -17,6 +20,11 @@
 		&:hover {
 			background: #4878a6;
 			color: #fff;
+		}
+
+		&.disabled {
+			opacity: 0.5;
+			pointer-events: none;
 		}
 	}
 
@@ -41,6 +49,11 @@
 			path {
 				fill: #fff;
 			}
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			pointer-events: none;
 		}
 
 		&:hover {

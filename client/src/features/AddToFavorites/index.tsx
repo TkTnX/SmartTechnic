@@ -13,7 +13,6 @@ type Props = {
 	isFav?: boolean
 }
 
-
 export const AddToFavorites = ({ productId, isFav }: Props) => {
 	const fetchUser = useUserStore(state => state.fetchUser)
 	const { mutate, isPending } = useMutation({

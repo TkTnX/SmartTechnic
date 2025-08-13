@@ -1,0 +1,23 @@
+.changeQuantity {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	&__quantity {
+		border: 1px solid #c8cacb;
+		border-radius: 4px;
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	button {
+        font-size: 30px;
+		&:disabled {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+	}
+}

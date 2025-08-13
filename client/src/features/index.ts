@@ -8,3 +8,5 @@ export * from './AuthForm'
 export * from './LogoutButton'
 export * from "./CatalogSettings"
 export * from "./WriteReview"
+export * from "./ChangeQuantity"
+export * from "./RemoveFromCart"

@@ -7,12 +7,28 @@ export class UserService {
   public constructor(private readonly prismaService: PrismaService) {}
 
   public async findById(id: string) {
+    const productInclude = {
+      category: true,
+      reviews: true,
+    };
+
     const user = await this.prismaService.user.findUnique({
-      where: { id }, include: {
-        favoriteProducts: true,
+      where: { id },
+      include: {
+        favoriteProducts: {
+          include: {
+            product: { include: productInclude },
+          },
+        },
         reviews: true,
-        orders: true
-    } });
+        orders: true,
+        cartProducts: {
+          include: {
+            product: { include: productInclude },
+          },
+        },
+      },
+    });
 
     if (!user) throw new NotFoundException("Пользователь не найден!");
 

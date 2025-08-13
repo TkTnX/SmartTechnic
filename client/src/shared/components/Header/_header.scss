@@ -40,6 +40,13 @@
 			align-items: center;
 			justify-content: center;
 			position: relative;
+
+			&.active-favorites {
+				svg {
+					fill: #f15152;
+					stroke: #f15152;
+				}
+			}
 			&:hover {
 				opacity: 0.8;
 			}

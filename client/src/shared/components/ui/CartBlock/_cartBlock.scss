@@ -1,0 +1,40 @@
+.cartBlock {
+	border: 1px solid #c8cacb;
+	border-radius: 8px;
+	padding: 30px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 28px;
+	}
+
+	&__content {
+		margin-top: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__changeBtn {
+		border: 1px solid #4878a6;
+		border-radius: 4px;
+		padding: 10px;
+		font-weight: 700;
+		font-size: 16px;
+		color: #4878a6;
+	}
+
+	&__nextBtn {
+		margin-top: 20px;
+		border-radius: 4px;
+		padding: 10px;
+		background: #4878a6;
+		font-weight: 700;
+		color: #fff;
+		width: 200px;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
