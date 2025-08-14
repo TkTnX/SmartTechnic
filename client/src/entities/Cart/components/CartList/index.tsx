@@ -12,11 +12,12 @@ type Props = {
 }
 
 export const CartList = ({ step, setStep, cartProducts }: Props) => {
+	const blockStep = 1
 	return (
 		<CartBlock
 			step={step}
 			setStep={setStep}
-			blockStep={1}
+			blockStep={blockStep}
 			title='Ваш заказ'
 			className='cartList'
 		>

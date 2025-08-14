@@ -22,6 +22,11 @@ body {
 	}
 }
 
+input[type='checkbox'] {
+	cursor: pointer;
+	accent-color: #4878a6;
+}
+
 select {
 	cursor: pointer;
 

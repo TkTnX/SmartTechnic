@@ -1,3 +1,5 @@
 export * from "./CartList"
 export * from "./Checkout"
 export * from "./DeliveryInfo"
+export * from "./PaymentType"
+export * from "./ReceiverInfo"

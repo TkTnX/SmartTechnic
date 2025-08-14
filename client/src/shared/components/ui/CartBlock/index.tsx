@@ -21,20 +21,21 @@ export const CartBlock = ({
 		<>
 			<div className='cartBlock'>
 				<h4 className='cartBlock__title'>{title}</h4>
-				<div className={`cartBlock__content ${className}`}>
-					{children}{' '}
-					{step !== blockStep ||
-						(step > blockStep && (
+				{step >= blockStep && (
+					<div className={`cartBlock__content ${className}`}>
+						{children}{' '}
+						{step !== blockStep && step !== 1 && (
 							<button
 								onClick={() => setStep(blockStep)}
 								className='cartBlock__changeBtn'
 							>
 								Изменить
 							</button>
-						))}
-				</div>
+						)}
+					</div>
+				)}
 			</div>
-			{step === blockStep && (
+			{step === blockStep && blockStep !== 4 && (
 				<button
 					className='cartBlock__nextBtn'
 					onClick={() => setStep(step + 1)}

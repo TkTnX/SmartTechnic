@@ -4,7 +4,7 @@ import { Skeleton } from '@/shared/components'
 import { useUserStore } from '@/shared/stores'
 
 import './_cart.scss'
-import { CartList, Checkout, DeliveryInfo } from './components'
+import { CartList, Checkout, DeliveryInfo, PaymentType, ReceiverInfo } from './components'
 
 export const Cart = () => {
 	const { user, isLoading, error } = useUserStore()
@@ -29,9 +29,10 @@ export const Cart = () => {
 									step={step}
 								/>
 								<DeliveryInfo step={step} setStep={setStep} />
-							
+										<PaymentType step={step} setStep={setStep} />
+										<ReceiverInfo step={step} setStep={setStep} />
 							</div>
-							<Checkout />
+							<Checkout cartProducts={user!.cartProducts!} />
 						</>
 					)}
 				</div>
