@@ -108,6 +108,9 @@ model CartProduct {
   quantity  Int
   order     Order?  @relation(fields: [orderId], references: [id])
   orderId   String? @map("order_id")
+
+  createdAt DateTime @default(now())
+
 }
 
 model Order {

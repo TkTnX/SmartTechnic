@@ -20,14 +20,22 @@ export const CartList = ({ step, setStep, cartProducts }: Props) => {
 			title='Ваш заказ'
 			className='cartList'
 		>
-			{cartProducts.map(cartProduct => (
-				<CartProduct
-					key={cartProduct.id}
-					product={cartProduct.product}
-					quantity={cartProduct.quantity}
-					cartProductId={cartProduct.id}
-				/>
-			))}
+			<div className={`cartList__list ${step !== 1 ? 'small' : ''}`}>
+				{cartProducts.length > 0 ? (
+					cartProducts.map(cartProduct => (
+						<CartProduct
+							key={cartProduct.id}
+							product={cartProduct.product}
+							quantity={cartProduct.quantity}
+							cartProductId={cartProduct.id}
+							step={step}
+							blockStep={1}
+						/>
+					))
+				) : (
+					<p className='empty'>Корзина пуста.</p>
+				)}
+			</div>
 		</CartBlock>
 	)
 }

@@ -23,6 +23,9 @@ export class UserService {
         reviews: true,
         orders: true,
         cartProducts: {
+          orderBy: {
+            quantity: "desc",
+          },
           include: {
             product: { include: productInclude },
           },

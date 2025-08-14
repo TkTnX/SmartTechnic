@@ -14,7 +14,6 @@ type Props = {
 }
 
 export const Product = ({ product, className }: Props) => {
-	console.log(product)
 	return (
 		<div className={`${className} product `}>
 			<div className='product__top'>

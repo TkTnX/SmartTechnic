@@ -12,7 +12,6 @@ type Props = {
 export const Recommend = ({ categoryId }: Props) => {
 	const { products, isPending, error } = useProducts({ category: categoryId })
 
-	console.log(products, isPending, error)
 
 	if (error) return null
 	return (

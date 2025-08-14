@@ -8,23 +8,44 @@ type Props = {
 	product: IProduct
 	quantity: number
 	cartProductId: string
+	step?: number
+	blockStep?: number
 }
 
-export const CartProduct = ({ quantity, product, cartProductId }: Props) => {
+export const CartProduct = ({
+	quantity,
+	product,
+	cartProductId,
+	step,
+	blockStep
+}: Props) => {
 	return (
 		<div className='cartProduct'>
-			<div className='cartProduct__left'>
-				<img src={product.images[0]} alt={product.name} />
-				<h6>{product.name}</h6>
-			</div>
-			<ChangeQuantity productQuantity={product.quantity} quantity={quantity} />
-			<div >
-				{product.oldPrice && (
-					<p className='cartProduct__oldPrice'>{product.oldPrice}₽</p>
-				)}
-				<p className='cartProduct__price'>{product.price}₽</p>
-			</div>
-			<RemoveFromCart cartProductId={cartProductId} />
+			{step !== blockStep ? (
+				<img className='cartProduct__image-small' src={product.images[0]} alt={product.name} />
+			) : (
+				<>
+					{' '}
+					<div className='cartProduct__left'>
+						<img src={product.images[0]} alt={product.name} />
+						<h6>{product.name}</h6>
+					</div>
+					<ChangeQuantity
+						cartProductId={cartProductId}
+						productQuantity={product.quantity}
+						quantity={quantity}
+					/>
+					<div>
+						{product.oldPrice && (
+							<p className='cartProduct__oldPrice'>
+								{product.oldPrice}₽
+							</p>
+						)}
+						<p className='cartProduct__price'>{product.price}₽</p>
+					</div>
+					<RemoveFromCart cartProductId={cartProductId} />
+				</>
+			)}
 		</div>
 	)
 }

@@ -1,5 +1,21 @@
 .cartList {
 	display: flex;
-	flex-direction: column;
-    
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+
+		&.small {
+			flex-direction: row;
+			gap: 20px;
+			flex-wrap: wrap;
+			.cartProduct {
+				width: unset;
+				border-bottom: none;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+		}
+	}
 }
