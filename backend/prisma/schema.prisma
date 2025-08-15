@@ -118,6 +118,15 @@ model Order {
 
   status  OrderStatus
   address String
+  deliveryType DeliveryType
+  city String
+  street String
+  paymentType PaymentType
+
+  username String
+  userLastname String
+  userPhone String
+  userEmail String
 
   products CartProduct[]
   user     User          @relation(fields: [userId], references: [id])

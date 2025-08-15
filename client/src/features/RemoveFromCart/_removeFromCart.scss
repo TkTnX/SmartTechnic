@@ -1,6 +1,17 @@
+@use '@/shared/styles/mixins' as *;
+
 .removeFromCart {
-    &:disabled {
-        opacity: 0.5;
-        pointer-events: none;
-    }
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	@include sm {
+		grid-row: 1/2;
+		justify-self: end;
+	}
+
+	@include vsm {
+		justify-self: center;
+	}
 }

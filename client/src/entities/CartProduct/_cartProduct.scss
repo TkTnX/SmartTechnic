@@ -1,9 +1,17 @@
+@use '@/shared/styles/mixins' as *;
+
 .cartProduct {
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding-bottom: 30px;
+	gap: 15px;
+
+	@include sm {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
 
 	&:not(:last-child) {
 		border-bottom: 1px solid #c8cacb;
@@ -19,6 +27,11 @@
 		object-fit: cover;
 		border-radius: 4px;
 		border: 1px solid #eaeaf0;
+
+		@include vsm {
+			width: 50px;
+			height: 50px;
+		}
 	}
 
 	&__left {
@@ -30,11 +43,24 @@
 			width: 80px;
 			height: 80px;
 			object-fit: cover;
+
+			@include vsm {
+				width: 40px;
+				height: 40px;
+			}
 		}
 
 		h6 {
 			font-weight: 400;
 			max-width: 280px;
+		}
+
+		@include sm {
+			grid-row: 1;
+		}
+
+		@include vsm {
+			align-items: flex-start;
 		}
 	}
 

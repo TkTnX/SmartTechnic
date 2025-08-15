@@ -1,7 +1,6 @@
-import { useState } from 'react'
-
 import { CartBlock, DropdownInput } from '@/shared/components'
 import { CITIES } from '@/shared/constants'
+import { useCartStore } from '@/shared/stores'
 
 import { DeliveryInputs } from '../DeliveryInputs'
 import { PickupAddresses } from '../PickupAddresses'
@@ -14,16 +13,8 @@ type Props = {
 }
 
 export const DeliveryInfo = ({ step, setStep }: Props) => {
-	const blockStep=2
-	// TODO: Время доставки проверять, если стоит сегодняшний день, то не все времена показываются, а если другой, то все
-
-	const [deliveryType, setDeliveryType] = useState<'delivery' | 'pickup'>(
-		'delivery'
-	)
-
-	const TEMP_ADDRESS = 'г. Санкт-Петербург, Бульвар Новаторов, 75'
-	const TEMP_TIME = 'воскресенье, 17, с 9:00 до 11:00'
-
+	const { orderInfo, setOrderInfo } = useCartStore()
+	const blockStep = 2
 	return (
 		<CartBlock
 			title='Способ получения'
@@ -36,23 +27,31 @@ export const DeliveryInfo = ({ step, setStep }: Props) => {
 				{step !== 2 ? (
 					<div className='deliveryInfo__small'>
 						<h6>
-							{deliveryType === 'delivery'
+							{orderInfo.deliveryType === 'delivery'
 								? 'Доставка на адрес:'
 								: 'Самовывоз из:'}
 						</h6>
-						{deliveryType === 'delivery' ? (
+						{orderInfo.deliveryType === 'delivery' ? (
 							<div className='deliveryInfo__small-address'>
-								<p>{TEMP_ADDRESS}</p> <span>{TEMP_TIME}</span>
+								<p>
+									{orderInfo.city}, {orderInfo.street}
+								</p>{' '}
+								<span>{orderInfo.deliveryTime}</span>
 							</div>
 						) : (
-							<p>{TEMP_ADDRESS}</p>
+							<p>
+								{orderInfo.city}, {orderInfo.street}
+							</p>
 						)}
 					</div>
 				) : (
 					<>
 						<div className='deliveryInfo__top'>
 							<DropdownInput
-								defaultValue={'spb'}
+								setOrderInfo={setOrderInfo}
+								defaultValue={
+									orderInfo.city || 'Санкт-Петербург'
+								}
 								items={CITIES}
 								className='deliveryInfo__input'
 								label='Ваш город'
@@ -61,15 +60,19 @@ export const DeliveryInfo = ({ step, setStep }: Props) => {
 
 							<div className='deliveryInfo__types'>
 								<button
-									onClick={() => setDeliveryType('delivery')}
-									className={`deliveryInfo__type ${deliveryType === 'delivery' ? 'active' : ''}`}
+									onClick={() =>
+										setOrderInfo('deliveryType', 'delivery')
+									}
+									className={`deliveryInfo__type ${orderInfo.deliveryType === 'delivery' ? 'active' : ''}`}
 								>
 									<div className='deliveryInfo__type-dot' />
 									Доставка
 								</button>
 								<button
-									onClick={() => setDeliveryType('pickup')}
-									className={`deliveryInfo__type ${deliveryType === 'pickup' ? 'active' : ''}`}
+									onClick={() =>
+										setOrderInfo('deliveryType', 'pickup')
+									}
+									className={`deliveryInfo__type ${orderInfo.deliveryType === 'pickup' ? 'active' : ''}`}
 								>
 									<div className='deliveryInfo__type-dot' />
 									Самовывоз
@@ -78,7 +81,7 @@ export const DeliveryInfo = ({ step, setStep }: Props) => {
 						</div>
 
 						<div className='deliveryInfo__bottom'>
-							{deliveryType === 'delivery' ? (
+							{orderInfo.deliveryType === 'delivery' ? (
 								<DeliveryInputs />
 							) : (
 								<PickupAddresses />

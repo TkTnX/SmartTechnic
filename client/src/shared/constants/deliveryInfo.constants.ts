@@ -32,7 +32,7 @@ export const TIMES = [
 
 export const ADDRESSES = [
 	{
-		city: 'spb',
+		city: 'Санкт-Петербург',
 		addresses: [
 			{ label: 'Бульвар Новаторов, 75', value: '1' },
 			{ label: 'пер. Матюшенко, 28', value: '2' },
@@ -43,7 +43,7 @@ export const ADDRESSES = [
 		]
 	},
 	{
-		city: 'moscow',
+		city: 'Москва',
 		addresses: [
 			{ label: 'Красная площадь', value: '1' },
 			{ label: 'Moscow City', value: '2' },
@@ -54,7 +54,7 @@ export const ADDRESSES = [
 		]
 	},
 	{
-		city: 'nsk',
+		city: 'Новосибирск',
 		addresses: [
 			{ label: 'Улица Ленина, 10', value: '1' },
 			{ label: 'Проспект Мира, 25', value: '2' },
@@ -62,7 +62,7 @@ export const ADDRESSES = [
 		]
 	},
 	{
-		city: 'ekb',
+		city: 'Екатеринбург',
 		addresses: [
 			{
 				label: 'Улица 8 Марта, 12',
@@ -79,7 +79,7 @@ export const ADDRESSES = [
 		]
 	},
 	{
-		city: 'kzn',
+		city: 'Казань',
 		addresses: [
 			{
 				label: 'Улица Баумана, 31',

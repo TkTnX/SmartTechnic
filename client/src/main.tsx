@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
-import { RootLayout } from '@/shared/components/layouts'
+import { CartLayout, RootLayout } from '@/shared/components/layouts'
 import {
 	CartPage,
 	CatalogPage,
@@ -34,9 +34,15 @@ const router = createBrowserRouter([
 			{
 				path: '/profile/favorites',
 				element: <FavoritesPage />
-			},
+			}
+		]
+	},
+	{
+		path: '/cart',
+		element: <CartLayout />,
+		children: [
 			{
-				path: "/cart",
+				index: true,
 				element: <CartPage />
 			}
 		]

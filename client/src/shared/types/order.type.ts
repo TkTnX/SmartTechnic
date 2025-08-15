@@ -16,3 +16,6 @@ export interface IOrder {
 }
 
 type OrderStatus = 'PENDING' | 'DELIVERED'
+
+export type DeliveryTypes = 'pickup' | 'delivery'
+export type PaymentTypes = 'cash' | 'card'

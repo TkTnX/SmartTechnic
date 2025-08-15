@@ -1,12 +1,26 @@
+@use '@/shared/styles/mixins' as *;
+
 .checkout {
 	width: 420px;
 	background: #edf2f6;
 	padding: 30px;
 	border-radius: 8px;
+	position: sticky;
+	top: 20px;
+	right: 0;
+
+	@include lg {
+		width: 100%;
+		position: static;
+	}
 
 	&__title {
 		font-weight: 700;
 		font-size: 28px;
+
+		@include vsm {
+			font-size: 24px;
+		}
 	}
 
 	&__list {
@@ -27,6 +41,10 @@
 		&-title {
 			color: #838688;
 		}
+
+		@include vsm {
+			font-size: 16px;
+		}
 	}
 
 	&__total {
@@ -38,11 +56,19 @@
 		&-text {
 			font-weight: 600;
 			font-size: 24px;
+
+			@include vsm {
+				font-size: 20px;
+			}
 		}
 
 		&-price {
 			font-weight: 700;
 			font-size: 36px;
+
+			@include vsm {
+				font-size: 24px;
+			}
 		}
 	}
 
@@ -56,6 +82,12 @@
 
 		&:hover {
 			opacity: 0.8;
+		}
+
+		&:disabled {
+			background: #838688;
+			pointer-events: none;
+			cursor: not-allowed;
 		}
 	}
 

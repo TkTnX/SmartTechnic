@@ -1,3 +1,5 @@
+@use '@/shared/styles/mixins' as *;
+
 .changeQuantity {
 	display: flex;
 	align-items: center;
@@ -14,10 +16,19 @@
 	}
 
 	button {
-        font-size: 30px;
+		font-size: 30px;
 		&:disabled {
 			opacity: 0.5;
 			pointer-events: none;
 		}
+	}
+
+	@include sm {
+		order: 1;
+		justify-self: end;
+	}
+
+	@include vsm {
+		justify-self: center;
 	}
 }
