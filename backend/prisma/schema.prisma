@@ -28,10 +28,10 @@ model User {
   orders           Order[]
   reviews          Review[]
   favoriteProducts FavoriteProduct[]
-  cartProducts CartProduct[]
+  cartProducts     CartProduct[]
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Product {
@@ -110,27 +110,29 @@ model CartProduct {
   orderId   String? @map("order_id")
 
   createdAt DateTime @default(now())
-
 }
 
 model Order {
   id String @id @default(uuid())
 
-  status  OrderStatus
-  address String
+  status       OrderStatus
   deliveryType DeliveryType
-  city String
-  street String
-  paymentType PaymentType
+  deliveryFlat String?
+  deliveryDate String?
+  city         String
+  street       String
+  paymentType  PaymentType
 
-  username String
+  username     String
   userLastname String
-  userPhone String
-  userEmail String
+  userPhone    String
+  userEmail    String
+  comment      String?
 
-  products CartProduct[]
-  user     User          @relation(fields: [userId], references: [id])
-  userId   String        @map("user_id")
+  totalPrice Int
+  products   CartProduct[]
+  user       User          @relation(fields: [userId], references: [id])
+  userId     String        @map("user_id")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -177,5 +179,6 @@ enum DeliveryType {
 
 enum OrderStatus {
   PENDING
+  CONFIRMED
   DELIVERED
 }

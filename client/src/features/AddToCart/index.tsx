@@ -14,7 +14,6 @@ type Props = {
 	isBig?: boolean
 }
 
-// TODO: Проверять, если quantity в корзине НЕ больше quantity в продукте
 
 export const AddToCart = ({ productId, isBig }: Props) => {
 	const fetchUser = useUserStore(state => state.fetchUser)

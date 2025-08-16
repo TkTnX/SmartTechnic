@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 
 import type { DeliveryTypes, PaymentTypes } from '@/shared/types'
-
 export type CartStoreType = {
 	orderInfo: {
 		deliveryType: DeliveryTypes
@@ -27,10 +26,10 @@ export type CartStoreType = {
 
 export const useCartStore = create<CartStoreType>(set => ({
 	orderInfo: {
-		deliveryType: 'delivery',
+		deliveryType: 'DELIVERY',
 		city: 'Санкт-Петербург',
 		street: null,
-		paymentType: 'card',
+		paymentType: 'CARD',
 
 		username: null,
 		userLastname: null,

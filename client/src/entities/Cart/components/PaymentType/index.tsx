@@ -21,7 +21,7 @@ export const PaymentType = ({ step, setStep }: Props) => {
 			className='paymentType'
 		>
 			{blockStep !== step ? (
-				<h6 className='paymentType__title'>{orderInfo.paymentType === "card" ? "Карта" : "Наличными"}</h6>
+				<h6 className='paymentType__title'>{orderInfo.paymentType === "CARD" ? "Карта" : "Наличными"}</h6>
 			) : (
 					<DropdownInput
 						getValue={true}

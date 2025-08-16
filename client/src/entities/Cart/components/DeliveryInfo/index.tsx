@@ -27,11 +27,11 @@ export const DeliveryInfo = ({ step, setStep }: Props) => {
 				{step !== 2 ? (
 					<div className='deliveryInfo__small'>
 						<h6>
-							{orderInfo.deliveryType === 'delivery'
+							{orderInfo.deliveryType === 'DELIVERY'
 								? 'Доставка на адрес:'
 								: 'Самовывоз из:'}
 						</h6>
-						{orderInfo.deliveryType === 'delivery' ? (
+						{orderInfo.deliveryType === 'DELIVERY' ? (
 							<div className='deliveryInfo__small-address'>
 								<p>
 									{orderInfo.city}, {orderInfo.street}
@@ -61,18 +61,18 @@ export const DeliveryInfo = ({ step, setStep }: Props) => {
 							<div className='deliveryInfo__types'>
 								<button
 									onClick={() =>
-										setOrderInfo('deliveryType', 'delivery')
+										setOrderInfo('deliveryType', 'DELIVERY')
 									}
-									className={`deliveryInfo__type ${orderInfo.deliveryType === 'delivery' ? 'active' : ''}`}
+									className={`deliveryInfo__type ${orderInfo.deliveryType === 'DELIVERY' ? 'active' : ''}`}
 								>
 									<div className='deliveryInfo__type-dot' />
 									Доставка
 								</button>
 								<button
 									onClick={() =>
-										setOrderInfo('deliveryType', 'pickup')
+										setOrderInfo('deliveryType', 'PICKUP')
 									}
-									className={`deliveryInfo__type ${orderInfo.deliveryType === 'pickup' ? 'active' : ''}`}
+									className={`deliveryInfo__type ${orderInfo.deliveryType === 'PICKUP' ? 'active' : ''}`}
 								>
 									<div className='deliveryInfo__type-dot' />
 									Самовывоз
@@ -81,7 +81,7 @@ export const DeliveryInfo = ({ step, setStep }: Props) => {
 						</div>
 
 						<div className='deliveryInfo__bottom'>
-							{orderInfo.deliveryType === 'delivery' ? (
+							{orderInfo.deliveryType === 'DELIVERY' ? (
 								<DeliveryInputs />
 							) : (
 								<PickupAddresses />

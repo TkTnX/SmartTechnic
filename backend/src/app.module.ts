@@ -10,6 +10,8 @@ import { UserModule } from './user/user.module';
 import { SpecificationModule } from './specification/specification.module';
 import { FavoriteModule } from './favorite/favorite.module';
 import { CartProductModule } from './cart-product/cart-product.module';
+import { OrderModule } from './order/order.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { CartProductModule } from './cart-product/cart-product.module';
     SpecificationModule,
     FavoriteModule,
     CartProductModule,
+    OrderModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

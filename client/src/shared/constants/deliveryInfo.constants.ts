@@ -101,10 +101,10 @@ export const ADDRESSES = [
 export const PAYMENT_TYPES = [
 	{
 		label: 'Наличные',
-		value: 'cash'
+		value: 'CASH'
 	},
 	{
 		label: 'Карта',
-		value: 'card'
+		value: 'CARD'
 	}
 ]

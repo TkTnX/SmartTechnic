@@ -10,6 +10,7 @@ export class CartProductService {
   ) {}
 
   public async addToCart(userId: string, productId: string) {
+    // TODO: Исправить ошибку. Сейчас через кнопку можно добавить сколько угодно товаров
     const product = await this.productService.getProduct(productId);
 
     const isAlreadyAdded = await this.prismaService.cartProduct.findFirst({

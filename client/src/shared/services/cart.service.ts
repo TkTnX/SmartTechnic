@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/shared/libs'
+import type { CartStoreType } from '@/shared/stores'
 
 class CartService {
 	public async addToCart(productId: string) {
@@ -24,10 +25,20 @@ class CartService {
 	}
 
 	public async removeFromCart(cartProductId: string) {
-		const res = await axiosInstance.delete(`/cart-products/${cartProductId}`)
+		const res = await axiosInstance.delete(
+			`/cart-products/${cartProductId}`
+		)
 
 		if (res.status !== 200) throw new Error(res.data.message)
-		
+
+		return res.data
+	}
+
+	public async createOrder(orderInfo: CartStoreType['orderInfo'], totalPrice: number) {
+		const res = await axiosInstance.post('/orders', {...orderInfo, totalPrice})
+
+		if (res.status !== 201) throw new Error(res.data.message)
+
 		return res.data
 	}
 }

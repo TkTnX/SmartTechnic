@@ -1,5 +1,9 @@
-import { Link } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import type { AxiosError } from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
+import { cartService } from '@/shared/services'
 import { useCartStore } from '@/shared/stores'
 import type { ICartProduct } from '@/shared/types'
 
@@ -8,15 +12,28 @@ import './_checkout.scss'
 type Props = { cartProducts: ICartProduct[] }
 
 export const Checkout = ({ cartProducts }: Props) => {
+	const navigate = useNavigate()
 	const orderInfo = useCartStore(state => state.orderInfo)
 	const totalPrice = cartProducts.reduce(
 		(acc, product) => acc + product.product.price * product.quantity,
 		0
 	)
 
-	const onSubmit = () => {
-		console.log(orderInfo)
-	}
+	const { mutate } = useMutation({
+		mutationFn: async () =>
+			await cartService.createOrder(orderInfo, totalPrice),
+		onSuccess: (data: { paymentUrl: string; orderId: string }) => {
+			if (orderInfo.paymentType === 'CARD' ) {
+				window.location.href = data.paymentUrl
+			} else {
+				navigate(`/order/${data.orderId}`)
+			}
+		},
+		onError: (err: AxiosError<{ message: string }>) => {
+			console.log(err)
+			toast.error(err.response?.data.message[0])
+		}
+	})
 
 	return (
 		<div className='checkout'>
@@ -38,7 +55,7 @@ export const Checkout = ({ cartProducts }: Props) => {
 				<p className='checkout__total-price'>{totalPrice}₽</p>
 			</div>
 			<button
-				onClick={onSubmit}
+				onClick={() => mutate()}
 				disabled={Object.values(orderInfo).includes(null)}
 				className='checkout__submit'
 			>
