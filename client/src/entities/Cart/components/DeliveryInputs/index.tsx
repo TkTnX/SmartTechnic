@@ -29,6 +29,7 @@ export const DeliveryInputs = () => {
 				className='deliveryInfo__input'
 				label='Улица, дом/корпус'
 				name='street'
+				defaultValue={orderInfo.street || ''}
 			/>
 			<DropdownInput
 				setOrderInfo={setOrderInfo}

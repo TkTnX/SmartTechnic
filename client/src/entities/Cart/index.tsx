@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Skeleton } from '@/shared/components'
-import { useUserStore } from '@/shared/stores'
+import { useCartStore, useUserStore } from '@/shared/stores'
 
 import './_cart.scss'
 import {
@@ -14,9 +14,23 @@ import {
 
 export const Cart = () => {
 
-	// TODO: В инпуты автоматически вносить данные, если они указаны в профиле
 	const { user, isLoading, error } = useUserStore()
+	const setManyOrderInfo = useCartStore(state => state.setManyOrderInfo)
 	const [step, setStep] = useState(1)
+
+	useEffect(() => {
+			setManyOrderInfo({
+				username: user?.name,
+				userPhone: user?.phone,
+				userEmail: user?.email,
+				city: user?.city,
+				index: user?.index,
+				deliveryType: user?.deliveryType,
+				paymentType: user?.paymentType
+				, street: user?.address,
+				
+			})
+		}, [setManyOrderInfo, user])
 	return (
 		<div className='cart'>
 			<h1 className='cart__title'>Оформление заказа</h1>

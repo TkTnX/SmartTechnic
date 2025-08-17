@@ -9,8 +9,9 @@ type Props = {
 }
 
 export const ReceiverInfo = ({ step, setStep }: Props) => {
-	const setOrderInfo = useCartStore(state => state.setOrderInfo)
+	const {setOrderInfo, orderInfo} = useCartStore()
 	const blockStep = 4
+	console.log(orderInfo)
 	return (
 		<CartBlock
 			blockStep={blockStep}
@@ -18,30 +19,35 @@ export const ReceiverInfo = ({ step, setStep }: Props) => {
 			step={step}
 			title='Получатель'
 			className='receiverInfo'
+			
 		>
 			<LabelInput
 				setOrderInfo={setOrderInfo}
 				className='receiverInfo__input'
 				label='Имя'
 				name='username'
+				defaultValue={orderInfo.username || ''}
 			/>
 			<LabelInput
 				setOrderInfo={setOrderInfo}
 				className='receiverInfo__input'
-				label='Фамилия'
-				name='userLastname'
+				label='Индекс'
+				name='index'
+				defaultValue={orderInfo.index || ''}
 			/>
 			<LabelInput
 				setOrderInfo={setOrderInfo}
 				className='receiverInfo__input'
 				label='Номер телефона'
 				name='userPhone'
+				defaultValue={orderInfo.userPhone || ''}
 			/>
 			<LabelInput
 				setOrderInfo={setOrderInfo}
 				className='receiverInfo__input'
 				label='Эл. почта'
 				name='userEmail'
+				defaultValue={orderInfo.userEmail || ''}
 			/>
 		</CartBlock>
 	)

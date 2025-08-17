@@ -28,7 +28,8 @@ export const DropdownInput = <TFormValues extends FieldValues>({
 	setOrderInfo,
 	getValue,
 	errors,
-	register
+	register,
+	disabled
 }: Props<TFormValues>) => {
 	return (
 		<label className={`dropdownInput ${className}`}>
@@ -36,14 +37,17 @@ export const DropdownInput = <TFormValues extends FieldValues>({
 			<select
 				{...register?.(name as Path<TFormValues>)}
 				value={value}
-				onChange={e => setOrderInfo?.(name, e.target.value)}
+				onChange={e => {
+					setOrderInfo?.(name, e.target.value)
+				}}
 				defaultValue={defaultValue}
 				name={name}
 				className='dropdownInput__input'
+				disabled={disabled}
 			>
 				{items.map(item => (
 					<option
-						value={getValue || register ? item.value : item.label}
+						value={getValue || (register && name !== "city") ? item.value : item.label}
 						key={item.value}
 					>
 						{item.label}

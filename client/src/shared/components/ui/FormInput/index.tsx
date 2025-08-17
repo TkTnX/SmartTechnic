@@ -12,7 +12,6 @@ type Props<TFormValues extends FieldValues> = {
 	type?: string
 	inputClassName?: string
 	disabled?: boolean,
-	defaultValue?: string
 }
 export const FormInput = <TFormValues extends FieldValues>({
 	register,
@@ -22,7 +21,6 @@ export const FormInput = <TFormValues extends FieldValues>({
 	type = 'text',
 	inputClassName,
 	disabled,
-	defaultValue
 }: Props<TFormValues>) => {
 	const [showPass, setShowPass] = useState(false)
 	return (
@@ -34,7 +32,7 @@ export const FormInput = <TFormValues extends FieldValues>({
 					className={`${inputClassName} formInput__input`}
 					type={type === 'password' && showPass ? 'text' : type}
 					{...register(name)}
-					defaultValue={defaultValue}
+					
 				/>
 				{type === 'password' && (
 					<ShowPassword

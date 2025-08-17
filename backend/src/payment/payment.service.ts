@@ -27,7 +27,7 @@ export class PaymentService {
 
       confirmation: {
         type: "redirect" as IConfirmationType,
-        return_url: `${process.env.CLIENT_URL}/order/${dto.orderId}`,
+        return_url: `${process.env.CLIENT_URL}/profile/history`,
       },
       description: `Заказ №${dto.orderId}`,
     };

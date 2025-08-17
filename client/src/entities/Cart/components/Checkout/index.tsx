@@ -32,7 +32,6 @@ export const Checkout = ({ cartProducts }: Props) => {
 			}
 		},
 		onError: (err: AxiosError<{ message: string }>) => {
-			console.log(err)
 			toast.error(err.response?.data.message[0])
 		}
 	})

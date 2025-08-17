@@ -31,8 +31,8 @@ export class CreateOrderDto {
   @IsNotEmpty({ message: "Имя не может быть пустым" })
   username: string;
 
-  @IsNotEmpty({ message: "Фамилия не может быть пустой" })
-  userLastname: string;
+  @IsNotEmpty({ message: "Индекс не может быть пустой" })
+  index: string;
 
   @IsNotEmpty({ message: "Номер телефона не может быть пустым" })
   @IsPhoneNumber("RU", { message: "Некорректный номер телефона" })

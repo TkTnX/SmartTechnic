@@ -123,11 +123,11 @@ model Order {
   street       String
   paymentType  PaymentType
 
-  username     String
-  userLastname String
-  userPhone    String
-  userEmail    String
-  comment      String?
+  index     String?
+  username  String
+  userPhone String
+  userEmail String
+  comment   String?
 
   totalPrice Int
   products   CartProduct[]

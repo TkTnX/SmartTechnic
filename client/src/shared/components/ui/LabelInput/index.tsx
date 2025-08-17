@@ -16,12 +16,13 @@ export const LabelInput = ({
 	name,
 	type = 'text',
 	className,
-	setOrderInfo
+	setOrderInfo,
+	defaultValue
 }: Props) => {
 	return (
 		<label className={`labelInput ${className}`}>
 			{label}
-			<input onChange={e => setOrderInfo(name, e.target.value)} type={type} name={name} className='labelInput__input' />
+			<input defaultValue={defaultValue} onChange={e => setOrderInfo(name, e.target.value)} type={type} name={name} className='labelInput__input' />
 		</label>
 	)
 }
