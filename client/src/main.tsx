@@ -14,6 +14,7 @@ import {
 	CatalogPage,
 	FavoritesPage,
 	Homepage,
+	PersonalPage,
 	ProductPage,
 	ProfilePage
 } from '@/shared/pages'
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <ProfilePage />
+			},
+			{
+				path: '/profile/personal',
+				element: <PersonalPage />
 			},
 			{
 				path: '/profile/favorites',

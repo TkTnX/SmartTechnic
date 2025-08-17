@@ -1,29 +1,29 @@
 import { useState } from 'react'
-import type { FieldErrors, UseFormRegister } from 'react-hook-form'
-
-import type { LoginSchema, RegisterSchema } from '@/shared/schemas'
+import type { FieldErrors, FieldValues, UseFormRegister, Path } from 'react-hook-form'
 
 import './_formInput.scss'
 import { ShowPassword } from './components/ShowPassword'
 
-type Props = {
-	register: UseFormRegister<LoginSchema | RegisterSchema>
-	errors: FieldErrors<LoginSchema | RegisterSchema>
+type Props<TFormValues extends FieldValues> = {
+	register: UseFormRegister<TFormValues>
+	errors: FieldErrors<TFormValues>
 	label: string
-	name: keyof LoginSchema | keyof RegisterSchema
+	name: Path<TFormValues>
 	type?: string
 	inputClassName?: string
-	disabled?: boolean
+	disabled?: boolean,
+	defaultValue?: string
 }
-export const FormInput = ({
+export const FormInput = <TFormValues extends FieldValues>({
 	register,
 	errors,
 	label,
 	name,
 	type = 'text',
 	inputClassName,
-	disabled
-}: Props) => {
+	disabled,
+	defaultValue
+}: Props<TFormValues>) => {
 	const [showPass, setShowPass] = useState(false)
 	return (
 		<label className='formInput'>
@@ -34,6 +34,7 @@ export const FormInput = ({
 					className={`${inputClassName} formInput__input`}
 					type={type === 'password' && showPass ? 'text' : type}
 					{...register(name)}
+					defaultValue={defaultValue}
 				/>
 				{type === 'password' && (
 					<ShowPassword
@@ -42,9 +43,9 @@ export const FormInput = ({
 					/>
 				)}
 			</div>
-			{errors[name as keyof typeof errors] && (
+			{errors[name] && (
 				<p className='formInput__error'>
-					{errors[name as keyof typeof errors]!.message}
+					{errors[name]?.message as string}
 				</p>
 			)}
 		</label>

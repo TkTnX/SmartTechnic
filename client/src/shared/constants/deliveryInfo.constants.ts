@@ -108,3 +108,14 @@ export const PAYMENT_TYPES = [
 		value: 'CARD'
 	}
 ]
+
+export const DELIVERY_TYPES = [
+	{
+		label: 'Доставка',
+		value: 'DELIVERY'
+	},
+	{
+		label: 'Самовывоз',
+		value: 'PICKUP'
+	}
+]

@@ -13,6 +13,8 @@ import {
 } from './components'
 
 export const Cart = () => {
+
+	// TODO: В инпуты автоматически вносить данные, если они указаны в профиле
 	const { user, isLoading, error } = useUserStore()
 	const [step, setStep] = useState(1)
 	return (
