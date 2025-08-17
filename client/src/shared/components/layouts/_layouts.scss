@@ -1,0 +1,20 @@
+@use '@/shared/styles/mixins' as *;
+
+.layout__title {
+	margin-top: 30px;
+	font-weight: 700;
+	font-size: 36px;
+}
+
+.layout__wrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: 135px;
+	margin-top: 30px;
+
+	@include lg {
+		gap: 30px;
+	}
+
+	
+}

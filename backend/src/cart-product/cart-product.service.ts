@@ -10,7 +10,6 @@ export class CartProductService {
   ) {}
 
   public async addToCart(userId: string, productId: string) {
-    // TODO: Исправить ошибку. Сейчас через кнопку можно добавить сколько угодно товаров
     const product = await this.productService.getProduct(productId);
 
     const isAlreadyAdded = await this.prismaService.cartProduct.findFirst({
@@ -19,7 +18,7 @@ export class CartProductService {
       },
     });
 
-    if (isAlreadyAdded) {
+    if (isAlreadyAdded && product.quantity !== isAlreadyAdded.quantity) {
       await this.prismaService.cartProduct.update({
         where: { id: isAlreadyAdded.id },
         data: { quantity: isAlreadyAdded.quantity + 1 },
@@ -28,6 +27,8 @@ export class CartProductService {
       return {
         message: `Новое количество товара: ${isAlreadyAdded.quantity + 1}`,
       };
+    } else if (isAlreadyAdded && product.quantity === isAlreadyAdded.quantity) {
+      return { message: "Добавлено максимальное количество товара!" };
     } else {
       await this.prismaService.cartProduct.create({
         data: {
@@ -65,7 +66,6 @@ export class CartProductService {
         },
       });
 
-
       return { message: "Количество товара увеличено" };
     }
 
@@ -73,7 +73,7 @@ export class CartProductService {
   }
 
   public async removeFromCart(cartProductId: string) {
-    const cartProduct = await this.findCartProductById(cartProductId)
+    const cartProduct = await this.findCartProductById(cartProductId);
 
     await this.prismaService.cartProduct.delete({
       where: { id: cartProduct.id },

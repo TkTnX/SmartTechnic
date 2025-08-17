@@ -1,11 +1,9 @@
 import { UserCircle2 } from 'lucide-react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
-import { USER_NAV } from '@/shared/constants'
+import { UserNav } from '../../UserNav'
 
 import './_userDropdown.scss'
-import { LogoutButton } from '@/features'
 
 export const UserDropdown = () => {
 	const [open, setOpen] = useState(false)
@@ -17,20 +15,7 @@ export const UserDropdown = () => {
 			>
 				<UserCircle2 color='#838688' />{' '}
 			</button>
-			{open && (
-				<div className='userDropdown'>
-					{USER_NAV.map(item => (
-						<Link
-							className='userDropdown__link'
-							key={item.href}
-							to={item.href}
-						>
-							{item.title}
-						</Link>
-                    ))}
-                    <LogoutButton />
-				</div>
-			)}
+			{open && <UserNav onClick={() => setOpen(false)} className='userDropdown' />}
 		</>
 	)
 }

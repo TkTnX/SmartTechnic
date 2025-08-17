@@ -8,10 +8,12 @@ import { useCartStore } from '@/shared/stores'
 import type { ICartProduct } from '@/shared/types'
 
 import './_checkout.scss'
+import { useState } from 'react'
 
 type Props = { cartProducts: ICartProduct[] }
 
 export const Checkout = ({ cartProducts }: Props) => {
+	const [isChecked, setIsChecked] = useState(false)
 	const navigate = useNavigate()
 	const orderInfo = useCartStore(state => state.orderInfo)
 	const totalPrice = cartProducts.reduce(
@@ -56,13 +58,13 @@ export const Checkout = ({ cartProducts }: Props) => {
 			</div>
 			<button
 				onClick={() => mutate()}
-				disabled={Object.values(orderInfo).includes(null)}
+				disabled={Object.values(orderInfo).includes(null) || !isChecked}
 				className='checkout__submit'
 			>
 				Оформить заказ
 			</button>
 			<label className='checkout__agreement'>
-				<input type='checkbox' />
+				<input onChange={e => setIsChecked(e.target.checked)} type='checkbox' />
 				<span>
 					Подтверждая заказ, я принимаю условия{' '}
 					<Link to={'/agreement'}>пользовательского соглашения</Link>

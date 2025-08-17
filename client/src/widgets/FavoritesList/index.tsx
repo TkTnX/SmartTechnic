@@ -10,7 +10,6 @@ export const FavoritesList = () => {
 	const { user, isLoading } = useUserStore()
 	return (
 		<section className='favoritesList'>
-			<h1 className='favoritesList__title'>Избранное</h1>
 			<div className='favoritesList__list'>
 				{isLoading || !user ? (
 					[...new Array(3)].map((_, index) => (

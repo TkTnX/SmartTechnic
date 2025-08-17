@@ -4,13 +4,18 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
-import { CartLayout, RootLayout } from '@/shared/components/layouts'
+import {
+	CartLayout,
+	ProfileLayout,
+	RootLayout
+} from '@/shared/components/layouts'
 import {
 	CartPage,
 	CatalogPage,
 	FavoritesPage,
 	Homepage,
-	ProductPage
+	ProductPage,
+	ProfilePage
 } from '@/shared/pages'
 import '@/shared/styles/index.scss'
 
@@ -30,10 +35,6 @@ const router = createBrowserRouter([
 			{
 				path: '/product/:productId',
 				element: <ProductPage />
-			},
-			{
-				path: '/profile/favorites',
-				element: <FavoritesPage />
 			}
 		]
 	},
@@ -44,6 +45,20 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <CartPage />
+			}
+		]
+	},
+	{
+		path: '/profile',
+		element: <ProfileLayout />,
+		children: [
+			{
+				index: true,
+				element: <ProfilePage />
+			},
+			{
+				path: '/profile/favorites',
+				element: <FavoritesPage />
 			}
 		]
 	}

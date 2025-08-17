@@ -1,15 +1,13 @@
 @use '@/shared/styles/mixins' as *;
 
 .favoritesList {
-
-    &__title {
-        font-weight: 700;
-        font-size: 36px;
-        margin-top: 30px;
-    }
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+		margin-top: 30px;
+	}
 
 	&__list {
-        margin-top: 30px;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px 5px;
