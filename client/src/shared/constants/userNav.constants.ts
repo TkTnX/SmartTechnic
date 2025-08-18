@@ -17,6 +17,6 @@ export const USER_NAV = [
 	},
 	{
 		title: 'Сменить пароль',
-		href: '/auth/new-password'
+		href: '/profile/new-password'
 	}
 ]

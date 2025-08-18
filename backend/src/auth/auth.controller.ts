@@ -3,6 +3,7 @@ import {
   Controller,
   HttpCode,
   HttpStatus,
+  Patch,
   Post,
   Req,
   Res,
@@ -11,6 +12,9 @@ import { AuthService } from "./auth.service";
 import { RegisterDto } from "./dto/register.dto";
 import { Request, Response } from "express";
 import { LoginDto } from "./dto/login.dto";
+import { Authorization } from "./decorators/auth.decorator";
+import { NewPasswordDto } from "./dto/new-password.dto";
+import { Authorized } from "./decorators/authorized.decorator";
 
 @Controller("auth")
 export class AuthController {
@@ -31,5 +35,12 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async logout(@Req() req: Request, @Res({passthrough: true}) res: Response) {
     return this.authService.logout(req, res);
+  }
+
+  @Authorization()
+  @Patch("new-password")
+  @HttpCode(HttpStatus.OK)
+  async updatePassword(@Authorized("id") userId: string, @Body() dto: NewPasswordDto) {
+    return await this.authService.updatePassword(userId, dto)
   }
 }

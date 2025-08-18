@@ -119,6 +119,7 @@ export const AuthForm = () => {
 					{isLogin ? (
 						<Link
 							className='authForm__link'
+							// TODO: Сделать страницу auth/new-password, как profile/new-password
 							to={'/auth/new-password'}
 						>
 							Забыли пароль?

@@ -22,7 +22,16 @@ export class UserService {
           },
         },
         reviews: true,
-        orders: true,
+        orders: {
+          include: {
+            products: true,
+            orderItems: {
+              include: {
+                product: true
+              }
+            }
+          }
+        },
         cartProducts: {
           orderBy: {
             quantity: "desc",

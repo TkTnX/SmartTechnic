@@ -7,6 +7,7 @@ import './_userDropdown.scss'
 
 export const UserDropdown = () => {
 	const [open, setOpen] = useState(false)
+	// TODO: При нажатии вне контейнера или на ESC закрыть
 	return (
 		<>
 			<button

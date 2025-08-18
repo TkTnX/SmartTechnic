@@ -11,7 +11,6 @@ type Props = {
 export const ReceiverInfo = ({ step, setStep }: Props) => {
 	const {setOrderInfo, orderInfo} = useCartStore()
 	const blockStep = 4
-	console.log(orderInfo)
 	return (
 		<CartBlock
 			blockStep={blockStep}

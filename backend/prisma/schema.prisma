@@ -55,9 +55,10 @@ model Product {
   reviews          Review[]
   product          CartProduct[]
   favoriteProducts FavoriteProduct[]
+  orderItem OrderItem[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
 
 model Review {
@@ -133,6 +134,22 @@ model Order {
   products   CartProduct[]
   user       User          @relation(fields: [userId], references: [id])
   userId     String        @map("user_id")
+  orderItems OrderItem[]
+
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model OrderItem {
+  id String @id @default(uuid())
+
+  quantity Int
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String  @map("product_id")
+
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String @map("order_id")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

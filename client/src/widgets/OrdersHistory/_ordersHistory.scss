@@ -1,0 +1,22 @@
+@use '@/shared/styles/mixins' as *;
+
+.ordersHistory {
+	border: 1px solid #eaeaf0;
+	border-radius: 8px;
+	background: #fbfdff;
+	padding: 50px;
+	width: 100%;
+
+	&__title {
+		font-weight: 600;
+		font-size: 24px;
+	}
+
+	&__list {
+		margin-top: 20px;
+	}
+
+	@include md {
+		padding: 20px;
+	}
+}

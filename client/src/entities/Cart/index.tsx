@@ -13,24 +13,22 @@ import {
 } from './components'
 
 export const Cart = () => {
-
 	const { user, isLoading, error } = useUserStore()
 	const setManyOrderInfo = useCartStore(state => state.setManyOrderInfo)
 	const [step, setStep] = useState(1)
 
 	useEffect(() => {
-			setManyOrderInfo({
-				username: user?.name,
-				userPhone: user?.phone,
-				userEmail: user?.email,
-				city: user?.city,
-				index: user?.index,
-				deliveryType: user?.deliveryType,
-				paymentType: user?.paymentType
-				, street: user?.address,
-				
-			})
-		}, [setManyOrderInfo, user])
+		setManyOrderInfo({
+			username: user?.name,
+			userPhone: user?.phone,
+			userEmail: user?.email,
+			city: user?.city,
+			index: user?.index,
+			deliveryType: user?.deliveryType,
+			paymentType: user?.paymentType,
+			street: user?.address
+		})
+	}, [setManyOrderInfo, user])
 	return (
 		<div className='cart'>
 			<h1 className='cart__title'>Оформление заказа</h1>

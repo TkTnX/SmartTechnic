@@ -25,6 +25,11 @@ export const ProfileLayout = () => {
 		fetchUser()
 	}, [])
 
+	// * TODO: Страница история покупок (вёрстка)
+	// * TODO: Страница сменить пароль (вёрстка + функционал)
+	// TODO: Upload images 
+	// todo: middleware
+
 	return (
 		<>
 			<MoveToUp />

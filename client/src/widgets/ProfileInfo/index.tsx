@@ -45,13 +45,13 @@ export const ProfileInfo = () => {
 				</Link>{' '}
 				и <Link to={'/profile/personal'}>cменить пароль.</Link>
 				Зарегистрированные пользователи имеют доступ к{' '}
-				<Link to={'/profile/orders'}>истории заказов</Link> и
+				<Link to={'/profile/history'}>истории заказов</Link> и
 				возможность{' '}
 				<Link to={'/profile/favorites'}>
 					добавлять в избранное товары для будущих покупок.
 				</Link>
 			</p>
-			<Link className='profileInfo__link' to={'/profile/orders'}>
+			<Link className='profileInfo__link' to={'/profile/personal'}>
 				Панель управления
 			</Link>
 		</section>

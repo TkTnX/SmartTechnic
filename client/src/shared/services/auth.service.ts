@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/shared/libs'
-import type { LoginSchema, RegisterSchema } from '@/shared/schemas'
+import type { LoginSchema, NewPasswordSchema, RegisterSchema } from '@/shared/schemas'
 
 class AuthService {
 	async register(body: RegisterSchema) {
@@ -22,6 +22,14 @@ class AuthService {
 
 		if (res.status !== 200) throw new Error(res.data.message)
 
+		return res.data
+	}
+
+	async updatePassword(body: NewPasswordSchema) {
+		const res = await axiosInstance.patch('/auth/new-password', body)
+
+		if (res.status !== 200) throw new Error(res.data.message)
+		
 		return res.data
 	}
 }

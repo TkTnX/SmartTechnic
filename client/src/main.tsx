@@ -13,7 +13,9 @@ import {
 	CartPage,
 	CatalogPage,
 	FavoritesPage,
+	HistoryPage,
 	Homepage,
+	NewPasswordPage,
 	PersonalPage,
 	ProductPage,
 	ProfilePage
@@ -62,8 +64,16 @@ const router = createBrowserRouter([
 				element: <PersonalPage />
 			},
 			{
+				path: '/profile/history',
+				element: <HistoryPage />
+			},
+			{
 				path: '/profile/favorites',
 				element: <FavoritesPage />
+			},
+			{
+				path: "/profile/new-password",
+				element: <NewPasswordPage />
 			}
 		]
 	}

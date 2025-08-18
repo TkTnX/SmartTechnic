@@ -41,4 +41,5 @@ export class UserDto {
   @IsOptional()
     @MaxLength(6, { message: "Индекс должен быть не более 6 символов" })
   index: string;
+
 }

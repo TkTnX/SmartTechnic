@@ -12,10 +12,13 @@ import { User } from "@prisma/client";
 import { Request, Response } from "express";
 import * as argon2 from "argon2";
 import { ConfigService } from "@nestjs/config";
+import { NewPasswordDto } from "./dto/new-password.dto";
+import { PrismaService } from "src/prisma/prisma.service";
 @Injectable()
 export class AuthService {
   public constructor(
     private readonly userService: UserService,
+    private readonly prismaService: PrismaService,
     private readonly configService: ConfigService
   ) {}
   public async register(req: Request, dto: RegisterDto) {
@@ -61,8 +64,26 @@ export class AuthService {
         res.clearCookie(this.configService.getOrThrow("SESSION_NAME"), {
           httpOnly: true,
         });
-        resolve()
+        resolve();
       });
+    });
+  }
+
+  public async updatePassword(userId: string, dto: NewPasswordDto) {
+    const user = await this.userService.findById(userId);
+
+    const isPasswordValid = await argon2.verify(user.password, dto.oldPassword);
+
+    if (!isPasswordValid)
+      throw new UnauthorizedException("Неверные данные для входа");
+
+    const hashedPassword = await argon2.hash(dto.newPassword);
+
+    return await this.prismaService.user.update({
+      where: { id: user.id },
+      data: {
+        password: hashedPassword,
+      },
     });
   }
 
