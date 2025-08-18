@@ -12,7 +12,8 @@ import { ms } from "src/utils/ms.util";
 import { isBoolean } from "src/utils/isBoolean.util";
 import { createClient } from "redis";
 import { ValidationPipe } from "@nestjs/common";
-
+import * as express from "express";
+import { join } from "path";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -34,6 +35,8 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
+  app.use("/uploads", express.static(join(__dirname, "..", "uploads")));
+
   app.use(
     session({
       store: redisStore,
@@ -52,11 +55,13 @@ async function bootstrap() {
     })
   );
 
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    transform: true
-  }))
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    })
+  );
 
   app.enableCors({
     origin: process.env.CLIENT_URL,

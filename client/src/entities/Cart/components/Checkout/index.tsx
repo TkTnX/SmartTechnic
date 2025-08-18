@@ -28,7 +28,7 @@ export const Checkout = ({ cartProducts }: Props) => {
 			if (orderInfo.paymentType === 'CARD' ) {
 				window.location.href = data.paymentUrl
 			} else {
-				navigate(`/order/${data.orderId}`)
+				navigate(`/profile/history`)
 			}
 		},
 		onError: (err: AxiosError<{ message: string }>) => {

@@ -43,7 +43,7 @@ export const ProfileInfo = () => {
 				<Link to={'/profile/personal'}>
 					изменить свои регистрационные данные
 				</Link>{' '}
-				и <Link to={'/profile/personal'}>cменить пароль.</Link>
+				и <Link to={'/profile/new-password'}>cменить пароль.</Link>
 				Зарегистрированные пользователи имеют доступ к{' '}
 				<Link to={'/profile/history'}>истории заказов</Link> и
 				возможность{' '}

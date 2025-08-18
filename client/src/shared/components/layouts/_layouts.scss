@@ -17,12 +17,8 @@
 .layout__wrapper {
 	display: flex;
 	align-items: flex-start;
-	gap: 135px;
 	margin-top: 30px;
-
-	@include xl {
-		gap: 30px;
-	}
+	gap: 30px;
 
 	@include lg {
 		gap: 20px;

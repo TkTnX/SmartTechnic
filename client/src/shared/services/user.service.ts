@@ -10,7 +10,25 @@ class UserService {
 	}
 
 	async updateProfile(data: PersonalSchema) {
-		const res = await axiosInstance.patch('/user', data)
+		const formData = new FormData()
+
+		Object.entries(data).forEach(([key, value]) => {
+			if (
+				key === 'avatar' &&
+				value instanceof FileList &&
+				value.length > 0
+			) {
+				formData.append('avatar', value[0])
+			} else {
+				formData.append(key, String(value))
+			}
+		})
+
+		const res = await axiosInstance.patch('/user', formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
 
 		if (res.status !== 200) throw new Error(res.data.message)
 		return res.data

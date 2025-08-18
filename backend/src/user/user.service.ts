@@ -2,7 +2,8 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { RegisterDto } from "src/auth/dto/register.dto";
 import { UserDto } from "./dto/user.dto";
-
+import * as path from "path";
+import * as fs from "fs";
 @Injectable()
 export class UserService {
   public constructor(private readonly prismaService: PrismaService) {}
@@ -27,10 +28,10 @@ export class UserService {
             products: true,
             orderItems: {
               include: {
-                product: true
-              }
-            }
-          }
+                product: true,
+              },
+            },
+          },
         },
         cartProducts: {
           orderBy: {
@@ -62,17 +63,16 @@ export class UserService {
 
   public async updateProfile(userId: string, dto: UserDto) {
     const user = await this.findById(userId);
-    let newAvatar: File | string = dto.avatar;
-
-    if (typeof newAvatar === "object") {
-      // todo: upload file
-      newAvatar = ""      
+    let avatar: Express.Multer.File | string = dto.avatar;
+    if (dto.avatar) {
+      avatar = `${process.env.SERVER_URL}/uploads/${avatar.filename}`;
     }
 
+    console.log(avatar)
 
     return await this.prismaService.user.update({
       where: { id: user.id },
-      data: {...dto, avatar: newAvatar},
+      data: { ...dto, avatar: avatar as string },
     });
   }
 }

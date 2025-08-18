@@ -25,7 +25,7 @@ export class UserDto {
   paymentType: PaymentType;
 
   @IsOptional()
-    @IsPhoneNumber("RU", { message: "Некорректный номер телефона" })
+  @IsPhoneNumber("RU", { message: "Некорректный номер телефона" })
   phone: string;
 
   @IsOptional()
@@ -36,10 +36,9 @@ export class UserDto {
   city: string;
 
   @IsOptional()
-  avatar: File;
+  avatar: Express.Multer.File;
 
   @IsOptional()
-    @MaxLength(6, { message: "Индекс должен быть не более 6 символов" })
+  @MaxLength(6, { message: "Индекс должен быть не более 6 символов" })
   index: string;
-
 }

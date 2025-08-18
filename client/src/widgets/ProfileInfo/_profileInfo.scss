@@ -19,13 +19,13 @@
 		font-weight: 700;
 		font-size: 28px;
 
-        @include md {
-            font-size: 24px;
-        }
+		@include md {
+			font-size: 24px;
+		}
 
-        @include sm {
-            font-size: 20px;
-        }
+		@include sm {
+			font-size: 20px;
+		}
 	}
 
 	&__top {
@@ -34,15 +34,15 @@
 		gap: 30px;
 		margin-top: 30px;
 
-        @include md {
-            margin-top: 20px;
-        }
+		@include md {
+			margin-top: 20px;
+		}
 
-        @include sm {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-        }
+		@include sm {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+		}
 	}
 
 	&__avatar {
@@ -56,6 +56,7 @@
 		background: #edf2f6;
 		font-weight: 700;
 		pointer-events: none;
+		object-fit: cover;
 	}
 
 	&__info {

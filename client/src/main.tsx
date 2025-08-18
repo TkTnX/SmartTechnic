@@ -9,6 +9,7 @@ import {
 	ProfileLayout,
 	RootLayout
 } from '@/shared/components/layouts'
+import { AuthMiddleware } from '@/shared/libs'
 import {
 	CartPage,
 	CatalogPage,
@@ -43,37 +44,40 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/cart',
-		element: <CartLayout />,
+		element: <AuthMiddleware />,
+
 		children: [
 			{
-				index: true,
-				element: <CartPage />
+				element: <CartLayout />,
+				children: [{ element: <CartPage />, index: true }]
 			}
 		]
 	},
 	{
 		path: '/profile',
-		element: <ProfileLayout />,
+		element: <AuthMiddleware />,
 		children: [
 			{
-				index: true,
-				element: <ProfilePage />
-			},
-			{
-				path: '/profile/personal',
-				element: <PersonalPage />
-			},
-			{
-				path: '/profile/history',
-				element: <HistoryPage />
-			},
-			{
-				path: '/profile/favorites',
-				element: <FavoritesPage />
-			},
-			{
-				path: "/profile/new-password",
-				element: <NewPasswordPage />
+				element: <ProfileLayout />,
+				children: [
+					{ index: true, element: <ProfilePage /> },
+					{
+						path: '/profile/personal',
+						element: <PersonalPage />
+					},
+					{
+						path: '/profile/history',
+						element: <HistoryPage />
+					},
+					{
+						path: '/profile/favorites',
+						element: <FavoritesPage />
+					},
+					{
+						path: '/profile/new-password',
+						element: <NewPasswordPage />
+					}
+				]
 			}
 		]
 	}

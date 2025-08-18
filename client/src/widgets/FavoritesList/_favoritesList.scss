@@ -12,7 +12,15 @@
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px 5px;
 
+		@include xl {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
 		@include lg {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		@include md {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
@@ -23,5 +31,9 @@
 
 	&__item {
 		border-radius: 8px !important;
+
+		.addToCart__buy {
+			text-align: center;
+		}
 	}
 }
