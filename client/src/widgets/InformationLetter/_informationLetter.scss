@@ -1,0 +1,49 @@
+@use '@/shared/styles/mixins' as *;
+
+.informationLetter {
+	margin-top: 60px;
+	max-width: 975px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+
+		@include md {
+			font-size: 28px;
+		}
+	}
+
+	&__subtitle {
+		margin-top: 20px;
+		font-weight: 400;
+		background: #ffff00;
+	}
+
+	&__text {
+		margin-top: 20px;
+		font-weight: 400;
+	}
+
+	&__bottom {
+		font-weight: 700;
+		font-size: 28px;
+
+		@include md {
+			font-size: 24px;
+		}
+
+		@include sm {
+			font-size: 20px;
+			
+		}
+
+		h4 {
+			margin-top: 20px;
+		}
+
+		span,
+		a {
+			color: #4878a6;
+		}
+	}
+}

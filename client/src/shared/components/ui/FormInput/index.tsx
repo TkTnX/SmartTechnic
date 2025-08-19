@@ -5,8 +5,8 @@ import './_formInput.scss'
 import { ShowPassword } from './components/ShowPassword'
 
 type Props<TFormValues extends FieldValues> = {
-	register: UseFormRegister<TFormValues>
-	errors: FieldErrors<TFormValues>
+	register?: UseFormRegister<TFormValues>
+	errors?: FieldErrors<TFormValues>
 	label: string
 	name: Path<TFormValues>
 	type?: string
@@ -31,7 +31,7 @@ export const FormInput = <TFormValues extends FieldValues>({
 					disabled={disabled}
 					className={`${inputClassName} formInput__input`}
 					type={type === 'password' && showPass ? 'text' : type}
-					{...register(name)}
+					{...register?.(name)}
 					
 				/>
 				{type === 'password' && (
@@ -41,7 +41,7 @@ export const FormInput = <TFormValues extends FieldValues>({
 					/>
 				)}
 			</div>
-			{errors[name] && (
+			{errors && errors[name] && (
 				<p className='formInput__error'>
 					{errors[name]?.message as string}
 				</p>

@@ -1,0 +1,119 @@
+@use '@/shared/styles/mixins' as *;
+
+.service {
+	margin-top: 30px;
+	max-width: 975px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+
+		@include md {
+			font-size: 28px;
+		}
+
+		@include sm {
+			font-size: 24px;
+		}
+	}
+
+	&__terms {
+		margin-top: 40px;
+
+		@include md {
+			margin-top: 20px;
+		}
+
+		&-title {
+			font-weight: 600;
+			font-size: 24px;
+			color: #838688;
+
+			@include sm {
+				font-size: 20px;
+			}
+		}
+
+		&-list {
+			margin-top: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		&-item {
+			p {
+				font-weight: 400;
+			}
+		}
+	}
+
+	&__categories {
+		margin-top: 40px;
+		overflow-x: auto;
+		img {
+			@include sm {
+				width: 765px;
+				height: 260px;
+				max-width: unset;
+			}
+		}
+	}
+
+	&__note {
+		display: block;
+		margin-top: 20px;
+
+		p {
+			font-weight: 400;
+		}
+	}
+
+	&__rules {
+		margin-top: 40px;
+
+		@include md {
+			margin-top: 30px;
+		}
+
+		&-title {
+			font-weight: 600;
+			font-size: 24px;
+		}
+
+		&-subtitle {
+			display: block;
+			margin-top: 20px;
+			font-weight: 700;
+		}
+
+		&-text {
+			margin-top: 10px;
+			font-weight: 400;
+		}
+
+		&-note {
+			display: block;
+			margin-top: 10px;
+			font-weight: 700;
+		}
+	}
+
+	&__subsection {
+		margin-top: 40px;
+
+		&-list {
+			margin-top: 20px;
+			line-height: 130%;
+		}
+
+		&-item {
+			list-style: disc;
+			margin-left: 20px;
+
+			&--num {
+				list-style-type: decimal;
+			}
+		}
+	}
+}

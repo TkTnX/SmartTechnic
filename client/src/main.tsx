@@ -11,15 +11,18 @@ import {
 } from '@/shared/components/layouts'
 import { AuthMiddleware } from '@/shared/libs'
 import {
+	AboutUsPage,
 	CartPage,
 	CatalogPage,
+	ContactsPage,
 	FavoritesPage,
 	HistoryPage,
 	Homepage,
 	NewPasswordPage,
 	PersonalPage,
 	ProductPage,
-	ProfilePage
+	ProfilePage,
+	ServicePage
 } from '@/shared/pages'
 import '@/shared/styles/index.scss'
 
@@ -39,6 +42,18 @@ const router = createBrowserRouter([
 			{
 				path: '/product/:productId',
 				element: <ProductPage />
+			},
+			{
+				path: '/about',
+				element: <AboutUsPage />
+			},
+			{
+				path: '/service',
+				element: <ServicePage />
+			},
+			{
+				path: '/contacts',
+				element: <ContactsPage />
 			}
 		]
 	},

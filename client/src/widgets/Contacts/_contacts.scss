@@ -1,0 +1,131 @@
+@use '@/shared/styles/mixins' as *;
+
+.contacts {
+	margin-top: 30px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+	}
+
+	&__wrapper {
+		margin-top: 30px;
+		display: flex;
+		align-items: stretch;
+		gap: 20px;
+
+		@include sm {
+			flex-direction: column-reverse;
+		}
+	}
+
+	&__list {
+		border-radius: 8px;
+		background: #edf2f6;
+		width: 420px;
+		overflow: hidden;
+
+		@include sm {
+			width: unset;
+		}
+	}
+
+	&__item {
+		padding: 15px 30px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		&:first-child {
+			padding-top: 30px;
+		}
+
+		&:last-child {
+			padding-bottom: 30px;
+		}
+
+		&-phone {
+			font-weight: 600;
+			font-size: 24px;
+			color: #2a5275;
+		}
+
+		&:hover {
+			background: #dae4ed;
+		}
+	}
+
+	&__more {
+		padding: 30px;
+		border-top: 1px solid #c8cacb;
+	}
+
+	&__mail {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-weight: 600;
+		font-size: 24px;
+		color: #2a5275;
+
+		svg {
+			min-width: 24px;
+			min-height: 24px;
+		}
+
+		@include lg {
+			font-size: 20px;
+		}
+
+        @include sm {
+            font-size: 19px;
+        }
+	}
+
+	&__time {
+		margin-top: 30px;
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+
+		&-title {
+			font-weight: 400;
+			color: #838688;
+		}
+
+		&-text {
+			margin-top: 10px;
+			font-weight: 600;
+			font-size: 20px;
+		}
+	}
+
+	&__map {
+		border-radius: 8px;
+		overflow: hidden;
+		img {
+			height: 100%;
+			object-fit: cover;
+		}
+
+		@include dbl-xl {
+			max-width: 600px;
+		}
+
+		@include xl {
+			max-width: 500px;
+		}
+
+		@include lg {
+			max-width: 400px;
+		}
+
+		@include md {
+			max-width: 350px;
+		}
+
+		@include sm {
+			max-width: unset;
+		}
+	}
+}
