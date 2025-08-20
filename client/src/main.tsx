@@ -15,14 +15,17 @@ import {
 	CartPage,
 	CatalogPage,
 	ContactsPage,
+	DropshippingPage,
 	FavoritesPage,
 	HistoryPage,
 	Homepage,
+	InstallmentPage,
 	NewPasswordPage,
 	PersonalPage,
 	ProductPage,
 	ProfilePage,
-	ServicePage
+	ServicePage,
+	WholesalePage
 } from '@/shared/pages'
 import '@/shared/styles/index.scss'
 
@@ -54,6 +57,18 @@ const router = createBrowserRouter([
 			{
 				path: '/contacts',
 				element: <ContactsPage />
+			},
+			{
+				path: '/installment',
+				element: <InstallmentPage />
+			},
+			{
+				path: '/wholesale',
+				element: <WholesalePage />
+			},
+			{
+				path: '/dropshipping',
+				element: <DropshippingPage />
 			}
 		]
 	},

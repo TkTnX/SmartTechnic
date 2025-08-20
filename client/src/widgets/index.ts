@@ -15,3 +15,6 @@ export * from "./Service"
 export * from "./InformationLetter"
 export * from "./Contacts"
 export * from "./ContactUs"
+export * from "./Installment"
+export * from "./Wholesale"
+export * from './Dropshipping'

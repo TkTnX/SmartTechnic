@@ -62,7 +62,7 @@ export const FOOTER_LINKS = [
 		items: [
 			{
 				title: 'Оптом ',
-				link: '#'
+				link: '/wholesale'
 			},
 			{
 				title: 'Дропшиппинг',

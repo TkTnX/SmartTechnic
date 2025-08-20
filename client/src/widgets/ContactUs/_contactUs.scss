@@ -1,0 +1,73 @@
+@use '@/shared/styles/mixins' as *;
+
+.contactUs {
+	margin-top: 30px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+	}
+
+	&__form {
+		margin-top: 30px;
+		display: flex;
+		align-items: stretch;
+		gap: 20px;
+		max-width: 860px;
+
+		@include sm {
+			flex-direction: column-reverse;
+			max-width: unset;
+		}
+	}
+
+	&__left {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__right {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		max-width: 530px;
+
+		@include sm {
+			max-width: unset;
+		}
+	}
+
+	&__input {
+		width: 310px;
+
+		@include sm {
+			width: 100%;
+		}
+	}
+
+	&__button {
+		padding: 14px;
+		border-radius: 5px;
+		background: #4878a6;
+
+		font-weight: 700;
+		color: #fff;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&__checkbox {
+		display: flex;
+		align-items: flex-start;
+		gap: 5px;
+		font-weight: 400;
+		line-height: 130%;
+
+		input {
+			margin-top: 3px;
+		}
+	}
+}

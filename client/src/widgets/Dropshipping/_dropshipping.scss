@@ -1,0 +1,39 @@
+@use '@/shared/styles/mixins' as *;
+
+.dropshipping {
+	margin-top: 30px;
+	max-width: 975px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+	}
+
+	&__list {
+		margin-top: 10px;
+		&-item {
+			list-style: decimal;
+			margin-left: 30px;
+			margin-top: 10px;
+		}
+	}
+
+	&__text {
+		margin-top: 20px;
+		font-weight: 400;
+		line-height: 130%;
+	}
+
+	&__model {
+		margin-top: 40px;
+	}
+
+	&__subtitle {
+		font-weight: 600;
+		font-size: 24px;
+
+		@include sm {
+			font-size: 20px;
+		}
+	}
+}

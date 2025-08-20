@@ -1,0 +1,75 @@
+@use '@/shared/styles/mixins' as *;
+
+.makeInstallment {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	gap: 57px;
+
+	@include lg {
+		gap: 30px;
+	}
+	@include sm {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	&__block {
+		padding: 30px;
+		border-radius: 8px;
+		background: #edf2f6;
+	}
+
+	&__title {
+		font-weight: 600;
+		font-size: 24px;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		margin-top: 20px;
+		width: 100%;
+	}
+
+	&__button {
+		border-radius: 4px;
+		background: #2a5275;
+		padding: 16px;
+		width: 100%;
+		color: #fff;
+	}
+
+	&__text {
+		font-weight: 400;
+	}
+
+	&__info {
+		max-width: 410px;
+
+		@include lg {
+			max-width: 330px;
+			width: 100%;
+		}
+
+		@include sm {
+			max-width: unset;
+		}
+	}
+
+	&__text {
+		margin-top: 20px;
+		font-weight: 400;
+	}
+
+	&__list {
+		margin-top: 10px;
+		margin-left: 30px;
+		font-weight: 400;
+	}
+
+	&__item {
+		list-style: disc;
+	}
+}
