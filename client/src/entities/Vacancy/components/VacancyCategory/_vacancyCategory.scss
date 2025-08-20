@@ -1,0 +1,27 @@
+.vacancyCategory {
+	&:not(:first-child) {
+		margin-top: 40px;
+	}
+
+	&__title {
+		font-weight: 600;
+		font-size: 24px;
+	}
+
+	&__list {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__item {
+		list-style: disc;
+		margin-left: 20px;
+        font-weight: 400;
+
+		&::marker {
+			color: #2a5275;
+		}
+	}
+}

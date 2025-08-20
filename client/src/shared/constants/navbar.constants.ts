@@ -4,7 +4,7 @@ export const NAVBAR_LINKS = [
 		name: 'О компании'
 	},
 	{
-		href: '/sales',
+		href: '/promos',
 		name: 'Акции'
 	},
 	{

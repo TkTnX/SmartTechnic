@@ -1,0 +1,30 @@
+@use '@/shared/styles/mixins' as *;
+
+.vacancies {
+	margin-top: 30px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+
+		@include md {
+			font-size: 28px;
+		}
+
+		@include sm {
+			font-size: 24px;
+		}
+	}
+
+	&__wrapper {
+		margin-top: 40px;
+		gap: 15px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+
+		@include md {
+			flex-direction: column;
+		}
+	}
+}

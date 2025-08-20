@@ -24,7 +24,10 @@ import {
 	PersonalPage,
 	ProductPage,
 	ProfilePage,
+	PromoItemPage,
+	PromosPage,
 	ServicePage,
+	VacanciesPage,
 	WholesalePage
 } from '@/shared/pages'
 import '@/shared/styles/index.scss'
@@ -69,6 +72,18 @@ const router = createBrowserRouter([
 			{
 				path: '/dropshipping',
 				element: <DropshippingPage />
+			},
+			{
+				path: '/promos',
+				element: <PromosPage />
+			},
+			{
+				path: "/promos/:promoId",
+				element: <PromoItemPage />
+			},
+			{
+				path: "/vacancies",
+				element: <VacanciesPage />
 			}
 		]
 	},

@@ -18,3 +18,6 @@ export * from "./ContactUs"
 export * from "./Installment"
 export * from "./Wholesale"
 export * from './Dropshipping'
+export * from "./PromosList"
+export * from "./BigPromo"
+export * from "./Vacancies"

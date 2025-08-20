@@ -1,0 +1,44 @@
+@use '@/shared/styles/mixins' as *;
+
+.promo {
+	background: #edf2f6;
+	position: relative;
+	border-radius: 8px;
+	padding: 0 50px;
+	flex: 1;
+	min-height: 180px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+
+	@include sm {
+		padding: 20px;
+		align-items: flex-start;
+		min-height: unset;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 28px;
+		max-width: 370px;
+
+		@include sm {
+			font-size: 16px;
+		}
+	}
+
+	&__image {
+		height: 100%;
+		object-fit: cover;
+
+		@include sm {
+			height: unset;
+			max-width: 90px;
+		}
+	}
+
+	&:hover {
+		opacity: 0.8;
+	}
+}

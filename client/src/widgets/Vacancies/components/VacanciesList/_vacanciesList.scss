@@ -1,0 +1,13 @@
+@use '@/shared/styles/mixins' as *;
+
+.vacanciesList {
+	border-radius: 8px;
+	overflow: hidden;
+	flex: 1;
+	max-width: 750px;
+
+	@include md {
+		max-width: unset;
+		width: 100%;
+	}
+}

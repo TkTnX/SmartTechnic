@@ -12,6 +12,8 @@ import { FavoriteModule } from './favorite/favorite.module';
 import { CartProductModule } from './cart-product/cart-product.module';
 import { OrderModule } from './order/order.module';
 import { PaymentModule } from './payment/payment.module';
+import { PromoModule } from './promo/promo.module';
+import { VacancyModule } from './vacancy/vacancy.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { PaymentModule } from './payment/payment.module';
     CartProductModule,
     OrderModule,
     PaymentModule,
+    PromoModule,
+    VacancyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,0 +1,21 @@
+@use '@/shared/styles/mixins' as *;
+
+.promosList {
+	margin-top: 30px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+	}
+
+	&__list {
+		margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+
+		@include lg {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+}

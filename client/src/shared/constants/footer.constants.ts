@@ -53,7 +53,7 @@ export const FOOTER_LINKS = [
 			},
 			{
 				title: 'Вакансии',
-				link: '#'
+				link: '/vacancies'
 			}
 		]
 	},
