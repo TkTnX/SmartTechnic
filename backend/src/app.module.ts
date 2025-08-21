@@ -14,6 +14,7 @@ import { OrderModule } from './order/order.module';
 import { PaymentModule } from './payment/payment.module';
 import { PromoModule } from './promo/promo.module';
 import { VacancyModule } from './vacancy/vacancy.module';
+import { CompareModule } from './compare/compare.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { VacancyModule } from './vacancy/vacancy.module';
     PaymentModule,
     PromoModule,
     VacancyModule,
+    CompareModule,
   ],
   controllers: [AppController],
   providers: [AppService],

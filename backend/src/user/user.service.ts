@@ -41,6 +41,11 @@ export class UserService {
             product: { include: productInclude },
           },
         },
+        compareItems: {
+          include: {
+            product: { include: { ...productInclude, specifications: true } },
+          },
+        },
       },
     });
 
@@ -68,7 +73,7 @@ export class UserService {
       avatar = `${process.env.SERVER_URL}/uploads/${avatar.filename}`;
     }
 
-    console.log(avatar)
+    console.log(avatar);
 
     return await this.prismaService.user.update({
       where: { id: user.id },

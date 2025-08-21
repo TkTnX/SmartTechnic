@@ -5,6 +5,7 @@ import { SpecificationService } from './specification.service';
 export class SpecificationController {
   constructor(private readonly specificationService: SpecificationService) { }
   
+
   @Get('/:categoryId')
   async getSpecificationsByCategory(@Param('categoryId') categoryId: string) {
     return await this.specificationService.getSpecificationsByCategory(categoryId)

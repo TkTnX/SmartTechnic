@@ -5,10 +5,11 @@ import { PrismaService } from "src/prisma/prisma.service";
 export class SpecificationService {
   public constructor(private readonly prismaService: PrismaService) {}
 
+
   async getSpecificationsByCategory(categoryId: string) {
     const specifications = await this.prismaService.specification.findMany({
       where: { categoryId },
-      include: {category: true}
+      include: { category: true },
     });
 
     return specifications;
