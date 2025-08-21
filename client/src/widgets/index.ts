@@ -21,3 +21,5 @@ export * from './Dropshipping'
 export * from "./PromosList"
 export * from "./BigPromo"
 export * from "./Vacancies"
+export * from "./BigNews"
+export * from "./Compare"

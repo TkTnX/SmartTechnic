@@ -5,6 +5,23 @@
 	background: #edf2f6;
 	padding: 30px 50px;
 
+	&--newsPage {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		flex: 1;
+	}
+
+	&__img {
+		max-width: 150px;
+		height: 100%;
+		object-fit: cover;
+
+		@include sm {
+			display: none;
+		}
+	}
+
 	&__title {
 		font-weight: 700;
 		font-size: 28px;
@@ -25,6 +42,10 @@
 		align-items: center;
 		justify-content: space-between;
 		margin-top: 20px;
+
+		&--newsPage {
+			flex-wrap: wrap;
+		}
 	}
 
 	&__link {

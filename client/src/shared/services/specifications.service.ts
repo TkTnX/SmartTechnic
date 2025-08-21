@@ -2,6 +2,7 @@ import { axiosInstance } from "@/shared/libs"
 import type { ISpecification } from "@/shared/types"
 
 class SpecificationsService {
+
     async getSpecificationsByCategory(categoryId: string): Promise<ISpecification[]> {
         const res = await axiosInstance.get(`/specifications/${categoryId}`) 
 

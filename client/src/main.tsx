@@ -14,6 +14,7 @@ import {
 	AboutUsPage,
 	CartPage,
 	CatalogPage,
+	ComparePage,
 	ContactsPage,
 	DropshippingPage,
 	FavoritesPage,
@@ -21,6 +22,8 @@ import {
 	Homepage,
 	InstallmentPage,
 	NewPasswordPage,
+	NewsItemPage,
+	NewsPage,
 	PersonalPage,
 	ProductPage,
 	ProfilePage,
@@ -78,12 +81,24 @@ const router = createBrowserRouter([
 				element: <PromosPage />
 			},
 			{
-				path: "/promos/:promoId",
+				path: '/promos/:promoId',
 				element: <PromoItemPage />
 			},
 			{
-				path: "/vacancies",
+				path: '/vacancies',
 				element: <VacanciesPage />
+			},
+			{
+				path: '/news',
+				element: <NewsPage />
+			},
+			{
+				path: '/news/:newsId',
+				element: <NewsItemPage />
+			},
+			{
+				path: '/compare',
+				element: <ComparePage />
 			}
 		]
 	},

@@ -1,0 +1,74 @@
+@use '@/shared/styles/mixins' as *;
+
+.compareTable {
+	width: 100%;
+	text-align: left;
+	margin-top: 30px;
+
+	@include md {
+		position: sticky;
+		top: 20px;
+	}
+
+	tbody {
+		display: flex;
+		flex-direction: column;
+	}
+
+	tr {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 25px 20px;
+
+		&:nth-child(odd) {
+			background: #edf2f6;
+		}
+
+		@include lg {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+
+		@include md {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	th {
+		display: block;
+		max-width: 305px;
+		width: 100%;
+
+		@include xl {
+			max-width: 200px;
+		}
+
+		@include lg {
+			grid-column: 1/4;
+			max-width: unset;
+		}
+
+		@include md {
+			grid-column: unset;
+		}
+	}
+
+	td {
+		max-width: 325px;
+		flex: 1;
+
+		@include sm {
+			max-width: unset;
+		}
+	}
+
+	&__count {
+		display: none;
+
+		@include vsm {
+			display: inline;
+		}
+	}
+}

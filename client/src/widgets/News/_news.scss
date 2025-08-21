@@ -34,6 +34,10 @@
 		@include md {
 			flex-direction: column;
 		}
+
+		&--newsPage {
+			flex-wrap: wrap;
+		}
 	}
 
 	&:hover {

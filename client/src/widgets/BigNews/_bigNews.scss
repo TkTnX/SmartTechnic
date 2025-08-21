@@ -1,0 +1,47 @@
+@use '@/shared/styles/mixins' as *;
+
+.bigNews {
+	margin-top: 30px;
+
+	&__title {
+		font-weight: 700;
+		font-size: 36px;
+	}
+
+	&__wrapper {
+		margin-top: 30px;
+		display: flex;
+		align-items: stretch;
+		gap: 20px;
+
+		@include md {
+			flex-direction: column;
+		}
+	}
+
+	&__image {
+		@include lg {
+			max-width: 300px;
+		}
+
+		@include md {
+			max-width: unset;
+		}
+	}
+
+	&__content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ul,
+		ol,
+		b,
+		i {
+			all: revert;
+		}
+	}
+}
