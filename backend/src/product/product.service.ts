@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ProductDto } from "./dto/product.dto";
+import { ProductStatus } from "@prisma/client";
 
 @Injectable()
 export class ProductService {
@@ -63,7 +64,9 @@ export class ProductService {
   }
 
   public async createProduct(dto: ProductDto) {
-    await this.prismaService.product.create({ data: dto });
+    await this.prismaService.product.create({
+      data: { ...dto, status: ProductStatus.AVAILABLE },
+    });
     return { ok: true };
   }
 }

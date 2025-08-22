@@ -1,18 +1,13 @@
-import { ProductStatus } from "@prisma/client";
-import {
-  IsArray,
-  IsInt,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from "class-validator";
+import { Type } from "class-transformer";
+import { IsNotEmpty, IsNumber, IsOptional } from "class-validator";
 
 export class ProductDto {
   @IsNotEmpty({ message: "Название не может быть пустым" })
   name: string;
 
   @IsNotEmpty({ message: "Цена не может быть пустой" })
-  @IsInt({ message: "Цена должна быть числом" })
+  @IsNumber({}, { message: "Цена должна быть числом" })
+  @Type(() => Number)
   price: number;
 
   @IsOptional()
@@ -24,14 +19,12 @@ export class ProductDto {
   @IsNotEmpty({ message: "Описание не может быть пустым" })
   description: string;
 
-  @IsNotEmpty({ message: "Статус заказа обязателен" })
-  status: ProductStatus;
-
   @IsNotEmpty({ message: "Количество товара обязательно" })
+  @IsNumber({}, { message: "Количество должно быть числом" })
+  @Type(() => Number)
   quantity: number;
 
-  @IsArray({ message: "Картинки обязательны" })
-  @IsString({ each: true, message: "Картинка должна быть строкой" })
+  @IsOptional()
   images: string[];
 
   @IsNotEmpty({ message: "Категория обязательна" })

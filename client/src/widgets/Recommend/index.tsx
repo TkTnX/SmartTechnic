@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const Recommend = ({ categoryId }: Props) => {
-	const { products, isPending, error } = useProducts({ category: categoryId })
+	const { products, isPending, error } = useProducts({ category: categoryId, take: "4" })
 
 
 	if (error) return null

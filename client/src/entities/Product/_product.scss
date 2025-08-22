@@ -14,7 +14,20 @@
 		font-weight: 400;
 		font-size: 20px;
 		margin-top: 10px;
-        display: block;
+		display: block;
+	}
+
+	&__top {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__image {
+		align-self: center;
+		img {
+			max-width: 285px;
+			overflow: hidden;
+		}
 	}
 
 	&__rating {

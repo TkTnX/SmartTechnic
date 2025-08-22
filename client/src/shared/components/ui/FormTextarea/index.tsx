@@ -12,19 +12,22 @@ type Props<TFormValues extends FieldValues> = {
 	errors?: FieldErrors<TFormValues>
 	label: string
 	name: Path<TFormValues>
-	className?: string
+	className?: string,
+	disabled?: boolean
 }
 export const FormTextarea = <TFormValues extends FieldValues>({
 	label,
 	name,
 	register,
 	errors,
-	className
+	className,
+	disabled
 }: Props<TFormValues>) => {
 	return (
 		<label className={`formTextarea ${className}`}>
 			<p className='formTextarea__label'>{label}</p>
 			<textarea
+			disabled={disabled}
 				{...register?.(name)}
 				name={name}
 				className={` formTextarea__input`}

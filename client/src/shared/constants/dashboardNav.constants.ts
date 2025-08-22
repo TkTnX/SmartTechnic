@@ -4,6 +4,10 @@ export const DASHBOARD_NAV = [
 		href: '/dashboard/products'
 	},
 	{
+		title: 'Характеристики товаров',
+		href: '/dashboard/specifications'
+	},
+	{
 		title: 'Категрии',
 		href: '/dashboard/categories'
 	},
