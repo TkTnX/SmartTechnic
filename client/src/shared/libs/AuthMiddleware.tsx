@@ -1,9 +1,18 @@
-import { useEffect, useState } from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-import { useUserStore } from '@/shared/stores'
 
-export const AuthMiddleware = () => {
+
+import { useUserStore } from '@/shared/stores';
+
+
+
+
+type Props = {
+	isNeedAdminCheck?: boolean
+}
+
+export const AuthMiddleware = ({ isNeedAdminCheck = false }: Props) => {
 	const [isAuth, setIsAuth] = useState<null | boolean>(null)
 
 	const { user, isLoading } = useUserStore()
@@ -15,6 +24,10 @@ export const AuthMiddleware = () => {
 	console.log(!!user)
 
 	if (!isAuth && !isLoading && !user) {
+		return <Navigate to='/' replace />
+	}
+
+	if (isNeedAdminCheck && user?.role !== "ADMIN") {
 		return <Navigate to='/' replace />
 	}
 

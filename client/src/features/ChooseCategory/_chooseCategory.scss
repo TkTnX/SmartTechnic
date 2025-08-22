@@ -1,0 +1,17 @@
+.chooseCategory {
+	&__label {
+		font-weight: 400;
+	}
+	&__select {
+		margin-top: 8px;
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #eaeaf0;
+		border-radius: 5px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background: #fff;
+	}
+}

@@ -23,4 +23,8 @@
 	@include lg {
 		gap: 20px;
 	}
+
+	@include md {
+		flex-direction: column;
+	}
 }

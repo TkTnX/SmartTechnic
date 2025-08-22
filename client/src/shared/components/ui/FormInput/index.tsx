@@ -1,26 +1,35 @@
 import { useState } from 'react'
-import type { FieldErrors, FieldValues, UseFormRegister, Path } from 'react-hook-form'
+import type {
+	FieldErrors,
+	FieldValues,
+	Path,
+	UseFormRegister
+} from 'react-hook-form'
 
 import './_formInput.scss'
 import { ShowPassword } from './components/ShowPassword'
 
-type Props<TFormValues extends FieldValues> = {
+interface Props<TFormValues extends FieldValues>
+	extends React.InputHTMLAttributes<HTMLInputElement> {
 	register?: UseFormRegister<TFormValues>
 	errors?: FieldErrors<TFormValues>
-	label: string
 	name: Path<TFormValues>
+	registerOptions?: Parameters<UseFormRegister<TFormValues>>[1]
+	label: string
 	type?: string
 	inputClassName?: string
-	disabled?: boolean,
+	disabled?: boolean
 }
 export const FormInput = <TFormValues extends FieldValues>({
 	register,
+	registerOptions,
 	errors,
 	label,
 	name,
 	type = 'text',
 	inputClassName,
 	disabled,
+	...props
 }: Props<TFormValues>) => {
 	const [showPass, setShowPass] = useState(false)
 	return (
@@ -31,8 +40,8 @@ export const FormInput = <TFormValues extends FieldValues>({
 					disabled={disabled}
 					className={`${inputClassName} formInput__input`}
 					type={type === 'password' && showPass ? 'text' : type}
-					{...register?.(name)}
-					
+					{...register?.(name, registerOptions)}
+					{...props}
 				/>
 				{type === 'password' && (
 					<ShowPassword

@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 
 import {
 	CartLayout,
+	DashboardLayout,
 	ProfileLayout,
 	RootLayout
 } from '@/shared/components/layouts'
@@ -16,6 +17,8 @@ import {
 	CatalogPage,
 	ComparePage,
 	ContactsPage,
+	DashboardPage,
+	DashboardProductsPage,
 	DropshippingPage,
 	FavoritesPage,
 	HistoryPage,
@@ -136,6 +139,22 @@ const router = createBrowserRouter([
 					{
 						path: '/profile/new-password',
 						element: <NewPasswordPage />
+					}
+				]
+			}
+		]
+	},
+	{
+		path: '/dashboard',
+		element: <AuthMiddleware isNeedAdminCheck />,
+		children: [
+			{
+				element: <DashboardLayout />,
+				children: [
+					{ index: true, element: <DashboardPage /> },
+					{
+						path: '/dashboard/products',
+						element: <DashboardProductsPage />
 					}
 				]
 			}

@@ -16,6 +16,7 @@ import { PromoModule } from './promo/promo.module';
 import { VacancyModule } from './vacancy/vacancy.module';
 import { CompareModule } from './compare/compare.module';
 import { ReviewModule } from './review/review.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ReviewModule } from './review/review.module';
     VacancyModule,
     CompareModule,
     ReviewModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
