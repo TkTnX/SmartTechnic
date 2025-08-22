@@ -7,9 +7,10 @@ import { WriteReview } from '@/features'
 
 type Props = {
 	reviews: IReview[]
+	productId: string
 }
 
-export const BigProductReviews = ({ reviews }: Props) => {
+export const BigProductReviews = ({ reviews, productId }: Props) => {
 	return (
 		<div className='bigProductReviews'>
 			<div className='bigProductReviews__list'>
@@ -17,7 +18,7 @@ export const BigProductReviews = ({ reviews }: Props) => {
 					<Review review={review} />
 				)) : <p className='empty'>Отзывов пока нет. <br /> <span>Будьте первым</span></p>}
 			</div>
-			<WriteReview />
+			<WriteReview productId={productId} />
 		</div>
 	)
 }

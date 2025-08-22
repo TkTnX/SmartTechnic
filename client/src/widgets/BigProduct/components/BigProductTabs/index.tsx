@@ -66,7 +66,7 @@ export const BigProductTabs = ({ product }: Props) => {
 						<h3 className='bigProductTabs__title'>
 							Отзывы на {product.name}
 						</h3>
-						<BigProductReviews reviews={product.reviews} />
+						<BigProductReviews productId={product.id} reviews={product.reviews} />
 					</div>
 				)}
 			</div>
