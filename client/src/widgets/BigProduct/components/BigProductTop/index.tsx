@@ -15,7 +15,11 @@ export const BigProductTop = ({ product }: Props) => {
 	return (
 		<div className='bigProduct__top'>
 			<div className='bigProduct__imagesWrapper'>
-				<img className='bigProduct__mainImage' src={product.images[currImage]} alt={product.name} />
+				<img
+					className='bigProduct__mainImage'
+					src={product.images[currImage]}
+					alt={product.name}
+				/>
 
 				<div className='bigProduct__images'>
 					{product.images.map((image, index) => (

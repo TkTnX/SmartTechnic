@@ -9,36 +9,43 @@ import type {
 import { categoriesService } from '@/shared/services'
 
 import './_chooseCategory.scss'
+import { Skeleton } from '@/shared/components'
 
 type Props<TFormValues extends FieldValues> = {
 	register?: UseFormRegister<TFormValues>
 	errors?: FieldErrors<TFormValues>
-	name: Path<TFormValues>
+	name: Path<TFormValues>,
+	defaultValue?: string,
 }
 
 export const ChooseCategory = <TFormValues extends FieldValues>({
 	name,
 	errors,
-	register
+	register,
+	defaultValue
 }: Props<TFormValues>) => {
 	const { data, isPending } = useQuery({
 		queryKey: ['categories'],
 		queryFn: () => categoriesService.getCategories()
 	})
+
 	return (
 		<div className='chooseCategory'>
 			<p className='chooseCategory__label'>Выбор категории</p>
 
 			<select
 				{...register?.(name)}
-				defaultValue={data?.[0].id}
+				defaultValue={defaultValue || data?.[0].id}
+
 				className='chooseCategory__select'
 			>
-				<option selected disabled hidden value=''>
+				<option  selected disabled hidden value=''>
 					Выберите категорию
 				</option>
 				{isPending ? (
-					<option>Загрузка...</option>
+					[new Array(3)].map((_, index) => (
+						<Skeleton key={index} height={48} />
+					))
 				) : (
 					data?.map(category => (
 						<option value={category.id} key={category.id}>

@@ -10,6 +10,12 @@
 		&:hover {
 			opacity: 0.6;
 		}
+
+		&.edit {
+			background: transparent;
+			width: unset;
+			height: unset;
+		}
 	}
 
 	&__form {
@@ -37,5 +43,16 @@
 			pointer-events: none;
 			opacity: 0.5;
 		}
+	}
+
+	&__images {
+		display: flex;
+		gap: 10px;
+
+
+	}
+
+	&__image {
+		max-width: 150px;
 	}
 }

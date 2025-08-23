@@ -20,6 +20,7 @@ export const DashboardProductList = () => {
 					<CreateProduct />
 					{products!.map(product => (
 						<Product
+							isAdminPage={true}
 							className='dashboardProductList__item'
 							key={product.id}
 							product={product}

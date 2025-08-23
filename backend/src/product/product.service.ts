@@ -69,4 +69,19 @@ export class ProductService {
     });
     return { ok: true };
   }
+  public async updateProduct(productId: string,dto: ProductDto) {
+    await this.prismaService.product.update({
+      where: {id: productId},
+      data: { ...dto, status: ProductStatus.AVAILABLE },
+    });
+    return { ok: true };
+  }
+
+  public async deleteProduct(productId: string) {
+    const product = await this.getProduct(productId);
+
+    return await this.prismaService.product.delete({
+      where: { id: product.id },
+    });
+  }
 }

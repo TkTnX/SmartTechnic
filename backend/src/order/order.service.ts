@@ -103,7 +103,6 @@ export class OrderService {
 
     // Создание OrderItems
 
-    console.log(order);
     await this.prismaService.orderItem.createMany({
       data: order.user.cartProducts.map((product) => ({
         orderId: order.id,

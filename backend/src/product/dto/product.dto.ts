@@ -11,6 +11,7 @@ export class ProductDto {
   price: number;
 
   @IsOptional()
+  @Type(() => Number)
   oldPrice: number;
 
   @IsNotEmpty({ message: "Бренд не может быть пустым" })

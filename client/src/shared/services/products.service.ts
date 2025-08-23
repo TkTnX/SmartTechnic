@@ -1,5 +1,5 @@
 import { axiosInstance } from '@/shared/libs'
-import type { ProductSchema } from '@/shared/schemas'
+import type { EditProductSchema, ProductSchema } from '@/shared/schemas'
 import type { IProduct } from '@/shared/types'
 
 class ProductsService {
@@ -43,6 +43,42 @@ class ProductsService {
 		})
 
 		if (res.status !== 201) throw new Error(res.data.message)
+
+		return res.data
+	}
+
+	public async editProduct(productId: string, body: EditProductSchema) {
+		const formData = new FormData()
+
+		Object.entries(body).forEach(([key, value]) => {
+			if (
+				key === 'images' &&
+				value instanceof FileList &&
+				value.length > 0
+			) {
+				Array.from(value).forEach(file => {
+					formData.append('images', file)
+				})
+			} else {
+				formData.append(key, value)
+			}
+		})
+
+		const res = await axiosInstance.patch(`/products/${productId}`, formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+
+		if (res.status !== 200) throw new Error(res.data.message)
+
+		return res.data
+	}
+
+	public async deleteProduct(productId: string) {
+		const res = await axiosInstance.delete(`/products/${productId}`)
+
+		if (res.status !== 200) throw new Error(res.data.message)
 
 		return res.data
 	}

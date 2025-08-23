@@ -1,9 +1,13 @@
-import z from 'zod'
+import z from 'zod';
+
+
+
+
 
 export const productSchema = z.object({
 	name: z.string().nonempty('Название продукта обязательно!'),
 	price: z.number('Цена должна быть числом'),
-	oldPrice: z.number().optional(),
+	oldPrice: z.any().optional(),
 	brand: z.string().nonempty('Бренд обязателен!'),
 	description: z.string().nonempty('Описание обязательно!'),
 	quantity: z.number('Количество должно быть числом'),
@@ -15,5 +19,9 @@ export const productSchema = z.object({
 		),
 	categoryId: z.string().nonempty('Категория обязательна!')
 })
+export const editProductSchema = productSchema.extend({
+	images: z.any().optional()
+})
 
 export type ProductSchema = z.infer<typeof productSchema>
+export type EditProductSchema = z.infer<typeof editProductSchema>

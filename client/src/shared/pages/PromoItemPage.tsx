@@ -16,7 +16,6 @@ export const PromoItemPage = () => {
 		queryFn: () => promoService.getPromo(promoId!)
 	})
 
-	console.log(promo)
 
 	if (error) return <p className='error'>{error.message}</p>
 	return (

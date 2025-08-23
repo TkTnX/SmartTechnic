@@ -1,0 +1,13 @@
+.productActions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	position: absolute;
+	right: 10px;
+
+	button {
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
