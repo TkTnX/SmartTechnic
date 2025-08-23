@@ -6,7 +6,7 @@ import { useProducts } from '@/shared/hooks'
 import './_dashboardProductList.scss'
 
 export const DashboardProductList = () => {
-	const { products, error, isPending } = useProducts()
+	const { products, error, isPending } = useProducts({}, true)
 
 	if (error) return <p className='error'>{error.message}</p>
 	return (

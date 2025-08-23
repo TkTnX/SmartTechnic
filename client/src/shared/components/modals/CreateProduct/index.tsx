@@ -1,22 +1,25 @@
-import { ChooseCategory } from '@/features'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
-import { Edit, Plus } from 'lucide-react'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { ChooseCategory } from '@/features';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import { Edit, Plus } from 'lucide-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
-import { FormInput, FormTextarea, Modal } from '@/shared/components/ui'
-import {
-	type EditProductSchema,
-	type ProductSchema,
-	editProductSchema,
-	productSchema
-} from '@/shared/schemas'
-import { productsService } from '@/shared/services'
-import type { ErrorType, IProduct } from '@/shared/types'
 
-import './_createProduct.scss'
+
+import { FormInput, FormTextarea, Modal } from '@/shared/components/ui';
+import { type EditProductSchema, type ProductSchema, editProductSchema, productSchema } from '@/shared/schemas';
+import { productsService } from '@/shared/services';
+import type { ErrorType, IProduct } from '@/shared/types';
+
+
+
+import './_createProduct.scss';
+
+
+
+
 
 type Props = {
 	product?: IProduct
@@ -49,7 +52,10 @@ export const CreateProduct = ({ product }: Props) => {
 			)
 			window.location.reload()
 		},
-		onError: (err: ErrorType) => toast.error(err.response.data.message[0])
+		onError: (err: ErrorType) =>
+			toast.error(
+				err.response.data.message || err.response.data.message[0]
+			)
 	})
 
 	return (

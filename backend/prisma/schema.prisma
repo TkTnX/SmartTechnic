@@ -29,12 +29,11 @@ model User {
   reviews          Review[]
   favoriteProducts FavoriteProduct[]
   cartProducts     CartProduct[]
-  compareItems CompareItem[]
+  compareItems     CompareItem[]
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
-
 
 model Product {
   id String @id @default(uuid())
@@ -58,10 +57,10 @@ model Product {
   product          CartProduct[]
   favoriteProducts FavoriteProduct[]
   orderItem        OrderItem[]
-  compareItems CompareItem[]
+  compareItems     CompareItem[]
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Review {

@@ -14,12 +14,17 @@ export const Modal = ({ children, title, open, setOpen, className }: Props) => {
 		document.body.style.overflow = open ? 'hidden' : 'unset'
 	}, [open])
 	if (!open) return null
+
+	const onClose = () => {
+		setOpen(false)
+		document.body.style.overflow = 'unset'
+	}
 	return (
 		<>
 			<div className={` ${className} modal`}>
 				<div className='modal__top'>
 					<h4 className='modal__title'>{title}</h4>
-					<button onClick={() => setOpen(false)}>
+					<button onClick={onClose}>
 						<img src='/images/icons/x.svg' alt='Закрыть' />
 					</button>
 				</div>

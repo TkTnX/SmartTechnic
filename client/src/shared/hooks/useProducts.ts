@@ -13,7 +13,7 @@ import { productsService } from '@/shared/services';
 const MIN = 0
 const MAX = 100000
 
-export function useProducts(query?: Record<string, string>) {
+export function useProducts(query?: Record<string, string>, isAdminPage = false) {
 	const [searchParams] = useSearchParams()
 	const [minMaxPrice, setMinMaxPrice] = useState<number[]>([MIN, MAX])
 
@@ -25,7 +25,7 @@ export function useProducts(query?: Record<string, string>) {
 		error
 	} = useQuery({
 		queryKey: ['products', filters],
-		queryFn: () => productsService.getProducts(query ? query :filters)
+		queryFn: () => productsService.getProducts(query ? query :filters, isAdminPage)
 	})
 
 	useEffect(() => {

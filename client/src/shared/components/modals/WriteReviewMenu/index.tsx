@@ -1,15 +1,23 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
-import { FormInput, FormTextarea, Modal } from '@/shared/components/ui'
-import { type ReviewSchema, reviewSchema } from '@/shared/schemas'
-import { reviewService } from '@/shared/services'
-import type { ErrorType } from '@/shared/types'
 
-import './_writeReviewMenu.scss'
+
+import { FormInput, FormTextarea, Modal } from '@/shared/components/ui';
+import { type ReviewSchema, reviewSchema } from '@/shared/schemas';
+import { reviewService } from '@/shared/services';
+import type { ErrorType } from '@/shared/types';
+
+
+
+import './_writeReviewMenu.scss';
+
+
+
+
 
 type Props = {
 	productId: string
@@ -35,7 +43,10 @@ export const WriteReviewMenu = ({ productId }: Props) => {
 		mutationFn: (data: ReviewSchema) =>
 			reviewService.writeReview(productId, data),
 		onSuccess: () => toast.success('Отзыв успешно отправлен'),
-		onError: (err: ErrorType) => toast.error(err.response.data.message[0])
+		onError: (err: ErrorType) =>
+			toast.error(
+				err.response.data.message || err.response.data.message[0]
+			)
 	})
 
 

@@ -93,7 +93,7 @@ export class OrderService {
           },
         });
 
-        if (product.quantity === 0)
+        if (product.quantity <= 1)
           await this.prismaService.product.update({
             where: { id: product.id },
             data: { status: ProductStatus.UNAVAILABLE },

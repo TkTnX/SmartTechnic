@@ -17,6 +17,7 @@ import {
 	CatalogPage,
 	ComparePage,
 	ContactsPage,
+	DashboardCategoriesPage,
 	DashboardPage,
 	DashboardProductsPage,
 	DropshippingPage,
@@ -155,6 +156,10 @@ const router = createBrowserRouter([
 					{
 						path: '/dashboard/products',
 						element: <DashboardProductsPage />
+					},
+					{
+						path: "/dashboard/categories",
+						element: <DashboardCategoriesPage />
 					}
 				]
 			}

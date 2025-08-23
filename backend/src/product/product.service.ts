@@ -2,13 +2,16 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ProductDto } from "./dto/product.dto";
 import { ProductStatus } from "@prisma/client";
+import { isBoolean } from "src/utils/isBoolean.util";
 
 @Injectable()
 export class ProductService {
   constructor(private readonly prismaService: PrismaService) {}
 
   public async getProducts(query: Record<string, string>) {
-    const { take, sortBy, category, от, до, ...restQuery } = query;
+    const { take, sortBy, category, от, до, isAdminPage, ...restQuery } = query;
+    const isAdmin = isBoolean(isAdminPage as "true" | "false");
+
     const splitedSortBy = sortBy ? sortBy.split("-") : [];
     let price: { gte?: number; lte?: number } = {};
     if (от !== undefined) {
@@ -33,6 +36,7 @@ export class ProductService {
             },
           },
         })),
+        status: isAdmin ? undefined : ProductStatus.AVAILABLE,
       },
       orderBy: sortBy ? { [splitedSortBy[0]]: splitedSortBy[1] } : undefined,
       take: +take || undefined,
@@ -69,9 +73,9 @@ export class ProductService {
     });
     return { ok: true };
   }
-  public async updateProduct(productId: string,dto: ProductDto) {
+  public async updateProduct(productId: string, dto: ProductDto) {
     await this.prismaService.product.update({
-      where: {id: productId},
+      where: { id: productId },
       data: { ...dto, status: ProductStatus.AVAILABLE },
     });
     return { ok: true };

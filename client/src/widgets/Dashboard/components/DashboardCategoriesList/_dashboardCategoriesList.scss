@@ -1,0 +1,13 @@
+@use '@/shared/styles/mixins' as *;
+
+.dashboardCategoriesList {
+	width: 100%;
+	display: flex;
+	gap: 20px 5px;
+	align-items: center;
+	flex-wrap: wrap;
+
+	&__item {
+		flex: 1;
+	}
+}

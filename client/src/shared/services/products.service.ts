@@ -4,9 +4,10 @@ import type { IProduct } from '@/shared/types'
 
 class ProductsService {
 	public async getProducts(
-		params: Record<string, string | null>
+		params: Record<string, string | null>,
+		isAdminPage = false
 	): Promise<IProduct[]> {
-		const res = await axiosInstance.get('/products', { params })
+		const res = await axiosInstance.get('/products', { params: {...params, isAdminPage},  })
 		if (res.status !== 200) throw new Error(res.data.message)
 
 		return res.data

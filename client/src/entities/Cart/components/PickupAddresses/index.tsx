@@ -3,10 +3,7 @@ import { useCartStore } from '@/shared/stores'
 
 export const PickupAddresses = () => {
 	const { setOrderInfo, orderInfo } = useCartStore()
-	console.log(
-		ADDRESSES.find(city => city.city === orderInfo.city),
-		orderInfo.city
-	)
+	
 	return (
 		<div className='deliveryInfo__addresses'>
 			{ADDRESSES.find(
