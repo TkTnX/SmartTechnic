@@ -21,9 +21,8 @@ export const Category = ({
 			<Link
 				className='category__link'
 				to={`/catalog?category=${category.id}`}
-			>
-				{category.name}
-			</Link>
+			/>
+			<p>{category.name}</p>
 			{isAdminPage && <DeleteCategory categoryId={category.id} />}
 		</div>
 	)

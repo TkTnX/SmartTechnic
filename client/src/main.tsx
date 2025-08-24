@@ -20,6 +20,7 @@ import {
 	DashboardCategoriesPage,
 	DashboardPage,
 	DashboardProductsPage,
+	DashboardSpecificationsPage,
 	DropshippingPage,
 	FavoritesPage,
 	HistoryPage,
@@ -158,8 +159,12 @@ const router = createBrowserRouter([
 						element: <DashboardProductsPage />
 					},
 					{
-						path: "/dashboard/categories",
+						path: '/dashboard/categories',
 						element: <DashboardCategoriesPage />
+					},
+					{
+						path: '/dashboard/specifications',
+						element: <DashboardSpecificationsPage />
 					}
 				]
 			}

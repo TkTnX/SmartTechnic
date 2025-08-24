@@ -1,8 +1,6 @@
 .deleteCategory {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-
+	position: relative;
+	z-index: 2;
 	&:hover {
 		opacity: 0.8;
 	}
