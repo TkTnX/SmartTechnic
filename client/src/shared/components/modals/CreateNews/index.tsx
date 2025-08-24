@@ -9,15 +9,12 @@ import { toast } from 'react-toastify'
 import { FormInput, Modal } from '@/shared/components/ui'
 import { type NewsSchema, newsSchema } from '@/shared/schemas'
 import { newsService } from '@/shared/services'
-import type { ErrorType, INews } from '@/shared/types'
+import type { ErrorType } from '@/shared/types'
 
 import './_createNews.scss'
 
-type Props = {
-	news?: INews
-}
 
-export const CreateNews = ({ news }: Props) => {
+export const CreateNews = () => {
 	const [text, setText] = useState('')
 	const [open, setOpen] = useState(false)
 	const {
@@ -45,7 +42,7 @@ export const CreateNews = ({ news }: Props) => {
 		<>
 			<button
 				onClick={() => setOpen(true)}
-				className={`createNews__trigger ${news ? 'edit' : ''}`}
+				className={`createNews__trigger `}
 			>
 				<Plus />
 			</button>
@@ -73,7 +70,6 @@ export const CreateNews = ({ news }: Props) => {
 							type='file'
 						/>
 						<FormInput
-							defaultValue={news?.title}
 							disabled={isPending}
 							errors={errors}
 							register={register}
@@ -86,7 +82,6 @@ export const CreateNews = ({ news }: Props) => {
 							className='createNews__editor'
 							value={text}
 							onChange={setText}
-							defaultValue={news?.text}
 						/>
 
 						<button

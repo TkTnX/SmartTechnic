@@ -4,12 +4,19 @@
 	border-radius: 8px;
 	background: #edf2f6;
 	padding: 30px 50px;
+	position: relative;
 
 	&--newsPage {
 		display: flex;
 		align-items: center;
 		gap: 20px;
 		flex: 1;
+	}
+
+	&__full-link {
+		z-index: 1;
+		position: absolute;
+		inset: 0;
 	}
 
 	&__content {

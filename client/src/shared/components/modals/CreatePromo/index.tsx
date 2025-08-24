@@ -9,15 +9,11 @@ import { toast } from 'react-toastify'
 import { FormInput, Modal } from '@/shared/components/ui'
 import { type PromoSchema, promoSchema } from '@/shared/schemas'
 import { promoService } from '@/shared/services'
-import type { ErrorType, IPromo } from '@/shared/types'
+import type { ErrorType } from '@/shared/types'
 
 import './_createPromo.scss'
 
-type Props = {
-	promo?: IPromo
-}
-
-export const CreatePromo = ({ promo }: Props) => {
+export const CreatePromo = () => {
 	const [text, setText] = useState('')
 	const [open, setOpen] = useState(false)
 	const {
@@ -45,7 +41,7 @@ export const CreatePromo = ({ promo }: Props) => {
 		<>
 			<button
 				onClick={() => setOpen(true)}
-				className={`createPromo__trigger ${promo ? 'edit' : ''}`}
+				className={`createPromo__trigger `}
 			>
 				<Plus />
 			</button>
@@ -81,7 +77,6 @@ export const CreatePromo = ({ promo }: Props) => {
 							type='file'
 						/>
 						<FormInput
-							defaultValue={promo?.title}
 							disabled={isPending}
 							errors={errors}
 							register={register}
@@ -94,7 +89,6 @@ export const CreatePromo = ({ promo }: Props) => {
 							className='createPromo__editor'
 							value={text}
 							onChange={setText}
-							defaultValue={promo?.text}
 						/>
 
 						<button

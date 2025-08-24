@@ -25,4 +25,10 @@ export class NewsService {
   public async createNews(dto: NewsDto) {
     return await this.prismaService.news.create({ data: dto });
   }
+
+  public async deleteNews(newsId: string) {
+    const newsItem = await this.getNewsItem(newsId)
+
+    return await this.prismaService.news.delete({ where: { id: newsItem.id } });
+  }
 }

@@ -42,6 +42,14 @@ class PromoService {
 		if (res.status !== 201) throw new Error(res.data.message)
 		return res.data
 	}
+
+	public async deletePromo(promoId: string) {
+		const res = await axiosInstance.delete(`/promos/${promoId}`)
+
+		if (res.status !== 200) throw new Error(res.data.message)
+
+		return res.data
+	}
 }
 
 export const promoService = new PromoService()

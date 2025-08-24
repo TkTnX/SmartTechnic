@@ -11,6 +11,12 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 15px;
+	position: relative;
+	&__link {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
 
 	@include sm {
 		padding: 20px;

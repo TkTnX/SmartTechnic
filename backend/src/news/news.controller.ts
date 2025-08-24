@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -58,5 +59,11 @@ export class NewsController {
       ...dto,
       image: `${process.env.SERVER_URL}/uploads/${image.filename}`,
     });
+  }
+
+  @Authorization("ADMIN")
+  @Delete(':newsId')
+  async deleteNews(@Param("newsId") newsId: string) {
+    return await this.newsService.deleteNews(newsId);
   }
 }

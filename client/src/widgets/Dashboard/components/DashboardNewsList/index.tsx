@@ -23,7 +23,7 @@ export const DashboardNewsList = () => {
 				<div className='dashboardNewsList__wrapper'>
 					<CreateNews />
 					{data!.map(news => (
-						<News className='dashboardNewsList__item' isNewsPage={true} news={news} key={news.id} />
+						<News className='dashboardNewsList__item' isAdminPage={true} isNewsPage={true} news={news} key={news.id} />
 					))}
 				</div>
 			)}

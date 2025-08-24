@@ -23,7 +23,7 @@ export const DashboardPromosList = () => {
 				<div className='dashboardPromosList__wrapper'>
 					<CreatePromo />
 					{data!.map(promo => (
-						<Promo promo={promo} key={promo.id} />
+						<Promo isAdminPage={true} promo={promo} key={promo.id} />
 					))}
 				</div>
 			)}

@@ -1,3 +1,4 @@
+import { DeleteNews } from '@/features'
 import { Link } from 'react-router-dom'
 
 import type { INews } from '@/shared/types'
@@ -7,12 +8,16 @@ import './_newsItem.scss'
 type Props = {
 	news: INews
 	isNewsPage: boolean
-	className?:string
+	className?: string
+	isAdminPage?: boolean
 }
 
-export const News = ({ news, isNewsPage, className }: Props) => {
+export const News = ({ news, isNewsPage, className, isAdminPage }: Props) => {
 	return (
-		<Link to={`/news/${news.id}`} className={`newsItem ${isNewsPage && 'newsItem--newsPage'} ${className}`}>
+		<div
+			className={`newsItem ${isNewsPage && 'newsItem--newsPage'} ${className}`}
+		>
+			<Link to={`/news/${news.id}`} className='newsItem__full-link' />
 			{isNewsPage && (
 				<img
 					className='newsItem__img'
@@ -24,7 +29,9 @@ export const News = ({ news, isNewsPage, className }: Props) => {
 				<h6 className='newsItem__title'>{news.title}</h6>
 				{/* TODO: В будущем разделять до точки */}
 				<p className='newsItem__text'>{news.text.slice(0, 100)}</p>
-				<div className={`newsItem__bottom ${isNewsPage && 'newsItem__bottom--newsPage'}`}>
+				<div
+					className={`newsItem__bottom ${isNewsPage && 'newsItem__bottom--newsPage'}`}
+				>
 					<Link className='newsItem__link' to={`/news/${news.id}`}>
 						Подробнее
 						<img src='/images/icons/right.svg' alt='Подробнее' />
@@ -38,6 +45,7 @@ export const News = ({ news, isNewsPage, className }: Props) => {
 					</p>
 				</div>
 			</div>
-		</Link>
+			{isAdminPage && <DeleteNews newsId={news.id} />}
+		</div>
 	)
 }

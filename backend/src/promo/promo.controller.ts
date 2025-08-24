@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -76,4 +77,12 @@ export class PromoController {
         : null,
     });
   }
+
+
+    @Authorization("ADMIN")
+    @Delete(':promoId')
+
+    async deleteNews(@Param("promoId") promoId: string) {
+      return await this.promoService.deletePromo(promoId);
+    }
 }
