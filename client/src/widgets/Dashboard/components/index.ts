@@ -1,3 +1,5 @@
 export * from "./DashboardProductList"
 export * from "./DashboardCategoriesList"
 export * from "./DashboardSpecificationsList"
+export * from "./DashboardNewsList"
+export * from "./DashboardPromosList"

@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
+import { PromoDto } from "src/promo/dto/promo.dto";
 
 @Injectable()
 export class PromoService {
@@ -14,4 +15,8 @@ export class PromoService {
       where: { id: promoId },
     });
   }
+
+    public async createPromo(dto: PromoDto) {
+      return await this.prismaService.promo.create({ data: dto });
+    }
 }

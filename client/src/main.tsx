@@ -18,8 +18,10 @@ import {
 	ComparePage,
 	ContactsPage,
 	DashboardCategoriesPage,
+	DashboardNewsPage,
 	DashboardPage,
 	DashboardProductsPage,
+	DashboardPromosPage,
 	DashboardSpecificationsPage,
 	DropshippingPage,
 	FavoritesPage,
@@ -165,7 +167,15 @@ const router = createBrowserRouter([
 					{
 						path: '/dashboard/specifications',
 						element: <DashboardSpecificationsPage />
-					}
+					},
+					{
+						path: '/dashboard/news',
+						element: <DashboardNewsPage />
+					},
+					{
+						path: '/dashboard/promos',
+						element: <DashboardPromosPage />
+					},
 				]
 			}
 		]

@@ -7,11 +7,12 @@ import './_newsItem.scss'
 type Props = {
 	news: INews
 	isNewsPage: boolean
+	className?:string
 }
 
-export const News = ({ news, isNewsPage }: Props) => {
+export const News = ({ news, isNewsPage, className }: Props) => {
 	return (
-		<Link to={`/news/${news.id}`} className={`newsItem ${isNewsPage && 'newsItem--newsPage'}`}>
+		<Link to={`/news/${news.id}`} className={`newsItem ${isNewsPage && 'newsItem--newsPage'} ${className}`}>
 			{isNewsPage && (
 				<img
 					className='newsItem__img'
