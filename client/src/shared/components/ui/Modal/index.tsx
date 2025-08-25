@@ -11,14 +11,30 @@ type Props = {
 }
 export const Modal = ({ children, title, open, setOpen, className }: Props) => {
 	useEffect(() => {
+		if (!open) return
 		document.body.style.overflow = open ? 'hidden' : 'unset'
 	}, [open])
-	if (!open) return null
 
 	const onClose = () => {
 		setOpen(false)
 		document.body.style.overflow = 'unset'
 	}
+
+	useEffect(() => {
+		if (!open) return
+		const close = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				onClose()
+			}
+		}
+
+		document.addEventListener('keydown', close)
+
+		return () => document.removeEventListener('keydown', close)
+	}, [open])
+
+	if (!open) return null
+
 	return (
 		<>
 			<div className={` ${className} modal`}>

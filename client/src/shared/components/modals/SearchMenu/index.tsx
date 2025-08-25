@@ -20,12 +20,7 @@ export const SearchMenu = ({ setOpen, open }: Props) => {
 		navigate(`/catalog?search=${value}`)
 	}
 
-	useEffect(() => {
-		if (open) {
-			inputRef.current?.focus()
-			console.log({ open })
-		}
-	}, [open])
+	useEffect(() => inputRef.current?.focus(), [open])
 
 	return (
 		<Modal
