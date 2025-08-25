@@ -9,7 +9,16 @@ export class ProductService {
   constructor(private readonly prismaService: PrismaService) {}
 
   public async getProducts(query: Record<string, string>) {
-    const { take, sortBy, category, от, до, isAdminPage, ...restQuery } = query;
+    const {
+      take,
+      sortBy,
+      category,
+      от,
+      до,
+      isAdminPage,
+      search,
+      ...restQuery
+    } = query;
     const isAdmin = isBoolean(isAdminPage as "true" | "false");
 
     const splitedSortBy = sortBy ? sortBy.split("-") : [];
@@ -21,6 +30,7 @@ export class ProductService {
     if (до !== undefined) {
       price.lte = +до;
     }
+
     return await this.prismaService.product.findMany({
       where: {
         categoryId: category,
@@ -37,6 +47,7 @@ export class ProductService {
           },
         })),
         status: isAdmin ? undefined : ProductStatus.AVAILABLE,
+        name: search ? { contains: search, mode: "insensitive" } : undefined,
       },
       orderBy: sortBy ? { [splitedSortBy[0]]: splitedSortBy[1] } : undefined,
       take: +take || undefined,

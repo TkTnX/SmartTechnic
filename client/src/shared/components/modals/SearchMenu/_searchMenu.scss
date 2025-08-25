@@ -14,6 +14,10 @@
 	gap: 16px;
 	padding: 16px;
 
+	&__form {
+		width: 100%;
+	}
+
 	@include md {
 		left: 50%;
 		top: 50%;
@@ -23,7 +27,6 @@
 		display: block;
 		padding: 50px;
 	}
-
 
 	h4 {
 		font-size: 28px;
@@ -44,7 +47,6 @@
 		padding: 10px 10px 10px 20px;
 		background: #fff;
 		width: 100%;
-		max-width: 1250px;
 		&::placeholder {
 			font-weight: 400;
 			color: #838688;
@@ -54,6 +56,4 @@
 			margin-top: 50px;
 		}
 	}
-
-	
 }
