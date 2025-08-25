@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use "@/shared/styles/vars" as *;
 
 .cartProduct {
 	width: 100%;
@@ -67,7 +68,7 @@
 	&__oldPrice {
 		font-weight: 700;
 		text-decoration: line-through;
-		color: #838688;
+		color: $color-gray;
 	}
 
 	&__price {

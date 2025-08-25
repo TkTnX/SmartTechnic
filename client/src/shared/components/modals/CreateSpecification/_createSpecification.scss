@@ -1,8 +1,10 @@
+@use "@/shared/styles/vars" as *;
+
 .createSpecification {
 	overflow-y: auto;
 	&__trigger {
-        width: 100%;
-        background: #e0e0e0;
+		width: 100%;
+		background: #e0e0e0;
 		&:hover {
 			opacity: 0.6;
 		}
@@ -28,7 +30,7 @@
 		padding: 14px;
 		background: #4878a6;
 		font-weight: 400;
-		color: #fff;
+		color: $color-white;
 		width: 100%;
 
 		&:hover {

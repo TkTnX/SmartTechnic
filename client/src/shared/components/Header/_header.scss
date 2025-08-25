@@ -57,10 +57,9 @@
 		}
 
 		&-button {
-			color: $color-white;
-			border-radius: 4px;
 			padding: 16px 26px;
-			background: #2a5275;
+			width: unset !important;
+			height: unset !important;
 
 			&:hover {
 				opacity: 0.8;

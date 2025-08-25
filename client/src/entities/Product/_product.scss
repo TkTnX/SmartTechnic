@@ -1,3 +1,5 @@
+@use '@/shared/styles/vars' as *;
+
 .product {
 	border: 1px solid #eaeaf0;
 	padding: 20px;
@@ -8,7 +10,7 @@
 
 	&__category {
 		margin-top: 10px;
-		color: #838688;
+		color: $color-gray;
 	}
 
 	&__title {
@@ -60,7 +62,7 @@
 		font-weight: 700;
 		line-height: 130%;
 		text-decoration: line-through;
-		color: #838688;
+		color: $color-gray;
 	}
 
 	&__price {
@@ -73,7 +75,7 @@
 		border-radius: 14px;
 		padding: 3px 5px;
 		background: #f37748;
-		color: #fff;
+		color: $color-white;
 		font-weight: 700;
 		font-size: 14px;
 		text-align: center;

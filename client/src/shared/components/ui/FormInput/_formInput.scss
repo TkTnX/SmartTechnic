@@ -1,3 +1,5 @@
+@use '@/shared/styles/vars' as *;
+
 .formInput {
 	display: flex;
 	flex-direction: column;
@@ -33,7 +35,7 @@
 	}
 
 	&__error {
-		color: #f15152;
+		color: $color-red;
 		font-weight: 400;
 	}
 }

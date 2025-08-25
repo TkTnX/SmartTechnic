@@ -4,7 +4,7 @@ import type { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { FormInput } from '@/shared/components'
+import { Button, FormInput } from '@/shared/components'
 import { type NewPasswordSchema, newPasswordSchema } from '@/shared/schemas'
 import { authService } from '@/shared/services'
 
@@ -58,14 +58,10 @@ export const NewPassword = () => {
 				errors={errors}
 				type='password'
 			/>
-			{/* TODO: Для синих кнопок сделать отдельный компонент */}
-			<button
+			<Button
 				disabled={isPending}
-				className='newPassword__btn'
-				type='submit'
-			>
-				Сохранить измененеия
-			</button>
+				type='submit'text='Сохранить изменения' />
+			
 			{error && <p className='error'>{error.response?.data.message}</p>}
 		</form>
 	)

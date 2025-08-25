@@ -27,29 +27,13 @@
 	}
 
 	&__changeBtn {
-		border: 1px solid #4878a6;
-		border-radius: 4px;
-		padding: 10px;
-		font-weight: 700;
-		font-size: 16px;
-		color: #4878a6;
-
-		@include sm {
-			width: 100%;
-		}
+		width: unset !important;
 	}
 
 	&__nextBtn {
 		margin-top: -20px;
-		border-radius: 4px;
-		padding: 10px;
-		background: #4878a6;
-		font-weight: 700;
-		color: #fff;
-		width: 200px;
+		width: 200px !important;
 
-		&:hover {
-			opacity: 0.8;
-		}
+	
 	}
 }

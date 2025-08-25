@@ -1,9 +1,11 @@
+@use '@/shared/styles/vars' as *;
+
 .createNews {
 	overflow-y: auto;
 	&__trigger {
 		height: 190px;
 		width: 100%;
-		background-color: #e0e0e0;
+		background-color: $color-white-dark;
 		border-radius: 4px;
 
 		&:hover {
@@ -31,7 +33,7 @@
 		padding: 14px;
 		background: #4878a6;
 		font-weight: 400;
-		color: #fff;
+		color: $color-white;
 		width: 100%;
 
 		&:hover {
@@ -59,7 +61,7 @@
 		.cm-content,
 		.cm-gutter {
 			background: #e0e0e0;
-			color: #000;
+			color: $color-black;
 		}
 	}
 }

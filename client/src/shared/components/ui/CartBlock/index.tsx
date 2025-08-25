@@ -1,3 +1,5 @@
+import { Button } from '@/shared/components/ui/Button'
+
 import './_cartBlock.scss'
 
 type Props = {
@@ -25,23 +27,22 @@ export const CartBlock = ({
 					<div className={`cartBlock__content ${className}`}>
 						{children}{' '}
 						{step !== blockStep && step !== 1 && (
-							<button
-								onClick={() => setStep(blockStep)}
+							<Button
 								className='cartBlock__changeBtn'
-							>
-								Изменить
-							</button>
+								onClick={() => setStep(blockStep)}
+								text='Изменить'
+								variant='outlined'
+							/>
 						)}
 					</div>
 				)}
 			</div>
 			{step === blockStep && blockStep !== 4 && (
-				<button
+				<Button
 					className='cartBlock__nextBtn'
 					onClick={() => setStep(step + 1)}
-				>
-					Далее
-				</button>
+					text='Далее'
+				/>
 			)}
 		</>
 	)

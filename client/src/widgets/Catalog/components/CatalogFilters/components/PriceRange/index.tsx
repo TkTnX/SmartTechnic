@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Range } from 'react-range'
 import { useSearchParams } from 'react-router-dom'
 
+import { Button } from '@/shared/components'
 import { useProducts } from '@/shared/hooks'
 
 import './_priceRange.scss'
@@ -110,9 +111,11 @@ export const PriceRange = () => {
 				)}
 			/>
 
-			<button onClick={onSubmit} className='priceRange__submit'>
-				Применить
-			</button>
+			<Button
+				className='priceRange__submit'
+				onClick={onSubmit}
+				text='Применить'
+			/>
 		</div>
 	)
 }

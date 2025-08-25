@@ -1,0 +1,39 @@
+@use '@/shared/styles/mixins' as *;
+@use '@/shared/styles/vars' as *;
+
+.button {
+	width: 100%;
+	background: #2a5275;
+	border-radius: 5px;
+	color: $color-white;
+	height: 48px;
+	align-self: flex-end;
+
+	&:hover {
+		opacity: 0.8;
+	}
+
+	&:disabled {
+		background: #838688;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+
+	&.outlined {
+		border: 1px solid #4878a6;
+		padding: 10px;
+		font-weight: 700;
+		font-size: 16px;
+		color: $color-blue-light;
+		background: transparent;
+
+		@include sm {
+			width: 100%;
+		}
+
+		&:hover {
+			background: #4878a6;
+			color: $color-white;
+		}
+	}
+}

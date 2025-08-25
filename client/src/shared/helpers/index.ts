@@ -1,3 +1,5 @@
 export * from "./groupSpecifications"
 export * from "./getDates"
 export * from "./getOrderStatus"
+export * from "./ShrinkText"
+export * from "./getEnding"

@@ -3,6 +3,7 @@ import type { AxiosError } from 'axios'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { Button } from '@/shared/components'
 import { cartService } from '@/shared/services'
 import { useUserStore } from '@/shared/stores'
 
@@ -13,7 +14,6 @@ type Props = {
 	productId: string
 	isBig?: boolean
 }
-
 
 export const AddToCart = ({ productId, isBig }: Props) => {
 	const fetchUser = useUserStore(state => state.fetchUser)
@@ -35,13 +35,13 @@ export const AddToCart = ({ productId, isBig }: Props) => {
 			>
 				Купить в 1 клик
 			</Link>
-			<button
+			<Button
 				disabled={isPending}
 				onClick={() => mutate()}
 				className='addToCart__add'
 			>
 				{isBig ? 'В корзину' : <CartIcon />}
-			</button>
+			</Button>
 		</div>
 	)
 }

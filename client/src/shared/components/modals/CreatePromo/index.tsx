@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { FormInput, Modal } from '@/shared/components/ui'
+import { Button, FormInput, Modal } from '@/shared/components/ui'
 import { type PromoSchema, promoSchema } from '@/shared/schemas'
 import { promoService } from '@/shared/services'
 import type { ErrorType } from '@/shared/types'
@@ -91,13 +91,7 @@ export const CreatePromo = () => {
 							onChange={setText}
 						/>
 
-						<button
-							disabled={isPending}
-							type='submit'
-							className='createPromo__button'
-						>
-							Создать
-						</button>
+						<Button disabled={isPending} type='submit' text='Создать' />
 					</form>
 				</Modal>
 			)}

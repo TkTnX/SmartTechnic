@@ -2,10 +2,6 @@
 @use './mixins' as *;
 @use './reset';
 @import url(https://fonts.googleapis.com/css?family=Exo+2:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
-@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
-@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
-
 * {
 	transition: all 0.2s ease-in-out;
 }
@@ -24,7 +20,7 @@ body {
 
 input[type='checkbox'] {
 	cursor: pointer;
-	accent-color: #4878a6;
+	accent-color: $color-blue-light;
 }
 
 select {
@@ -74,12 +70,12 @@ a {
 
 	a {
 		font-size: 18px;
-		color: #2a5275;
+		color: $color-blue-dark;
 		text-decoration: underline;
 	}
 
-		span {
-			font-size: 16px;
-			font-weight: 400;
-		}
+	span {
+		font-size: 16px;
+		font-weight: 400;
+	}
 }

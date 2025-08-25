@@ -41,15 +41,15 @@
 }
 
 .swiper-pagination-bullet {
-	background-color: #fff !important;
+	background-color: $color-white !important;
 	flex: 1 !important;
 	border-radius: 2px !important;
-	background-color: #c8cacb !important;
+	background-color: $color-white-dark !important;
 	opacity: 0.5 !important;
 	height: 3px !important;
 }
 
 .swiper-pagination-bullet-active {
-	background-color: #edf2f6 !important;
+	background-color: $color-gray-light !important;
 	opacity: 1 !important;
 }

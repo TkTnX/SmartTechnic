@@ -19,7 +19,7 @@ class CategoriesService {
         return res.data
     }
 
-    public async deleteCategory(categoryId: string) {
+    public async delete(categoryId: string) {
         const res = await axiosInstance.delete(`/categories/${categoryId}`)
 
         if (res.status !== 200) throw new Error(res.data.message);

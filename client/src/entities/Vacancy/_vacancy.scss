@@ -1,5 +1,5 @@
 @use '@/shared/styles/mixins' as *;
-
+@use '@/shared/styles/vars' as *;
 .vacancy {
 	width: 100%;
 
@@ -20,7 +20,7 @@
 		}
 
 		&.open {
-			color: #2a5275;
+			color: $color-blue-dark;
 
 			img {
 				transform: rotate(270deg);

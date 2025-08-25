@@ -1,4 +1,4 @@
-import { FormInput, FormTextarea } from '@/shared/components'
+import { Button, FormInput, FormTextarea } from '@/shared/components'
 
 import './_vacanciesForm.scss'
 
@@ -17,7 +17,7 @@ export const VacanciesForm = () => {
 					label='Добавьте файл резюме'
 				/>
 				<FormTextarea name='message' label='Сопроводительное письмо' />
-				<button className='vacanciesForm__button'>Отправить</button>
+				<Button className='vacanciesForm__button' text='Отправить' />
 				<div className='vacanciesForm__checkbox'>
 					<input type='checkbox' />
 					<p>
@@ -25,11 +25,13 @@ export const VacanciesForm = () => {
 						<span> политикой конфиденциальности</span>
 					</p>
 				</div>
-      </form>
-      <div className="vacanciesForm__phone">
-        <h6 className="vacanciesForm__phone-title">Номер отдела кадров</h6>
-        <a href="tel:89960670096">+7 (996) 067-00-96</a>
-      </div>
+			</form>
+			<div className='vacanciesForm__phone'>
+				<h6 className='vacanciesForm__phone-title'>
+					Номер отдела кадров
+				</h6>
+				<a href='tel:89960670096'>+7 (996) 067-00-96</a>
+			</div>
 		</div>
 	)
 }

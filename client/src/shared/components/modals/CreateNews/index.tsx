@@ -6,13 +6,12 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { FormInput, Modal } from '@/shared/components/ui'
+import { Button, FormInput, Modal } from '@/shared/components/ui'
 import { type NewsSchema, newsSchema } from '@/shared/schemas'
 import { newsService } from '@/shared/services'
 import type { ErrorType } from '@/shared/types'
 
 import './_createNews.scss'
-
 
 export const CreateNews = () => {
 	const [text, setText] = useState('')
@@ -84,13 +83,11 @@ export const CreateNews = () => {
 							onChange={setText}
 						/>
 
-						<button
+						<Button
 							disabled={isPending}
 							type='submit'
-							className='createNews__button'
-						>
-							Создать
-						</button>
+							text='Создать'
+						/>
 					</form>
 				</Modal>
 			)}

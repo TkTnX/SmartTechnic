@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { DropdownInput, FormInput, Skeleton } from '@/shared/components'
+import { Button, DropdownInput, FormInput, Skeleton } from '@/shared/components'
 import { CITIES, DELIVERY_TYPES, PAYMENT_TYPES } from '@/shared/constants'
 import { type PersonalSchema, personalSchema } from '@/shared/schemas'
 import { userService } from '@/shared/services'
@@ -127,13 +127,7 @@ export const PersonalInfo = () => {
 					register={register}
 					type='text'
 				/>
-				<button
-					disabled={isPending}
-					type='submit'
-					className='personalInfo__submit'
-				>
-					Сохранить
-				</button>
+				<Button text='Сохранить' disabled={isPending} type='submit' />
 			</form>
 			{error && <p className='error'>{error.response?.data.message}</p>}
 		</section>

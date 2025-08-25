@@ -1,4 +1,4 @@
-import { FormInput, FormTextarea } from '@/shared/components'
+import { Button, FormInput, FormTextarea } from '@/shared/components'
 
 import './_contactUs.scss'
 
@@ -20,7 +20,7 @@ export const ContactUs = () => {
 						name='phone'
 						type='tel'
 					/>
-					<button className='contactUs__button'>Отправить</button>
+					<Button className='contactUs__button' text='Отправить' />
 				</div>
 				<div className='contactUs__right'>
 					<FormTextarea

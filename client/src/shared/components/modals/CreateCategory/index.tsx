@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { FormInput, Modal } from '@/shared/components/ui'
+import { Button, FormInput, Modal } from '@/shared/components/ui'
 import { type CategorySchema, categorySchema } from '@/shared/schemas'
 import { categoriesService } from '@/shared/services'
 import type { ErrorType, IProduct } from '@/shared/types'
@@ -68,13 +68,11 @@ export const CreateCategory = ({ product }: Props) => {
 							label='Название категории'
 						/>
 
-						<button
+						<Button
 							disabled={isPending}
 							type='submit'
-							className='createCategory__button'
-						>
-							Создать
-						</button>
+							text='Создать'
+						/>
 					</form>
 				</Modal>
 			)}

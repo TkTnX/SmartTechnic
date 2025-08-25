@@ -11,7 +11,6 @@ type Props = {
 }
 export const Modal = ({ children, title, open, setOpen, className }: Props) => {
 	useEffect(() => {
-		if (!open) return
 		document.body.style.overflow = open ? 'hidden' : 'unset'
 	}, [open])
 

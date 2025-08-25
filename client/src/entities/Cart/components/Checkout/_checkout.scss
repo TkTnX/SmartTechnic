@@ -1,5 +1,5 @@
 @use '@/shared/styles/mixins' as *;
-
+@use '@/shared/styles/vars' as *;
 .checkout {
 	width: 420px;
 	background: #edf2f6;
@@ -39,7 +39,7 @@
 		font-size: 20px;
 
 		&-title {
-			color: #838688;
+			color: $color-gray;
 		}
 
 		@include vsm {
@@ -74,21 +74,6 @@
 
 	&__submit {
 		margin-top: 20px;
-		border-radius: 4px;
-		background: #4878a6;
-		padding: 16px;
-		width: 100%;
-		color: #fff;
-
-		&:hover {
-			opacity: 0.8;
-		}
-
-		&:disabled {
-			background: #838688;
-			pointer-events: none;
-			cursor: not-allowed;
-		}
 	}
 
 	&__agreement {
@@ -99,7 +84,7 @@
 		font-weight: 400;
 
 		a {
-			color: #4878a6;
+			color: $color-blue-light;
 		}
 	}
 }

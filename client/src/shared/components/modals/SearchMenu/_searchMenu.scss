@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use "@/shared/styles/vars" as *;
 
 .searchMenu {
 	left: 0%;
@@ -49,7 +50,7 @@
 		width: 100%;
 		&::placeholder {
 			font-weight: 400;
-			color: #838688;
+			color: $color-gray;
 		}
 
 		@include md {

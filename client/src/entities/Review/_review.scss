@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use "@/shared/styles/vars" as *;
 
 .review {
 	border-radius: 10px;
@@ -52,7 +53,7 @@
 
 	&__user-date {
 		font-weight: 700;
-		color: #838688;
+		color: $color-gray;
 	}
 
 	&__stars {
@@ -62,7 +63,7 @@
 
 		p {
 			font-weight: 700;
-			color: #838688;
+			color: $color-gray;
 		}
 	}
 

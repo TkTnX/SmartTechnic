@@ -43,7 +43,7 @@ class NewsService {
 		return res.data
 	}
 
-	    public async deleteNews(newsId: string) {
+	    public async delete(newsId: string) {
         const res = await axiosInstance.delete(`/news/${newsId}`)
 
         if (res.status !== 200) throw new Error(res.data.message);

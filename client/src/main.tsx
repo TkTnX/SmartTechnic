@@ -31,6 +31,7 @@ import {
 	NewPasswordPage,
 	NewsItemPage,
 	NewsPage,
+	NotFoundPage,
 	PersonalPage,
 	ProductPage,
 	ProfilePage,
@@ -179,6 +180,10 @@ const router = createBrowserRouter([
 				]
 			}
 		]
+	},
+	{
+		path: "*",
+		element: <NotFoundPage />
 	}
 ])
 

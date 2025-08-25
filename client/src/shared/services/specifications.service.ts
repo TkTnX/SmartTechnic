@@ -35,7 +35,7 @@ class SpecificationsService {
 		return res.data
 	}
 
-	public async deleteSpecification(specificationId: string) {
+	public async delete(specificationId: string) {
 		const res = await axiosInstance.delete(`/specifications/${specificationId}`)
 
 		if (res.status !== 200) throw new Error(res.data.message)

@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use '@/shared/styles/vars' as *;
 
 .informationLetter {
 	margin-top: 60px;
@@ -43,7 +44,7 @@
 
 		span,
 		a {
-			color: #4878a6;
+			color: $color-blue-light
 		}
 	}
 }

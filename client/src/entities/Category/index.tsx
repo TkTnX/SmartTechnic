@@ -1,9 +1,10 @@
-import { DeleteCategory } from '@/features'
+import {  DeleteEntity } from '@/features'
 import { Link } from 'react-router-dom'
 
 import type { ICategory } from '@/shared/types'
 
 import './_category.scss'
+import { categoriesService } from '@/shared/services'
 
 type Props = {
 	category: ICategory
@@ -23,7 +24,7 @@ export const Category = ({
 				to={`/catalog?category=${category.id}`}
 			/>
 			<p>{category.name}</p>
-			{isAdminPage && <DeleteCategory categoryId={category.id} />}
+			{isAdminPage && <DeleteEntity service={categoriesService} id={category.id} />}
 		</div>
 	)
 }

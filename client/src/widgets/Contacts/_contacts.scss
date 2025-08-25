@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use '@/shared/styles/vars' as *;
 
 .contacts {
 	margin-top: 30px;
@@ -47,7 +48,7 @@
 		&-phone {
 			font-weight: 600;
 			font-size: 24px;
-			color: #2a5275;
+			color: $color-blue-dark;
 		}
 
 		&:hover {
@@ -66,7 +67,7 @@
 		gap: 10px;
 		font-weight: 600;
 		font-size: 24px;
-		color: #2a5275;
+		color: $color-blue-dark;
 
 		svg {
 			min-width: 24px;
@@ -77,9 +78,9 @@
 			font-size: 20px;
 		}
 
-        @include sm {
-            font-size: 19px;
-        }
+		@include sm {
+			font-size: 19px;
+		}
 	}
 
 	&__time {
@@ -90,7 +91,7 @@
 
 		&-title {
 			font-weight: 400;
-			color: #838688;
+			color: $color-gray;
 		}
 
 		&-text {

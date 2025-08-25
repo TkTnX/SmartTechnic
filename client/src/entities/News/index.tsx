@@ -1,6 +1,8 @@
-import { DeleteNews } from '@/features'
+import { DeleteEntity } from '@/features'
 import { Link } from 'react-router-dom'
 
+import { shrinkText } from '@/shared/helpers'
+import { newsService } from '@/shared/services'
 import type { INews } from '@/shared/types'
 
 import './_newsItem.scss'
@@ -27,8 +29,7 @@ export const News = ({ news, isNewsPage, className, isAdminPage }: Props) => {
 			)}
 			<div className='newsItem__content'>
 				<h6 className='newsItem__title'>{news.title}</h6>
-				{/* TODO: В будущем разделять до точки */}
-				<p className='newsItem__text'>{news.text.slice(0, 100)}</p>
+				<p className='newsItem__text'>{shrinkText(news.text)}</p>
 				<div
 					className={`newsItem__bottom ${isNewsPage && 'newsItem__bottom--newsPage'}`}
 				>
@@ -45,7 +46,7 @@ export const News = ({ news, isNewsPage, className, isAdminPage }: Props) => {
 					</p>
 				</div>
 			</div>
-			{isAdminPage && <DeleteNews newsId={news.id} />}
+			{isAdminPage && <DeleteEntity service={newsService} id={news.id} />}
 		</div>
 	)
 }

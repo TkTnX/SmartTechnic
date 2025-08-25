@@ -93,9 +93,7 @@ export class ProductService {
   }
 
   public async deleteProduct(productId: string) {
-    const product = await this.getProduct(productId);
-
-    await this.prismaService.specification.deleteMany({ where: { productId } });
+    const product = await this.getProduct(productId)
 
     return await this.prismaService.product.delete({
       where: { id: product.id },

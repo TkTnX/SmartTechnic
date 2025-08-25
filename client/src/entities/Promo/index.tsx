@@ -1,9 +1,10 @@
-import { DeletePromo } from '@/features'
+import { DeleteEntity } from '@/features'
 import { Link } from 'react-router-dom'
 
 import type { IPromo } from '@/shared/types'
 
 import './_promo.scss'
+import { promoService } from '@/shared/services'
 
 type Props = {
 	promo: IPromo
@@ -20,7 +21,7 @@ export const Promo = ({ promo, isAdminPage }: Props) => {
 				src={promo.preview}
 				alt={promo.title}
 			/>
-			{isAdminPage && <DeletePromo promoId={promo.id} />}
+			{isAdminPage && <DeleteEntity service={promoService} id={promo.id} />}
 		</div>
 	)
 }

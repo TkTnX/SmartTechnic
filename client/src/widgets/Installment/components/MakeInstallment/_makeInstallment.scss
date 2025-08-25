@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use "@/shared/styles/vars" as *;
 
 .makeInstallment {
 	margin-top: 30px;
@@ -38,7 +39,7 @@
 		background: #2a5275;
 		padding: 16px;
 		width: 100%;
-		color: #fff;
+		color: $color-white;
 	}
 
 	&__text {

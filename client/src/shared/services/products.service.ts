@@ -76,7 +76,7 @@ class ProductsService {
 		return res.data
 	}
 
-	public async deleteProduct(productId: string) {
+	public async delete(productId: string) {
 		const res = await axiosInstance.delete(`/products/${productId}`)
 
 		if (res.status !== 200) throw new Error(res.data.message)

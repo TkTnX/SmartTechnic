@@ -1,5 +1,5 @@
 @use '@/shared/styles/mixins' as *;
-
+@use '@/shared/styles/vars' as *;
 .catalogSort {
 	display: flex;
 	align-items: flex-end;
@@ -28,11 +28,10 @@
 		@include lg {
 			display: flex;
 			align-items: center;
+			width: unset !important;
 			gap: 10px;
-			border-radius: 4px;
-			padding: 10px;
 			background: #4878a6;
-			color: #fff;
+			padding: 10px;
 		}
 
 		@include vsm {
@@ -64,7 +63,7 @@
 		font-weight: 400;
 		font-size: 14px;
 		text-decoration: underline;
-		color: #f15152;
+		color: $color-red;
 
 		&:hover {
 			opacity: 0.8;

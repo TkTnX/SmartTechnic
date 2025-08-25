@@ -1,4 +1,4 @@
-import { FormInput } from '@/shared/components'
+import { Button, FormInput } from '@/shared/components'
 
 import './_makeInstallment.scss'
 
@@ -10,9 +10,7 @@ export const MakeInstallment = () => {
 				<form className='makeInstallment__form'>
 					<FormInput name='name' label='Имя' />
 					<FormInput name='phone' type='tel' label='Номер телефона' />
-					<button className='makeInstallment__button'>
-						Отправить
-					</button>
+					<Button text='Отправить' />
 				</form>
 			</div>
 			<div className='makeInstallment__info'>

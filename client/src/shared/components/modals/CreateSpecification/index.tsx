@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { FormInput, Modal } from '@/shared/components/ui'
+import { Button, FormInput, Modal } from '@/shared/components/ui'
 import { type SpecificationSchema, specificationSchema } from '@/shared/schemas'
 import { specificationsService } from '@/shared/services'
 import type { ErrorType } from '@/shared/types'
@@ -76,13 +76,11 @@ export const CreateSpecification = ({ productId, categoryId }: Props) => {
 							label='Значение характеристики'
 						/>
 
-						<button
+						<Button
 							disabled={isPending}
 							type='submit'
-							className='createSpecification__button'
-						>
-							Создать
-						</button>
+							text='Создать'
+						/>
 					</form>
 				</Modal>
 			)}

@@ -1,5 +1,5 @@
 @use '@/shared/styles/mixins' as *;
-
+@use '@/shared/styles/vars' as *;
 .authForm {
 	max-width: 370px;
 	padding: 20px 30px 30px;
@@ -13,35 +13,19 @@
 
 	&__link {
 		font-weight: 400;
-		color: #4878a6;
+		color: $color-blue-light;
 	}
 
 	&__agreement {
 		font-size: 14px;
 
 		a {
-			color: #2a5275;
-		}
-	}
-
-	&__submit {
-		border-radius: 4px;
-		padding: 10px;
-		height: 48px;
-		background: #2a5275;
-		color: #fff;
-		&:hover {
-			opacity: 0.8;
-		}
-
-		&:disabled {
-			pointer-events: none;
-			opacity: 0.5;
+			color: $color-blue-dark;
 		}
 	}
 
 	&__change {
-		color: #4878a6;
+		color: $color-blue-light;
 		text-align: center;
 		font-weight: 400;
 	}

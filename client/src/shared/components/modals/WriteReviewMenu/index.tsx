@@ -1,23 +1,15 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
+import { Button, FormInput, FormTextarea, Modal } from '@/shared/components/ui'
+import { type ReviewSchema, reviewSchema } from '@/shared/schemas'
+import { reviewService } from '@/shared/services'
+import type { ErrorType } from '@/shared/types'
 
-
-import { FormInput, FormTextarea, Modal } from '@/shared/components/ui';
-import { type ReviewSchema, reviewSchema } from '@/shared/schemas';
-import { reviewService } from '@/shared/services';
-import type { ErrorType } from '@/shared/types';
-
-
-
-import './_writeReviewMenu.scss';
-
-
-
-
+import './_writeReviewMenu.scss'
 
 type Props = {
 	productId: string
@@ -49,15 +41,13 @@ export const WriteReviewMenu = ({ productId }: Props) => {
 			)
 	})
 
-
 	return (
 		<>
-			<button
-				onClick={() => setOpen(true)}
+			<Button
 				className='writeReview__button'
-			>
-				Написать отзыв
-			</button>
+				text='Написать отзыв'
+				onClick={() => setOpen(true)}
+			/>
 			<Modal
 				className='writeReview__modal'
 				setOpen={setOpen}
@@ -89,13 +79,11 @@ export const WriteReviewMenu = ({ productId }: Props) => {
 						name='comment'
 						label='Текст отзыва'
 					/>
-					<button
+					<Button
 						type='submit'
 						disabled={isPending}
-						className='writeReview__button'
-					>
-						Отправить
-					</button>
+						text='Отправить'
+					/>
 				</form>
 			</Modal>
 		</>

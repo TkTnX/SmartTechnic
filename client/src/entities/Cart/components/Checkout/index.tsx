@@ -1,14 +1,16 @@
 import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { Button } from '@/shared/components'
 import { cartService } from '@/shared/services'
 import { useCartStore } from '@/shared/stores'
 import type { ICartProduct } from '@/shared/types'
 
 import './_checkout.scss'
-import { useState } from 'react'
+import { getEnding } from '@/shared/helpers'
 
 type Props = { cartProducts: ICartProduct[] }
 
@@ -25,7 +27,7 @@ export const Checkout = ({ cartProducts }: Props) => {
 		mutationFn: async () =>
 			await cartService.createOrder(orderInfo, totalPrice),
 		onSuccess: (data: { paymentUrl: string; orderId: string }) => {
-			if (orderInfo.paymentType === 'CARD' ) {
+			if (orderInfo.paymentType === 'CARD') {
 				window.location.href = data.paymentUrl
 			} else {
 				navigate(`/profile/history`)
@@ -42,7 +44,7 @@ export const Checkout = ({ cartProducts }: Props) => {
 			<div className='checkout__list'>
 				<div className='checkout__item'>
 					<p className='checkout__item-title'>
-						{cartProducts.length} товара на сумму
+						{getEnding(cartProducts.length, 'товар')} на сумму
 					</p>
 					<p className='checkout__item-value'>{totalPrice}₽</p>
 				</div>
@@ -55,15 +57,17 @@ export const Checkout = ({ cartProducts }: Props) => {
 				<p className='checkout__total-text'>К оплате</p>
 				<p className='checkout__total-price'>{totalPrice}₽</p>
 			</div>
-			<button
+			<Button
 				onClick={() => mutate()}
-				disabled={Object.values(orderInfo).includes(null) || !isChecked}
 				className='checkout__submit'
-			>
-				Оформить заказ
-			</button>
+				disabled={Object.values(orderInfo).includes(null) || !isChecked}
+				text='Оформить заказ'
+			/>
 			<label className='checkout__agreement'>
-				<input onChange={e => setIsChecked(e.target.checked)} type='checkbox' />
+				<input
+					onChange={e => setIsChecked(e.target.checked)}
+					type='checkbox'
+				/>
 				<span>
 					Подтверждая заказ, я принимаю условия{' '}
 					<Link to={'/agreement'}>пользовательского соглашения</Link>

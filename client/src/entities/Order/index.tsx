@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { getOrderStatus } from '@/shared/helpers'
+import { getEnding, getOrderStatus } from '@/shared/helpers'
 import type { IOrder } from '@/shared/types'
 
 import './_order.scss'
@@ -27,8 +27,7 @@ export const Order = ({ order }: Props) => {
 					</span>
 				</p>
 				<p className='order__summary'>
-					{/* TODO: В будущем сделать функцию для окнчаний (ТОВАРА, ТОВАР, ТОВАРОВ) */}
-					{order.orderItems.length} товара на сумму {order.totalPrice}
+					{getEnding(order.orderItems.length, 'товар')} на сумму {order.totalPrice}
 					₽
 				</p>
 				<p

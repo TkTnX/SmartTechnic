@@ -1,4 +1,5 @@
 @use '@/shared/styles/mixins' as *;
+@use '@/shared/styles/vars' as *;
 
 .userDropdown {
 	position: absolute;
@@ -26,7 +27,7 @@
 	}
 
 	&__logout {
-		color: #f15152;
+		color: $color-red;
 		border-top: 1px solid #eaeaf0;
 		padding: 15px 20px;
 		text-align: left;

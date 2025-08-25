@@ -1,25 +1,22 @@
-import { ChooseCategory } from '@/features';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { Edit, Plus } from 'lucide-react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { ChooseCategory } from '@/features'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
+import { Edit, Plus } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
+import { Button, FormInput, FormTextarea, Modal } from '@/shared/components/ui'
+import {
+	type EditProductSchema,
+	type ProductSchema,
+	editProductSchema,
+	productSchema
+} from '@/shared/schemas'
+import { productsService } from '@/shared/services'
+import type { ErrorType, IProduct } from '@/shared/types'
 
-
-import { FormInput, FormTextarea, Modal } from '@/shared/components/ui';
-import { type EditProductSchema, type ProductSchema, editProductSchema, productSchema } from '@/shared/schemas';
-import { productsService } from '@/shared/services';
-import type { ErrorType, IProduct } from '@/shared/types';
-
-
-
-import './_createProduct.scss';
-
-
-
-
+import './_createProduct.scss'
 
 type Props = {
 	product?: IProduct
@@ -170,13 +167,12 @@ export const CreateProduct = ({ product }: Props) => {
 							type='file'
 							multiple
 						/>
-						<button
+						<Button
 							disabled={isPending}
 							type='submit'
 							className='createProduct__button'
-						>
-							Создать
-						</button>
+							text='Создать'
+						/>
 					</form>
 				</Modal>
 			)}

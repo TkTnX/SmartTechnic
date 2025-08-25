@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
-import { Modal } from '@/shared/components/ui'
+import { Button, Modal } from '@/shared/components/ui'
 import { FormInput } from '@/shared/components/ui/FormInput'
 import { useAuth } from '@/shared/hooks'
 import {
@@ -55,15 +55,14 @@ export const AuthForm = () => {
 
 	return (
 		<>
-			<button
+			<Button
 				onClick={() => {
 					setOpen(true)
 					setIsLogin(true)
 				}}
+				text='Войти'
 				className='header__controls-button'
-			>
-				Войти
-			</button>
+			/>
 
 			<Modal
 				className='authForm'
@@ -130,13 +129,13 @@ export const AuthForm = () => {
 							<Link to={'#'}>пользовательским соглашением</Link>
 						</p>
 					)}
-					<button
+					<Button
 						disabled={isLoading}
 						className='authForm__submit'
 						type='submit'
-					>
-						{isLogin ? 'Войти' : 'Зарегистрироваться'}
-					</button>
+						text={isLogin ? 'Войти' : 'Зарегистрироваться'}
+					/>
+
 					<button
 						type='button'
 						onClick={() => setIsLogin(!isLogin)}
