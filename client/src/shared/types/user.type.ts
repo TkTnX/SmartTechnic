@@ -20,6 +20,7 @@ export interface IUser {
 	address?: string
 	role: Role
 	isEmailVerified: boolean
+	isTwoFactorEnabled: boolean
 
 	orders: IOrder[]
 	reviews: IReview[]

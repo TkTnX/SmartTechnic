@@ -9,7 +9,8 @@ export const personalSchema = z.object({
 	deliveryType: z.enum(['DELIVERY', 'PICKUP']).optional(),
 	city: z.string().optional(),
 	avatar: z.any().optional(),
-	index: z.string().optional()
+	index: z.string().optional(),
+	isTwoFactorEnabled: z.enum(['true', 'false']).optional()
 })
 
 export type PersonalSchema = z.infer<typeof personalSchema>

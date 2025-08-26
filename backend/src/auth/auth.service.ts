@@ -39,9 +39,9 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    await this.verifyEmail(dto.email);
+    await this.saveSession(req, newUser);
 
-    return this.saveSession(req, newUser);
+    return await this.verifyEmail(dto.email);
   }
 
   public async login(req: Request, dto: LoginDto) {
@@ -54,7 +54,50 @@ export class AuthService {
     if (!isPasswordValid)
       throw new UnauthorizedException("Неверные данные для входа");
 
-    return this.saveSession(req, user);
+    if (user.isTwoFactorEnabled && !dto.code) {
+      const token = await this.prismaService.token.create({
+        data: {
+          email: user.email,
+          token: Math.floor(100000 + Math.random() * 900000).toString(),
+          type: "TWO_FACTOR",
+        },
+      });
+
+      await this.mailService.send({
+        to: user.email,
+        subject: "Двухфакторная аутентификация",
+        html: `
+        <h1>Двухфакторная аутентификация</h1>
+        <p>Код: ${token.token}</p>
+        `,
+      });
+
+      return {
+        message: "Введите код двухфакторной аутентификации",
+      };
+    }
+
+    if (user.isTwoFactorEnabled && dto.code) {
+      const token = await this.prismaService.token.findFirst({
+        where: {
+          email: user.email,
+          type: "TWO_FACTOR",
+        },
+      });
+
+      if (dto.code === token?.token) {
+        await this.prismaService.token.delete({
+          where: {
+            id: token.id,
+          },
+        });
+      }
+    }
+
+    await this.saveSession(req, user);
+    return {
+      message: "Вы успешно вошли в аккаунт",
+    };
   }
 
   public async logout(req: Request, res: Response): Promise<void> {

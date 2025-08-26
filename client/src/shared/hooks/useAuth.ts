@@ -1,15 +1,9 @@
-import { useMutation } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
+import { useMutation } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 
-
-
-import type { LoginSchema, RegisterSchema } from '@/shared/schemas';
-import { authService } from '@/shared/services';
-import type { ErrorType } from '@/shared/types';
-
-
-
-
+import type { LoginSchema, RegisterSchema } from '@/shared/schemas'
+import { authService } from '@/shared/services'
+import type { ErrorType } from '@/shared/types'
 
 export function useAuth() {
 	const { mutateAsync: registerMutation, isPending: isRegisterPending } =
@@ -17,8 +11,8 @@ export function useAuth() {
 			mutationFn: async (body: RegisterSchema) =>
 				await authService.register(body),
 			onError: (error: ErrorType) =>
-                toast.error(error.response.data.message.toString()),
-            onSuccess: () => toast.success('Вы успешно зарегистрировались')
+				toast.error(error.response.data.message.toString()),
+			onSuccess: () => toast.success('Вы успешно зарегистрировались')
 		})
 
 	const { mutateAsync: loginMutation, isPending: isLoginPending } =
@@ -27,8 +21,10 @@ export function useAuth() {
 				await authService.login(body),
 			onError: (error: ErrorType) => {
 				toast.error(error.response.data.message.toString())
-            },
-            onSuccess: () => toast.success('Вы успешно вошли в аккаунт')
+			},
+			onSuccess: data => {
+				toast.success(data.message)
+			}
 		})
 
 	const isLoading = isRegisterPending || isLoginPending

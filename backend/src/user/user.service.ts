@@ -4,6 +4,7 @@ import { RegisterDto } from "src/auth/dto/register.dto";
 import { UserDto } from "./dto/user.dto";
 import * as path from "path";
 import * as fs from "fs";
+import { isBoolean } from "src/utils/isBoolean.util";
 @Injectable()
 export class UserService {
   public constructor(private readonly prismaService: PrismaService) {}
@@ -31,6 +32,9 @@ export class UserService {
                 product: true,
               },
             },
+          },
+          orderBy: {
+            createdAt: "desc",
           },
         },
         cartProducts: {
@@ -77,7 +81,11 @@ export class UserService {
 
     return await this.prismaService.user.update({
       where: { id: user.id },
-      data: { ...dto, avatar: avatar as string },
+      data: {
+        ...dto,
+        avatar: avatar as string,
+        isTwoFactorEnabled: isBoolean(dto.isTwoFactorEnabled),
+      },
     });
   }
 }

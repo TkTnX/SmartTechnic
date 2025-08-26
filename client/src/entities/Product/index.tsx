@@ -25,7 +25,12 @@ export const Product = ({ product, className, isAdminPage = false }: Props) => {
 				<Link to={`/product/${product.id}`} className='product__image'>
 					<img src={product.images[0]} alt={product.name} />
 				</Link>
-				<Link to={`/catalog?category=${product.category.id}`} className='product__category'>{product.category.name}</Link>
+				<Link
+					to={`/catalog?category=${product.category.id}`}
+					className='product__category'
+				>
+					{product.category.name}
+				</Link>
 				<Link to={`/product/${product.id}`} className='product__title'>
 					{product.name}
 				</Link>

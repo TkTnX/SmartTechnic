@@ -1,4 +1,4 @@
-import { IsNotEmpty, MinLength } from "class-validator";
+import { IsNotEmpty, IsOptional, MinLength } from "class-validator";
 
 export class LoginDto {
   @IsNotEmpty({ message: "Почта или пароль обязательны! " })
@@ -7,4 +7,7 @@ export class LoginDto {
   @IsNotEmpty({ message: "Пароль не может быть пустым" })
   @MinLength(6, { message: "Пароль должен быть не менее 6 символов" })
   password: string;
+
+  @IsOptional()
+  code: string
 }

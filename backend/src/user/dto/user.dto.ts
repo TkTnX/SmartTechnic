@@ -1,9 +1,11 @@
 import { DeliveryType, PaymentType } from "@prisma/client";
+import { Type } from "class-transformer";
 import {
   IsEmail,
   IsEnum,
   IsOptional,
   IsPhoneNumber,
+  IsString,
   MaxLength,
   MinLength,
 } from "class-validator";
@@ -41,4 +43,9 @@ export class UserDto {
   @IsOptional()
   @MaxLength(6, { message: "Индекс должен быть не более 6 символов" })
   index: string;
+
+  @IsOptional()
+  @IsString()
+  @IsEnum(["true", "false"])
+  isTwoFactorEnabled: 'true' | 'false';
 }

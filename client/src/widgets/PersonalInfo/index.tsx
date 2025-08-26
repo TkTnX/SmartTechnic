@@ -44,7 +44,8 @@ export const PersonalInfo = () => {
 				deliveryType: user.deliveryType ?? 'DELIVERY',
 				city: user.city ?? '',
 				index: user.index ?? '',
-				avatar: user.avatar ?? ''
+				avatar: user.avatar ?? '',
+				isTwoFactorEnabled: user.isTwoFactorEnabled === true ? "true" : "false"
 			})
 		}
 	}, [user, reset])
@@ -128,6 +129,17 @@ export const PersonalInfo = () => {
 					name='index'
 					register={register}
 					type='text'
+				/>
+				<DropdownInput
+					label='Двухфакторная аутентификация'
+					defaultValue={user?.isTwoFactorEnabled ? 'true' : 'false'}
+					items={[
+						{ label: 'Вкл.', value: 'true' },
+						{ label: 'Выкл.', value: 'false' }
+					]}
+					register={register}
+					errors={errors}
+					name='isTwoFactorEnabled'
 				/>
 				<Button text='Сохранить' disabled={isPending} type='submit' />
 			</form>

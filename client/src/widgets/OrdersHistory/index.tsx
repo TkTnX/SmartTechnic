@@ -6,6 +6,7 @@ import './_ordersHistory.scss'
 
 export const OrdersHistory = () => {
 	const user = useUserStore(state => state.user)
+	console.log(user?.orders)
 	return (
 		<section className='ordersHistory'>
 			<h3 className='ordersHistory__title'>История покупок</h3>

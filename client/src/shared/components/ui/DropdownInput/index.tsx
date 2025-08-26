@@ -8,7 +8,7 @@ interface Props<TFormValues extends FieldValues>
 	extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string
 	items: { value: string; label: string }[]
-	name: keyof CartStoreType['orderInfo'] 
+	name: string
 	setOrderInfo?: (
 		key: keyof CartStoreType['orderInfo'],
 		value: CartStoreType['orderInfo'][keyof CartStoreType['orderInfo']]
@@ -38,7 +38,7 @@ export const DropdownInput = <TFormValues extends FieldValues>({
 				{...register?.(name as Path<TFormValues>)}
 				value={value}
 				onChange={e => {
-					setOrderInfo?.(name, e.target.value)
+					setOrderInfo?.(name as keyof CartStoreType['orderInfo'], e.target.value)
 				}}
 				defaultValue={defaultValue}
 				name={name}

@@ -17,6 +17,7 @@ import { useUserStore } from '@/shared/stores'
 import './_authForm.scss'
 
 export const AuthForm = () => {
+	const [isTwoFactorEnabled, setIsTwoFactorEnabled] = useState(false)
 	const [open, setOpen] = useState(false)
 	const [isLogin, setIsLogin] = useState(true)
 	const { registerMutation, loginMutation, isLoading } = useAuth()
@@ -30,8 +31,7 @@ export const AuthForm = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
-		reset
+		formState: { errors }
 	} = useForm<RegisterSchema | LoginSchema>({
 		resolver: zodResolver(schema)
 	})
@@ -39,17 +39,18 @@ export const AuthForm = () => {
 	const onSubmit = async (data: RegisterSchema | LoginSchema) => {
 		try {
 			if (isLogin) {
-				await loginMutation(data as LoginSchema)
+				const res = await loginMutation(data as LoginSchema)
+				if (res.message.includes('код')) {
+					return setIsTwoFactorEnabled(true)
+				}
 			} else {
 				await registerMutation(data as RegisterSchema)
 			}
-
 			setOpen(false)
 		} catch (error) {
 			console.log(error)
 		} finally {
 			fetchUser()
-			reset()
 		}
 	}
 
@@ -115,10 +116,18 @@ export const AuthForm = () => {
 						register={register}
 						errors={errors}
 					/>
+					{isTwoFactorEnabled && (
+						<FormInput
+							disabled={isLoading}
+							label='Код'
+							name='code'
+							register={register}
+							errors={errors}
+						/>
+					)}
 					{isLogin ? (
 						<Link
 							className='authForm__link'
-							// TODO: Сделать страницу auth/new-password, как profile/new-password
 							to={'/auth/new-password'}
 						>
 							Забыли пароль?
