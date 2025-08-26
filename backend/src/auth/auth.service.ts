@@ -1,5 +1,6 @@
 import {
   BadGatewayException,
+  BadRequestException,
   Inject,
   Injectable,
   InternalServerErrorException,
@@ -134,6 +135,43 @@ export class AuthService {
         html: `
       <h1>Пожалуйста, подтвердите свою почту</h1>
       <a href="${this.configService.getOrThrow("CLIENT_URL")}/auth/verify-email/${token.id}?email=${email}">Подтвердить</a>`,
+      });
+    }
+  }
+  public async forgotPassword(
+    email: string,
+    queryToken?: string,
+    newPassword?: string
+  ) {
+    const token = await this.prismaService.token.findFirst({
+      where: { email, type: "RESET_PASSWORD" },
+    });
+
+    if (queryToken && token && newPassword) {
+      if (queryToken !== token.id)
+        throw new BadRequestException("Неверный токен");
+      const hashedPassword = await argon2.hash(newPassword);
+
+      await this.prismaService.user.update({
+        where: { email },
+        data: { password: hashedPassword },
+      });
+
+      return await this.prismaService.token.delete({ where: { id: token.id } });
+    } else {
+      const token = await this.prismaService.token.create({
+        data: {
+          email,
+          type: "RESET_PASSWORD",
+        },
+      });
+
+      return await this.mailService.send({
+        to: email,
+        subject: "Восстановление пароля",
+        html: `
+      <h1>Для восстановления пароля, перейдите по ссылке</h1>
+      <a href="${this.configService.getOrThrow("CLIENT_URL")}/auth/new-password?token=${token.id}&email=${email}">Восстановить</a>`,
       });
     }
   }

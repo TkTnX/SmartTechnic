@@ -34,19 +34,33 @@ export class AuthController {
   }
   @Post("logout")
   @HttpCode(HttpStatus.OK)
-  async logout(@Req() req: Request, @Res({passthrough: true}) res: Response) {
+  async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     return this.authService.logout(req, res);
   }
 
   @Authorization()
   @Patch("new-password")
   @HttpCode(HttpStatus.OK)
-  async updatePassword(@Authorized("id") userId: string, @Body() dto: NewPasswordDto) {
-    return await this.authService.updatePassword(userId, dto)
+  async updatePassword(
+    @Authorized("id") userId: string,
+    @Body() dto: NewPasswordDto
+  ) {
+    return await this.authService.updatePassword(userId, dto);
   }
 
-  @Post('verify-email')
-  async verifyEmail(@Body("email") email: string, @Body("token") token?: string) {
-    return await this.authService.verifyEmail(email, token)
+  @Post("verify-email")
+  async verifyEmail(
+    @Body("email") email: string,
+    @Body("token") token?: string
+  ) {
+    return await this.authService.verifyEmail(email, token);
+  }
+  @Post("forgot-password")
+  async forgotPassword(
+    @Body("email") email: string,
+    @Body("token") token?: string,
+    @Body("password") password?:string 
+  ) {
+    return await this.authService.forgotPassword(email, token, password);
   }
 }

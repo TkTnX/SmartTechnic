@@ -25,6 +25,7 @@ import {
 	DashboardSpecificationsPage,
 	DropshippingPage,
 	FavoritesPage,
+	ForgotPasswordPage,
 	HistoryPage,
 	Homepage,
 	InstallmentPage,
@@ -188,6 +189,10 @@ const router = createBrowserRouter([
 			{
 				path: '/auth/verify-email/:token',
 				element: <VerifyEmailPage />
+			},
+			{
+				path: '/auth/new-password',
+				element: <ForgotPasswordPage />
 			}
 		]
 	},
