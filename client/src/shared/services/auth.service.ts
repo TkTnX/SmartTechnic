@@ -1,5 +1,9 @@
-import { axiosInstance } from '@/shared/libs'
-import type { LoginSchema, NewPasswordSchema, RegisterSchema } from '@/shared/schemas'
+import { axiosInstance } from '@/shared/libs';
+import type { LoginSchema, NewPasswordSchema, RegisterSchema } from '@/shared/schemas';
+
+
+
+
 
 class AuthService {
 	async register(body: RegisterSchema) {
@@ -29,7 +33,15 @@ class AuthService {
 		const res = await axiosInstance.patch('/auth/new-password', body)
 
 		if (res.status !== 200) throw new Error(res.data.message)
-		
+
+		return res.data
+	}
+
+	public async verifyEmail( email: string, token?: string) {
+		const res = await axiosInstance.post(`/auth/verify-email`, { email, token })
+
+		if (res.status !== 201) throw new Error(res.data.message)
+
 		return res.data
 	}
 }

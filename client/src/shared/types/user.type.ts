@@ -1,4 +1,8 @@
-import type { ICartProduct, ICompareItem, IFavoriteProduct, IOrder, IReview } from '.'
+import type { ICartProduct, ICompareItem, IFavoriteProduct, IOrder, IReview } from '.';
+
+
+
+
 
 export interface IUser {
 	id: string
@@ -15,6 +19,7 @@ export interface IUser {
 	paymentType: PaymentType
 	address?: string
 	role: Role
+	isEmailVerified: boolean
 
 	orders: IOrder[]
 	reviews: IReview[]

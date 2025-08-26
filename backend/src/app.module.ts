@@ -17,6 +17,7 @@ import { VacancyModule } from './vacancy/vacancy.module';
 import { CompareModule } from './compare/compare.module';
 import { ReviewModule } from './review/review.module';
 import { CategoryModule } from './category/category.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { CategoryModule } from './category/category.module';
     CompareModule,
     ReviewModule,
     CategoryModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

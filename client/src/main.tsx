@@ -39,6 +39,7 @@ import {
 	PromosPage,
 	ServicePage,
 	VacanciesPage,
+	VerifyEmailPage,
 	WholesalePage
 } from '@/shared/pages'
 import '@/shared/styles/index.scss'
@@ -176,13 +177,22 @@ const router = createBrowserRouter([
 					{
 						path: '/dashboard/promos',
 						element: <DashboardPromosPage />
-					},
+					}
 				]
 			}
 		]
 	},
 	{
-		path: "*",
+		path: '/auth',
+		children: [
+			{
+				path: '/auth/verify-email/:token',
+				element: <VerifyEmailPage />
+			}
+		]
+	},
+	{
+		path: '*',
 		element: <NotFoundPage />
 	}
 ])

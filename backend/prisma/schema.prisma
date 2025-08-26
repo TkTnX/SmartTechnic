@@ -12,7 +12,7 @@ model User {
 
   name     String
   password String
-  email    String
+  email    String @unique
 
   isEmailVerified Boolean @default(false)
 
@@ -205,6 +205,18 @@ model CompareItem {
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @map("user_id")
+}
+
+model Token {
+  id String @id @default(uuid())
+  email String
+  type TokenType
+}
+
+enum TokenType {
+  VERIFY_EMAIL
+  RESET_PASSWORD
+  TWO_FACTOR
 }
 
 enum Role {

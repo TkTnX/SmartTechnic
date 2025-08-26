@@ -1,5 +1,5 @@
 @use '@/shared/styles/mixins' as *;
-@use "@/shared/styles/vars" as *;
+@use '@/shared/styles/vars' as *;
 
 .personalInfo {
 	max-width: 640px;
@@ -29,5 +29,12 @@
 		&:hover {
 			opacity: 0.8;
 		}
+	}
+
+	&__verify {
+		max-width: 310px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
 	}
 }

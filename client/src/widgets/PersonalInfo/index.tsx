@@ -1,6 +1,6 @@
+import { VerifyEmailBtn } from '@/features'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import type { AxiosError } from 'axios'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
@@ -10,6 +10,7 @@ import { CITIES, DELIVERY_TYPES, PAYMENT_TYPES } from '@/shared/constants'
 import { type PersonalSchema, personalSchema } from '@/shared/schemas'
 import { userService } from '@/shared/services'
 import { useUserStore } from '@/shared/stores'
+import type { ErrorType } from '@/shared/types'
 
 import './_personalInfo.scss'
 
@@ -27,8 +28,9 @@ export const PersonalInfo = () => {
 	const { mutate, isPending, error } = useMutation({
 		mutationFn: (data: PersonalSchema) => userService.updateProfile(data),
 		onSuccess: () => toast.success('Данные успешно обновлены'),
-		onError: (err: AxiosError<{ message: string }>) =>
-			toast.error(err.response?.data.message[0])
+		onError: (err: ErrorType) => {
+			toast.error(err.response?.data.message)
+		}
 	})
 
 	useEffect(() => {
@@ -129,6 +131,12 @@ export const PersonalInfo = () => {
 				/>
 				<Button text='Сохранить' disabled={isPending} type='submit' />
 			</form>
+			{!user?.isEmailVerified && (
+				<div className='personalInfo__verify'>
+					<p className='error'>Почта не подтверждена!</p>
+					<VerifyEmailBtn />
+				</div>
+			)}
 			{error && <p className='error'>{error.response?.data.message}</p>}
 		</section>
 	)

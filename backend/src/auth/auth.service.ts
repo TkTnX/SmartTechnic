@@ -14,12 +14,14 @@ import * as argon2 from "argon2";
 import { ConfigService } from "@nestjs/config";
 import { NewPasswordDto } from "./dto/new-password.dto";
 import { PrismaService } from "src/prisma/prisma.service";
+import { MailService } from "src/mail/mail.service";
 @Injectable()
 export class AuthService {
   public constructor(
     private readonly userService: UserService,
     private readonly prismaService: PrismaService,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
+    private readonly mailService: MailService
   ) {}
   public async register(req: Request, dto: RegisterDto) {
     const isUserExists = await this.userService.findByEmailOrPhone(dto.email);
@@ -35,6 +37,8 @@ export class AuthService {
       ...dto,
       password: hashedPassword,
     });
+
+    await this.verifyEmail(dto.email);
 
     return this.saveSession(req, newUser);
   }
@@ -102,5 +106,35 @@ export class AuthService {
         res(user);
       });
     });
+  }
+
+  public async verifyEmail(email: string, queryToken?: string) {
+    const token = await this.prismaService.token.findFirst({
+      where: { email, type: "VERIFY_EMAIL" },
+    });
+
+    if (queryToken && token) {
+      await this.prismaService.user.update({
+        where: { email },
+        data: { isEmailVerified: true },
+      });
+
+      return await this.prismaService.token.delete({ where: { id: token.id } });
+    } else {
+      const token = await this.prismaService.token.create({
+        data: {
+          email,
+          type: "VERIFY_EMAIL",
+        },
+      });
+
+      return await this.mailService.send({
+        to: email,
+        subject: "Подтверждение почты",
+        html: `
+      <h1>Пожалуйста, подтвердите свою почту</h1>
+      <a href="${this.configService.getOrThrow("CLIENT_URL")}/auth/verify-email/${token.id}?email=${email}">Подтвердить</a>`,
+      });
+    }
   }
 }

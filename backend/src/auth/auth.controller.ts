@@ -3,6 +3,7 @@ import {
   Controller,
   HttpCode,
   HttpStatus,
+  Param,
   Patch,
   Post,
   Req,
@@ -42,5 +43,10 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async updatePassword(@Authorized("id") userId: string, @Body() dto: NewPasswordDto) {
     return await this.authService.updatePassword(userId, dto)
+  }
+
+  @Post('verify-email')
+  async verifyEmail(@Body("email") email: string, @Body("token") token?: string) {
+    return await this.authService.verifyEmail(email, token)
   }
 }
